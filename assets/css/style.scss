@@ -490,3 +490,18 @@ h2, h3, h4, h5, h5 {
         box-shadow: var(--circle-checked-shadow);
     }
 }
+
+/* References column styling */
+.references-link {
+  color: $accent;
+  text-decoration: underline;
+  font-size: 0.95em;
+  transition: color 0.2s;
+  word-break: break-all;
+}
+
+.references-link:hover,
+.references-link:focus {
+  color: $hover;
+  text-decoration: underline;
+}

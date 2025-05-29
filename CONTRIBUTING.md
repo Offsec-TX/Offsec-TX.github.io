@@ -4,7 +4,7 @@ Thank you for your interest in contributing to this project! This repository is 
 
 ## Project Structure
 
-- **_blackbox/**, **_greybox/**, **_whitebox/**:  
+- **_testcases/**:  
   Contain individual test case files (`<testcase name>.md`). Each file uses a YAML front matter to describe the test case, its usage, and metadata.
 
 - **_data/**:  
@@ -73,9 +73,7 @@ You may propose new platforms, services, OS, or attack types by editing the corr
 - For any questions, refer to the [YAML documentation](http://yaml.org/) or open an issue.
 
 [YAML]: http://yaml.org/
-[`_blackbox/`]: ./_blackbox/
-[`_greybox/`]: ./_greybox/
-[`_whitebox/`]: ./_whitebox/
-[`_data/black_platforms.yml`]: ./_data/black_platforms.yml
-[`_data/grey_platforms.yml`]: ./_data/grey_platforms.yml
-[`_data/white_platforms.yml`]: ./_data/white_platforms.yml
+[`_testcases/`]: ./_testcases/
+[`_data/platforms.yml`]: ./_data/platforms.yml
+[`_data/methodology.yml`]: ./_data/methodology.yml
+

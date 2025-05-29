@@ -7,4 +7,6 @@ platforms:
 methodology: 
     - BlackBox
     - GreyBox
+references:
+  - https://nmap.org/download.html
 ---

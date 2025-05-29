@@ -5,7 +5,7 @@ title: Contribute
 
 ## Structure
 
-Each test case is defined in a Markdown file in the [`_blackbox/`], [`_greybox/`], or [`_whitebox/`] folder, named `<testcase name>.md`. The file consists only of a YAML front matter block describing the test case and its attributes.
+Each test case is defined in a Markdown file in the [`_testcases/`] folder, named `<testcase name>.md`. The file consists only of a YAML front matter block describing the test case and its attributes.
 
 The full syntax is the following:
 
@@ -23,7 +23,7 @@ references:
 ---
 ```
 
-`platforms`: Values from the relevant platforms YAML file (e.g., [`_data/black_platforms.yml`])
+`platforms`: Values from the relevant platforms YAML file (e.g., [`_data/platforms.yml`])
 `references`: At least one link to a relevant tool or resource
 
 ## Pull request process
@@ -52,9 +52,7 @@ Before sending a pull request of a new command, ensure the following:
 
 
 [YAML]: http://yaml.org/
-[`__blackbox/`]: https://github.com/Offsec-TX/Offsec-TX.github.io/tree/master/_blackbox/
-[`_greybox/`]: https://github.com/Offsec-TX/Offsec-TX.github.io/tree/master/_greybox/
-[`_greybox/`]: https://github.com/Offsec-TX/Offsec-TX.github.io/tree/master/_whitebox/
-[`_data/black_platforms.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/black_platforms.yml
-[`_data/grey_platforms.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/grey_platforms.yml
-[`_data/white_platforms.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/white_platforms.yml
+[`__testcases/`]: https://github.com/Offsec-TX/Offsec-TX.github.io/tree/master/_testcases/
+[`_data/platforms.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/black_platforms.yml
+[`_data/methodology.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/methodology.yml
+

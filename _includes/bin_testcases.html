@@ -77,6 +77,7 @@
       <th style="text-align: center; width: 110px;">T/NT</th>
       <th style="text-align: center; width: 130px;">A/NA</th>
       <th style="text-align: center; min-width: 100px;">Comments</th>
+      <th style="text-align: center; min-width: 100px;">References</th>
     </tr>
   </thead>
   <tbody>
@@ -126,6 +127,13 @@
         </td>
         <td>
           <input type="text" class="comment-input" placeholder="Add comment" aria-label="Add comment">
+        </td>
+        <td style="text-align: center;">
+          {% if test.references %}
+            <a href="{{ test.references }}" class="references-link" target="_blank" rel="noopener">
+              {{ test.references }}
+            </a>
+          {% endif %}
         </td>
       </tr>
     {% endfor %}
