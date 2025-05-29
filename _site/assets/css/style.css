@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @media (min-width: 1000px) {
   body {
     width: 800px;
@@ -69,16 +70,16 @@ h2:hover .permalink, h3:hover .permalink, h4:hover .permalink, h5:hover .permali
   grid-template-columns: 50% 50%;
   grid-row: auto auto;
 }
-#bin-search-wrapper #bin-search-filters {
-  text-align: left;
+#bin-search-wrapper .filter-list {
+  text-align: center;
 }
-#bin-search-wrapper #bin-search-filters input[type=checkbox] + label {
+#bin-search-wrapper .filter-list input[type=checkbox] + label {
   background: #f4fff4;
   font-size: initial;
   border-radius: 0.25em;
   cursor: pointer;
 }
-#bin-search-wrapper #bin-search-filters input[type=checkbox] + label:hover:before {
+#bin-search-wrapper .filter-list input[type=checkbox] + label:hover:before {
   content: attr(data-title);
   font-size: 0.8rem;
   display: block;
@@ -171,6 +172,13 @@ h2:hover .permalink, h3:hover .permalink, h4:hover .permalink, h5:hover .permali
 .filter-list li.match input[type=checkbox] + label {
   background: #ccffcc;
 }
+.filter-list li input[type=checkbox]:checked + label::after {
+  content: " ✔";
+  color: #07bf07;
+  font-size: 1em;
+  margin-left: 0.3em;
+  vertical-align: middle;
+}
 
 .examples {
   display: table;
@@ -226,7 +234,7 @@ h2:hover .permalink, h3:hover .permalink, h4:hover .permalink, h5:hover .permali
 #exportExcel.container-btn-file {
   display: flex;
   position: relative;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: #307750;
   color: #fff;

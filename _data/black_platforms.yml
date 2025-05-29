@@ -1,8 +1,0 @@
----
-Web:
-  label: Web
-  description: Test cases specific to web application security.
-
-Network:
-  label: Network
-  description: Test cases focused on network infrastructure security.

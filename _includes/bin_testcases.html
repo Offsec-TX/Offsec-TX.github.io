@@ -1,16 +1,38 @@
----
-layout: common
-title: WTX
----
+<style>
+.selected {
+    color: #ff0000 !important;
+    border-color: #ff0000 !important;
+}
+</style>
 
-{% include page_title.html title=page.title %}
-
-{% include white_platforms.html %}
+<div id="bin-search-wrapper">
+    <ul id="bin-search-methods" class="filter-list">
+      <h3>Methodologies:</h3>
+        {% for method_pair in site.data.methodology %}
+        {% assign method_id = method_pair[0] %}
+        {% assign method = method_pair[1] %}
+        <li>
+            <input type="checkbox" id="{{ method.label | downcase }}" name="method_name" aria-checked="false">
+            <label id="{{ method.label | downcase }}_label" for="{{ method.label | downcase }}" data-title="{{ method.description | replace: '\n', ' ' }}">{{ method.label }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+    <ul id="bin-search-platforms" class="filter-list">
+      <h3>Platforms:</h3>
+        {% for platform_pair in site.data.platforms %}
+        {% assign platform_id = platform_pair[0] %}
+        {% assign platform = platform_pair[1] %}
+        <li>
+            <input type="checkbox" id="{{ platform.label | downcase }}" name="platform_name" aria-checked="false">
+            <label id="{{ platform.label | downcase }}_label" for="{{ platform.label | downcase }}" data-title="{{ platform.description | replace: '\n', ' ' }}">{{ platform.label }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
 <!-- External Libraries -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <link rel="stylesheet" href="../assets/css/style.css">
-
 
 <div style="display: flex; justify-content: flex-end; margin-bottom: 10px;">
   <button id="exportExcel" class="container-btn-file" type="button" aria-label="Export to Excel">
@@ -43,7 +65,7 @@ title: WTX
         20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
       ></path>
     </svg>
-    Export to Excel
+    Export
   </button>
 </div>
 
@@ -58,8 +80,10 @@ title: WTX
     </tr>
   </thead>
   <tbody>
-    {% for test in site.whitebox %}
-      <tr class="test-row" data-platforms="{% if test.platforms %}{% if test.platforms contains ',' or test.platforms contains '[' %}{{ test.platforms | join: ',' }}{% else %}{{ test.platforms }}{% endif %}{% endif %}">
+    {% for test in site.testcases %}
+      <tr class="test-row"
+          data-platforms="{{ test.platforms | join: ',' }}"
+          data-methods="{{ test.methodology | join: ',' }}">
         <td style="text-align: center;">{{ test.sno }}</td>
         <td>{{ test.testcase }}</td>
         <td>
@@ -109,3 +133,33 @@ title: WTX
 </table>
 
 <script src="../assets/js/excel.js"></script>
+
+<script>
+// Optimized filter using event delegation
+function filterTestcases() {
+    const testRows = document.querySelectorAll('#testcases .test-row');
+    if (!testRows.length) return;
+
+    const checkedMethods = Array.from(document.querySelectorAll('input[name="method_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
+    const checkedPlatforms = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
+
+    testRows.forEach(row => {
+        const rowMethods = (row.getAttribute('data-methods') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+        const rowPlatforms = (row.getAttribute('data-platforms') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+
+        const showMethod = checkedMethods.length === 0 || checkedMethods.some(m => rowMethods.includes(m));
+        const showPlatform = checkedPlatforms.length === 0 || checkedPlatforms.some(p => rowPlatforms.includes(p));
+        row.style.display = (showMethod && showPlatform) ? '' : 'none';
+    });
+}
+
+// Use event delegation for filter checkboxes
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('bin-search-wrapper').addEventListener('change', function (e) {
+        if (e.target.matches('input[type="checkbox"][name="method_name"], input[type="checkbox"][name="platform_name"]')) {
+            filterTestcases();
+        }
+    });
+    filterTestcases();
+});
+</script>

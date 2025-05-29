@@ -1,0 +1,12 @@
+---
+BlackBox:
+  label: BlackBox
+  description: No internal knowledge—external perspective.
+
+GreyBox:
+  label: GreyBox
+  description: Partial knowledge—mixed perspective.
+
+WhiteBox:
+  label: WhiteBox
+  description: Full knowledge—internal perspective.

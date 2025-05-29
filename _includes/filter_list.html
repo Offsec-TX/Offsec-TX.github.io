@@ -1,0 +1,17 @@
+<ul class="filter-list">
+    {% for methodology_pair in site.data.methodology %}
+    {% assign methodology_id = methodology_pair[0] %}
+    {% assign methodology = methodology_pair[1] %}
+    {% if include.bin.methodology_types contains methodology_id %}
+    <li><a href="{{ include.bin.url }}#{{ methodology_id }}">{{ methodology.label }}</a></li>
+    {% endif %}
+    {% endfor %}
+
+    {% for platforms_pair in site.data.platforms %}
+    {% assign platforms_id = platforms_pair[0] %}
+    {% assign platforms = platforms_pair[1] %}
+    {% if include.bin.platformss contains platforms_id %}
+    <li><a href="{{ include.bin.url }}#{{ platforms_id }}">{{ platforms.label }}</a></li>
+    {% endif %}
+    {% endfor %}
+</ul>

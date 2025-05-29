@@ -4,23 +4,12 @@ exclude: ['/Gemfile', '/Makefile', '/README.md']
 permalink: pretty
 
 collections:
-  blackbox:
+  testcases:
     output: true
-  greybox:
-    output: true
-  whitebox:
-    output: true
+
 
 defaults:
   - scope:
-      path: '_backbox'
-    values:
-      layout: bin
-  - scope:
-      path: '_greybox'
-    values:
-      layout: bin
-  - scope:
-      path: '_whitebox'
+      path: '_testcases'
     values:
       layout: bin

@@ -9,9 +9,9 @@ title: Offsec-TX
 
 - **Track Your Assessment:**  
   Leverage methodology-driven checklists to monitor your progress and mark off completed tests across different testing approaches:
-  - **[Black Box](/blackbox):** No internal knowledge—external perspective.
-  - **[Grey Box](/greybox):** Partial knowledge—mixed perspective.
-  - **[White Box](/whitebox):** Full knowledge—internal perspective.
+  - **Black Box:** No internal knowledge—external perspective.
+  - **Grey Box:** Partial knowledge—mixed perspective.
+  - **White Box:** Full knowledge—internal perspective.
 
 - **Export and Report:**  
   Effortlessly export your progress and findings for streamlined reporting and documentation.
@@ -25,3 +25,5 @@ This is a [collaborative project][collaborative]—contributions of new commands
 [WADComs]: https://wadcoms.github.io/
 [collaborative]: https://github.com/Offsec-TX/Offsec-TX.github.io/
 [contribute]: /contribute/
+
+{% include bin_testcases.html %}

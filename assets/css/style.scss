@@ -97,8 +97,9 @@ h2, h3, h4, h5, h5 {
     grid-template-columns: 50% 50%;
     grid-row: auto auto;
 
-    #bin-search-filters {
-        text-align: left;
+    // Remove #bin-search-filters, use .filter-list for both filter lists
+    .filter-list {
+        text-align: center;
 
         input[type=checkbox] + label {
             background: $lighter;
@@ -120,11 +121,11 @@ h2, h3, h4, h5, h5 {
                 background: rgba(0, 0, 0, 0.75);
                 z-index: 1;
                 pointer-events: none;
-                width: max-content; // Add this
-                left: 0; // Optional: position relative to label
-                right: auto; // Remove right: 0;
-                min-width: 120px; // Optional: set a minimum width if needed
-                max-width: 300px; // Optional: set a maximum width if needed
+                width: max-content;
+                left: 0;
+                right: auto;
+                min-width: 120px;
+                max-width: 300px;
             }
         }
     }
@@ -213,6 +214,15 @@ h2, h3, h4, h5, h5 {
         &.match input[type=checkbox] + label {
             background: $marked;
         }
+
+        // Add checkmark for selected filters
+        input[type=checkbox]:checked + label::after {
+            content: " ✔";
+            color: $accent;
+            font-size: 1em;
+            margin-left: 0.3em;
+            vertical-align: middle;
+        }
     }
 }
 
@@ -277,23 +287,23 @@ h2, h3, h4, h5, h5 {
 #exportExcel.container-btn-file {
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: flex-start; // changed from center to left-align
     align-items: center;
     background-color: #307750;
     color: #fff;
     border-style: none;
-    padding: 0.5em 1em; // reduced padding
+    padding: 0.5em 1em;
     border-radius: 0.5em;
     overflow: hidden;
     z-index: 1;
     box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
     transition: all 250ms;
-    font-size: 0.9em; // reduced font size
+    font-size: 0.9em;
     font-weight: 600;
     cursor: pointer;
     background-image: none;
-    min-width: 0; // optional: remove any min width
-    height: 2.2em; // optional: set a smaller height
+    min-width: 0;
+    height: 2.2em;
 }
 
 #exportExcel.container-btn-file > svg {

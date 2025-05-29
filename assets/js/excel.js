@@ -26,25 +26,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Filter test cases by selected platform(s)
-function handlePlatformChange() {
-  const checked = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => cb.id);
-  document.querySelectorAll('.test-row').forEach(row => {
-    const rowPlatforms = row.getAttribute('data-platforms') ? row.getAttribute('data-platforms').split(',') : [];
-    // Show row if any selected platform matches row's platforms, or if none selected show all
-    if (checked.length === 0 || checked.some(p => rowPlatforms.includes(p))) {
-      row.style.display = '';
-      gsap.to(row, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" });
-    } else {
-      gsap.to(row, { opacity: 0, y: 40, duration: 0.3, ease: "power2.in", onComplete: () => { row.style.display = 'none'; } });
-    }
-  });
-}
-
-// Attach event listeners to platform checkboxes
-document.querySelectorAll('input[name="platform_name"]').forEach(cb => {
-  cb.addEventListener('change', handlePlatformChange);
-});
 
 // Export to Excel (only visible rows)
 // Make sure XLSX is loaded in your HTML for this to work
