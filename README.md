@@ -23,8 +23,8 @@ This project is a Jekyll-based website that serves as a collection of penetratio
 
 1. **Clone the Repository**: 
    ```bash
-   git clone https://github.com/username/pentest-cases-site.git
-   cd pentest-cases-site
+   git clone https://github.com/Offsec-TX/Offsec-TX.github.io.git
+   cd Offsec-TX
    ```
 
 2. **Install Dependencies**: 
