@@ -52,16 +52,21 @@ if (exportBtn) {
   exportBtn.addEventListener('click', () => {
     const table = document.getElementById('testcases');
     const rows = Array.from(table.querySelectorAll('tbody tr'));
-    const data = [["Serial Number", "Test Case", "Tested/Not Tested", "Comments"]];
+    const data = [["Serial Number", "Test Case", "Tested/Not Tested", "Applicable/Not-Applicable", "Comments"]];
     rows.forEach(row => {
       if (row.style.display === 'none') return;
       const serial = row.cells[0]?.innerText || '';
       const testcase = row.cells[1]?.innerText || '';
       const testedToggle = row.querySelector('.tested-toggle');
       const tested = testedToggle && testedToggle.checked ? "Tested" : "Not-Tested";
+      // New: Get applicable toggle value
+      const applicableToggle = row.querySelector('.applicable-toggle');
+      const applicable = applicableToggle
+        ? (applicableToggle.checked ? "Applicable" : "Not-Applicable")
+        : "";
       const commentInput = row.querySelector('.comment-input');
       const comment = commentInput ? commentInput.value : '';
-      data.push([serial, testcase, tested, comment]);
+      data.push([serial, testcase, tested, applicable, comment]);
     });
     const ws = XLSX.utils.aoa_to_sheet(data);
     const wb = XLSX.utils.book_new();

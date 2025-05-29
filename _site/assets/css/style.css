@@ -331,7 +331,9 @@ h2:hover .permalink, h3:hover .permalink, h4:hover .permalink, h5:hover .permali
   --effect-bg: var(--circle-bg);
   --effect-border-radius: 1px;
   --effect-transition: all .2s ease-in-out;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 .tested-switch input {
