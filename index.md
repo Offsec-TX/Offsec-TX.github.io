@@ -18,7 +18,7 @@ title: Offsec-TX
 
 Offsec-TX was created by [Gnanaraj Mauviel aka 0xm3m](https://www.linkedin.com/in/gnanaraj-mauviel/) and is inspired by [GTFOBins][GTFOBins], [LOLBAS][LOLBAS], and the [WADComs][WADComs] site template.
 
-This is a [collaborative project][collaborative]—contributions of new commands, tools, and techniques are highly encouraged! Please [contribute][contribute] to help make Offsec-TX even better.
+This is a [collaborative project][collaborative]—contributions of new testcases are highly encouraged! Please [contribute][contribute] to help make Offsec-TX even better.
 
 [GTFOBins]: https://gtfobins.github.io/
 [LOLBAS]: https://lolbas-project.github.io/
