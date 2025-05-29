@@ -1,0 +1,16 @@
+---
+Web:
+  label: Web
+  description: Test cases specifically designed for web application security.
+
+API:
+  label: API
+  description: Test cases specifically designed for API security.
+
+Mobile:
+  label: Mobile
+  description: Test cases specifically designed for mobile platform security (iOS/Android).
+
+Network:
+  label: Network
+  description: Test cases specifically designed for network infrastructure security.

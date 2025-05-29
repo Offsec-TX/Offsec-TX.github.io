@@ -1,0 +1,26 @@
+title: Offsec-TX
+exclude: ['/Gemfile', '/Makefile', '/README.md']
+
+permalink: pretty
+
+collections:
+  blackbox:
+    output: true
+  greybox:
+    output: true
+  whitebox:
+    output: true
+
+defaults:
+  - scope:
+      path: '_backbox'
+    values:
+      layout: bin
+  - scope:
+      path: '_greybox'
+    values:
+      layout: bin
+  - scope:
+      path: '_whitebox'
+    values:
+      layout: bin
