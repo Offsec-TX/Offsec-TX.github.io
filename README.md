@@ -4,13 +4,12 @@ This project is a Jekyll-based website that serves as a collection of penetratio
 
 ## Project Structure
 
-- **_blackbox/**, **_greybox/**, **_whitebox/**:  
+- **_testcases/**:  
   Contain individual test case files (`<testcase name>.md`). Each file uses a YAML front matter to describe the test case, its usage, and metadata.
 - **_data/**:  
   Contains supporting YAML files:
-  - `black_platforms.yml`: List of platforms for black-box test cases
-  - `grey_platforms.yml`: List of platforms for grey-box test cases
-  - `white_platforms.yml`: List of platforms for white-box test cases
+  - `platforms.yml`: List of platforms for black-box test cases
+  - `methodology.yml`: List of methodologies
 - **assets/css/**:  
   Contains SCSS files for site styling (`style.scss`, `styleDark.scss`).
 - **_layouts/common.html**: Default layout for the site, including header, footer, and main content area.
