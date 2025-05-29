@@ -1,15 +1,20 @@
-# Penetration Testing Test Cases Site
+# Offsec-TX
 
 This project is a Jekyll-based website that serves as a collection of penetration testing test cases categorized by different approaches: black box, grey box, and white box. The test cases are further divided into four types: network, web, API, and mobile assessments.
 
 ## Project Structure
 
-- **_config.yml**: Configuration settings for the Jekyll site, including site title and description.
-- **_data/testcases.yml**: YAML file storing the test cases for penetration testing.
-- **_includes/checkbox.html**: HTML markup for checkboxes to track completion status of each test case.
-- **_layouts/default.html**: Default layout for the site, including header, footer, and main content area.
-- **_collections/**: Contains Markdown files for each category and type of test case.
-- **assets/js/export.js**: JavaScript functionality to export test case completion status to an Excel sheet.
+- **_blackbox/**, **_greybox/**, **_whitebox/**:  
+  Contain individual test case files (`<testcase name>.md`). Each file uses a YAML front matter to describe the test case, its usage, and metadata.
+- **_data/**:  
+  Contains supporting YAML files:
+  - `black_platforms.yml`: List of platforms for black-box test cases
+  - `grey_platforms.yml`: List of platforms for grey-box test cases
+  - `white_platforms.yml`: List of platforms for white-box test cases
+- **assets/css/**:  
+  Contains SCSS files for site styling (`style.scss`, `styleDark.scss`).
+- **_layouts/common.html**: Default layout for the site, including header, footer, and main content area.
+- **assets/js/excel.js**: JavaScript functionality to export test case completion status to an Excel sheet.
 - **Gemfile**: Specifies Ruby gems required for the Jekyll site.
 - **index.md**: Homepage of the site, providing an overview of the test cases.
 - **README.md**: Documentation for the project.
@@ -37,14 +42,14 @@ This project is a Jekyll-based website that serves as a collection of penetratio
 4. **Access the Site**: 
    Open your web browser and go to `http://localhost:4000` to view the site.
 
+## Contributing Guide
+
+Thank you for your interest in contributing to this project! This repository is a collection of test cases for offensive security, focusing on Web, API, Mobile, Network, and Active Directory. The project is organized to make it easy to add test cases and supporting data.
+
 ## Features
 
 - **Test Case Tracking**: Each test case includes a checkbox to track its completion status.
 - **Export Functionality**: Once all test cases are marked, you can export the status to an Excel sheet summarizing each test case as Tested, Not Tested, or Not Applicable.
-
-## Contribution
-
-Feel free to contribute to this project by adding new test cases or improving existing ones. Please submit a pull request for any changes.
 
 ## License
 
