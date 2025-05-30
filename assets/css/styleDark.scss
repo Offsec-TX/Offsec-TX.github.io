@@ -9,11 +9,12 @@ $dark: #292a2d;
 $darkText: #a9a9b3;
 $test: #ff0000;
 $greenColor: #07bf07;
-
 // layout
+
 $column-width: 800px;
 $grace-space: 200px;
 $layout-break: "(min-width: #{$column-width + $grace-space})";
+
 
 @media #{$layout-break} {
     body {
@@ -44,18 +45,16 @@ code {
     padding: 0.15em 0.25em;
     border-radius: 0.25em;
     color: $greenColor;
-    background: #232323;
 }
 
 pre {
-    background: #232323;
+    background: $marked;
     padding: 1em;
     overflow-x: auto;
 
     code {
         padding: 0;
         border-radius: 0;
-        background: none;
     }
 }
 
@@ -68,7 +67,7 @@ a:hover {
 }
 
 input[type=checkbox] {
-    display: none;
+	display: none;
 }
 
 // permalink on headings
@@ -108,18 +107,20 @@ h2, h3, h4, h5, h5 {
 
     #bin-search-filters {
         text-align: center;
-
-        input[type=checkbox] + label {
+	
+	input[type=checkbox] + label {
             background: $marked;
             font-size: initial;
             border-radius: 0.25em;
-            cursor: pointer;
+	    cursor: pointer;
 
             &:hover:before {
                 content: attr(data-title);
                 font-size: 0.8rem;
                 display: block;
                 position: absolute;
+                left: 0;
+                right: 0;
                 margin-top: 1.75rem; // XXX below the button
                 margin-left: 10%;
                 margin-right: 10%;
@@ -129,29 +130,22 @@ h2, h3, h4, h5, h5 {
                 background: rgba(0, 0, 0, 0.75);
                 z-index: 1;
                 pointer-events: none;
-                width: max-content; // Make tooltip fit content
-                min-width: 120px;   // Optional: minimum width
-                max-width: 300px;   // Optional: maximum width
-                left: 0;            // Position relative to label
-                right: auto;        // Remove right: 0;
             }
-        }
+    	}
     }
 }
 
 #bin-search {
-    margin: 20px 0;
-    padding: 10px 0;
-    position: relative; // XXX needed for tooltip sizing
-    margin-top: 25px;
-    padding: 1em;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid $accent;
-    outline-color: $accent;
-    background: #232323;
-    color: $darkText;
+	margin: 20px 0;
+	padding: 10px 0;
+	position: relative; // XXX needed for tooltip sizing
+	margin-top: 25px;
+	padding: 1em;
+	font-size: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid $accent;
+	outline-color: $accent;
 }
 
 #bin-table {
@@ -179,7 +173,7 @@ h2, h3, h4, h5, h5 {
 // filter description
 
 .filter-list {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -217,7 +211,7 @@ h2, h3, h4, h5, h5 {
             color: $greenColor;
             text-decoration: none;
         }
-
+	
         input[type=checkbox]:hover + label {
             color: $hover;
             border-color: $hover;
@@ -287,213 +281,61 @@ h2, h3, h4, h5, h5 {
         visibility: hidden;
     }
 }
-
-// =====================
-// Toggle Switches Split
-// =====================
-
-// Theme (day/night) toggle styles
-.theme-switch {
+.switch {
     position: relative;
     display: inline-block;
-    width: 98px;
-    height: 38px;
+    width: 100px;
+    height: 40px;
     margin-bottom: -10px;
     margin-left: 10px;
+  }
+  
+  .switch input {display:none;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    background-size: 100% 100%;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-image: url(../img/day.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
 
-    input {
-        display: none;
-    }
-
-    .slider {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: 100%;
-        background: #e0e0e0;
-        border-radius: 999px;
-        cursor: pointer;
-        padding: 0 8px;
-        font-weight: 600;
-        color: #232323;
-        transition: background 0.3s, color 0.3s;
-        box-sizing: border-box;
-        position: relative;
-        gap: 2px;
-    }
-
-    .toggle-bg {
-        position: absolute;
-        left: 4px;
-        top: 4px;
-        width: 45px;
-        height: 30px;
-        border-radius: 999px;
-        background: #232323;
-        transition: left 0.3s, background 0.3s;
-        z-index: 1;
-    }
-
-    .label {
-        position: relative;
-        z-index: 2;
-        font-size: 0.95em;
-        width: 36px;
-        text-align: center;
-        color: #232323;
-        transition: color 0.3s;
-        user-select: none;
-    }
-
-    .label.night {
-        color: #fff;
-    }
-
-    .icon {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: none;
-        color: #232323;
-        font-size: 1.2em;
-        transition: color 0.3s;
-        user-select: none;
-    }
-
-    input:checked + .slider .toggle-bg {
-        left: 50px;
-        background: #232323;
-    }
-
-    input:checked + .slider .label.day {
-        color: #fff;
-    }
-
-    input:checked + .slider .label.night {
-        color: #232323;
-    }
-
-    input:checked + .slider {
-        background-image: url(../img/day.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    input:checked + .slider .icon {
-        color: #ffe066;
-    }
-}
-
-// Tested/Not-Tested toggle styles
-.tested-switch {
-    --switch-width: 46px;
-    --switch-height: 24px;
-    --switch-bg: #e53935; /* red for Not-Tested */
-    --switch-checked-bg: #43a047; /* green for Tested */
-    --switch-offset: calc((var(--switch-height) - var(--circle-diameter)) / 2);
-    --switch-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
-    --circle-diameter: 18px;
-    --circle-bg: #fff;
-    --circle-shadow: 1px 1px 2px rgba(146, 146, 146, 0.45);
-    --circle-checked-shadow: -1px 1px 2px rgba(163, 163, 163, 0.45);
-    --circle-transition: var(--switch-transition);
-    --icon-transition: all .2s cubic-bezier(0.27, 0.2, 0.25, 1.51);
-    --icon-cross-color: var(--switch-bg);
-    --icon-cross-size: 6px;
-    --icon-checkmark-color: var(--switch-checked-bg);
-    --icon-checkmark-size: 10px;
-    --effect-width: calc(var(--circle-diameter) / 2);
-    --effect-height: calc(var(--effect-width) / 2 - 1px);
-    --effect-bg: var(--circle-bg);
-    --effect-border-radius: 1px;
-    --effect-transition: all .2s ease-in-out;
-    display: inline-block;
-    position: relative;
-
-    input {
-        display: none;
-    }
-
-    svg {
-        transition: var(--icon-transition);
-        position: absolute;
-        height: auto;
-    }
-
-    .checkmark {
-        width: var(--icon-checkmark-size);
-        color: var(--icon-checkmark-color);
-        transform: scale(0);
-    }
-
-    .cross {
-        width: var(--icon-cross-size);
-        color: var(--icon-cross-color);
-    }
-
-    .slider {
-        box-sizing: border-box;
-        width: var(--switch-width);
-        height: var(--switch-height);
-        background: var(--switch-bg);
-        border-radius: 999px;
-        display: flex;
-        align-items: center;
-        position: relative;
-        transition: var(--switch-transition);
-        cursor: pointer;
-    }
-
-    .circle {
-        width: var(--circle-diameter);
-        height: var(--circle-diameter);
-        background: var(--circle-bg);
-        border-radius: inherit;
-        box-shadow: var(--circle-shadow);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--circle-transition);
-        z-index: 1;
-        position: absolute;
-        left: var(--switch-offset);
-    }
-
-    .slider::before {
-        content: "";
-        position: absolute;
-        width: var(--effect-width);
-        height: var(--effect-height);
-        left: calc(var(--switch-offset) + (var(--effect-width) / 2));
-        background: var(--effect-bg);
-        border-radius: var(--effect-border-radius);
-        transition: var(--effect-transition);
-    }
-
-    input:checked + .slider {
-        background: var(--switch-checked-bg);
-    }
-
-    input:checked + .slider .checkmark {
-        transform: scale(1);
-    }
-
-    input:checked + .slider .cross {
-        transform: scale(0);
-    }
-
-    input:checked + .slider::before {
-        left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
-    }
-
-    input:checked + .slider .circle {
-        left: calc(100% - var(--circle-diameter) - var(--switch-offset));
-        box-shadow: var(--circle-checked-shadow);
-    }
-}
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }

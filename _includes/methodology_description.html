@@ -1,0 +1,7 @@
+<dl>
+    {% for methodology_pair in site.data.methodology %}
+    {% assign methodology = methodology_pair[1] %}
+    <dt class="filter-name">{{ methodology.label }}</dt>
+    <dd>{{ methodology.description | markdownify }}</dd>
+    {% endfor %}
+</dl>

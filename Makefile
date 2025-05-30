@@ -9,3 +9,6 @@ serve-public:
 bundle:
 	bundle install
 
+lint:
+	yamllint _testcases/*.md
+	scripts/validate-schema.py

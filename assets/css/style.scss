@@ -1,13 +1,13 @@
 ---
 ---
 
-// Variables
 $accent: #07bf07;
 $lighter: #f4fff4;
 $marked: #ccffcc;
 $hover: #00ff00;
 
 // layout
+
 $column-width: 800px;
 $grace-space: 200px;
 $layout-break: "(min-width: #{$column-width + $grace-space})";
@@ -30,6 +30,7 @@ $layout-break: "(min-width: #{$column-width + $grace-space})";
 }
 
 // common tags
+
 body {
     font-family: sans, sans-serif;
 }
@@ -61,10 +62,11 @@ a:hover {
 }
 
 input[type=checkbox] {
-    display: none;
+	display: none;
 }
 
 // permalink on headings
+
 h2, h3, h4, h5, h5 {
     .permalink {
         margin-left: 5px;
@@ -89,6 +91,7 @@ h2, h3, h4, h5, h5 {
 }
 
 // binary list and search
+
 #bin-search-wrapper {
     margin: 20px 0;
     padding: 10px 0;
@@ -97,21 +100,22 @@ h2, h3, h4, h5, h5 {
     grid-template-columns: 50% 50%;
     grid-row: auto auto;
 
-    // Remove #bin-search-filters, use .filter-list for both filter lists
-    .filter-list {
+    #bin-search-filters {
         text-align: center;
-
-        input[type=checkbox] + label {
+	
+	input[type=checkbox] + label {
             background: $lighter;
             font-size: initial;
             border-radius: 0.25em;
-            cursor: pointer;
+	    cursor: pointer;
 
             &:hover:before {
                 content: attr(data-title);
                 font-size: 0.8rem;
                 display: block;
                 position: absolute;
+                left: 0;
+                right: 0;
                 margin-top: 1.75rem; // XXX below the button
                 margin-left: 10%;
                 margin-right: 10%;
@@ -121,27 +125,22 @@ h2, h3, h4, h5, h5 {
                 background: rgba(0, 0, 0, 0.75);
                 z-index: 1;
                 pointer-events: none;
-                width: max-content;
-                left: 0;
-                right: auto;
-                min-width: 120px;
-                max-width: 300px;
             }
-        }
+    	}
     }
 }
 
 #bin-search {
-    margin: 20px 0;
-    padding: 10px 0;
-    position: relative; // XXX needed for tooltip sizing
-    margin-top: 25px;
-    padding: 1em;
-    font-size: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid $accent;
-    outline-color: $accent;
+	margin: 20px 0;
+	padding: 10px 0;
+	position: relative; // XXX needed for tooltip sizing
+	margin-top: 25px;
+	padding: 1em;
+	font-size: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid $accent;
+	outline-color: $accent;
 }
 
 #bin-table {
@@ -167,6 +166,7 @@ h2, h3, h4, h5, h5 {
 }
 
 // filter description
+
 .filter-list {
     font-size: 0.8rem;
     list-style: none;
@@ -205,7 +205,7 @@ h2, h3, h4, h5, h5 {
             color: $accent;
             text-decoration: none;
         }
-
+	
         input[type=checkbox]:hover + label {
             color: $hover;
             border-color: $hover;
@@ -214,19 +214,11 @@ h2, h3, h4, h5, h5 {
         &.match input[type=checkbox] + label {
             background: $marked;
         }
-
-        // Add checkmark for selected filters
-        input[type=checkbox]:checked + label::after {
-            content: " ✔";
-            color: $accent;
-            font-size: 1em;
-            margin-left: 0.3em;
-            vertical-align: middle;
-        }
     }
 }
 
 // bin examples
+
 .examples {
     display: table;
     width: 100%;
@@ -250,6 +242,7 @@ h2, h3, h4, h5, h5 {
 }
 
 // other classes
+
 .logo {
     $margin: 20px;
     float: right;
@@ -282,12 +275,72 @@ h2, h3, h4, h5, h5 {
         visibility: hidden;
     }
 }
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin-bottom: -10px;
+    margin-left: 10px;
+  }
+  
+  .switch input {display:none;}
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transition: .4s;
+    background-image: url(../img/night.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    transition: .4s;
+  }
+  
+  .slider:before +.slider::before{
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    -webkit-transition: .4s;
+    transition: .4s;
+    background-image: url(../img/night.jpg);
+  }
+  
+  input:checked + .slider {
+    background-image: url(../img/day.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  .slider.round {
+    border-radius: 34px;
 
-/* Excel Export Button Style */
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* Export Excel Button */
 #exportExcel.container-btn-file {
     display: flex;
     position: relative;
-    justify-content: flex-start; // changed from center to left-align
+    justify-content: flex-start;
     align-items: center;
     background-color: #307750;
     color: #fff;
@@ -304,6 +357,8 @@ h2, h3, h4, h5, h5 {
     background-image: none;
     min-width: 0;
     height: 2.2em;
+    box-sizing: border-box;
+    vertical-align: middle;
 }
 
 #exportExcel.container-btn-file > svg {
@@ -332,56 +387,7 @@ h2, h3, h4, h5, h5 {
     transform: none;
 }
 
-// =====================
-// Toggle Switches Split
-// =====================
-
-// Theme (day/night) toggle styles
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 100px;
-    height: 40px;
-    margin-bottom: -10px;
-    margin-left: 10px;
-
-    input {
-        display: none;
-    }
-
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        -webkit-transition: .4s;
-        transition: .4s;
-        background-image: url(../img/night.jpg);
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-    }
-
-    input:checked + .slider {
-        background-image: url(../img/day.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-    }
-
-    input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
-    }
-
-}
-
-// Tested/Not-Tested toggle styles
+/* Tested/Not-Tested Toggle Switch */
 .tested-switch {
     --switch-width: 46px;
     --switch-height: 24px;
@@ -408,100 +414,171 @@ h2, h3, h4, h5, h5 {
     align-items: center;
     justify-content: center;
     position: relative;
-
-    input {
-        display: none;
-    }
-
-    svg {
-        transition: var(--icon-transition);
-        position: absolute;
-        height: auto;
-    }
-
-    .checkmark {
-        width: var(--icon-checkmark-size);
-        color: var(--icon-checkmark-color);
-        transform: scale(0);
-    }
-
-    .cross {
-        width: var(--icon-cross-size);
-        color: var(--icon-cross-color);
-    }
-
-    .slider {
-        box-sizing: border-box;
-        width: var(--switch-width);
-        height: var(--switch-height);
-        background: var(--switch-bg);
-        border-radius: 999px;
-        display: flex;
-        align-items: center;
-        position: relative;
-        transition: var(--switch-transition);
-        cursor: pointer;
-    }
-
-    .circle {
-        width: var(--circle-diameter);
-        height: var(--circle-diameter);
-        background: var(--circle-bg);
-        border-radius: inherit;
-        box-shadow: var(--circle-shadow);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: var(--circle-transition);
-        z-index: 1;
-        position: absolute;
-        left: var(--switch-offset);
-    }
-
-    .slider::before {
-        content: "";
-        position: absolute;
-        width: var(--effect-width);
-        height: var(--effect-height);
-        left: calc(var(--switch-offset) + (var(--effect-width) / 2));
-        background: var(--effect-bg);
-        border-radius: var(--effect-border-radius);
-        transition: var(--effect-transition);
-    }
-
-    input:checked + .slider {
-        background: var(--switch-checked-bg);
-    }
-
-    input:checked + .slider .checkmark {
-        transform: scale(1);
-    }
-
-    input:checked + .slider .cross {
-        transform: scale(0);
-    }
-
-    input:checked + .slider::before {
-        left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
-    }
-
-    input:checked + .slider .circle {
-        left: calc(100% - var(--circle-diameter) - var(--switch-offset));
-        box-shadow: var(--circle-checked-shadow);
-    }
 }
 
-/* References column styling */
-.references-link {
-  color: $accent;
-  text-decoration: underline;
-  font-size: 0.95em;
-  transition: color 0.2s;
-  word-break: break-all;
+.tested-switch input {
+    display: none;
 }
 
-.references-link:hover,
-.references-link:focus {
-  color: $hover;
-  text-decoration: underline;
+.tested-switch svg {
+    transition: var(--icon-transition);
+    position: absolute;
+    height: auto;
+}
+
+.tested-switch .checkmark {
+    width: var(--icon-checkmark-size);
+    color: var(--icon-checkmark-color);
+    transform: scale(0);
+}
+
+.tested-switch .cross {
+    width: var(--icon-cross-size);
+    color: var(--icon-cross-color);
+}
+
+.tested-switch .slider {
+    box-sizing: border-box;
+    width: var(--switch-width);
+    height: var(--switch-height);
+    background: var(--switch-bg);
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: var(--switch-transition);
+    cursor: pointer;
+}
+
+.tested-switch .circle {
+    width: var(--circle-diameter);
+    height: var(--circle-diameter);
+    background: var(--circle-bg);
+    border-radius: inherit;
+    box-shadow: var(--circle-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--circle-transition);
+    z-index: 1;
+    position: absolute;
+    left: var(--switch-offset);
+}
+
+.tested-switch .slider::before {
+    content: "";
+    position: absolute;
+    width: var(--effect-width);
+    height: var(--effect-height);
+    left: calc(var(--switch-offset) + (var(--effect-width) / 2));
+    background: var(--effect-bg);
+    border-radius: var(--effect-border-radius);
+    transition: var(--effect-transition);
+}
+
+.tested-switch input:checked + .slider {
+    background: var(--switch-checked-bg);
+}
+
+.tested-switch input:checked + .slider .checkmark {
+    transform: scale(1);
+}
+
+.tested-switch input:checked + .slider .cross {
+    transform: scale(0);
+}
+
+.tested-switch input:checked + .slider::before {
+    left: calc(100% - var(--effect-width) - (var(--effect-width) / 2) - var(--switch-offset));
+}
+
+.tested-switch input:checked + .slider .circle {
+    left: calc(100% - var(--circle-diameter) - var(--switch-offset));
+    box-shadow: var(--circle-checked-shadow);
+}
+
+/* Make comment input smaller */
+.comment-input {
+  width: 90px;
+  min-width: 60px;
+  max-width: 150px;
+}
+
+// Responsive adjustments for mobile devices
+@media (max-width: 700px) {
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0 4vw;
+    font-size: 1rem;
+  }
+
+  #bin-search-wrapper {
+    grid-template-columns: 1fr;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  #bin-search-filters {
+    text-align: left;
+    padding: 0 0 10px 0;
+    h3 {
+      font-size: 1.1em;
+    }
+    li {
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+
+  #bin-search {
+    font-size: 1em;
+    padding: 0.7em;
+    margin: 10px 0;
+  }
+
+  #bin-table {
+    font-size: 0.95em;
+    th, td {
+      padding: 0.4em 0.5em;
+      word-break: break-word;
+    }
+  }
+
+  .switch {
+    width: 60px;
+    height: 28px;
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+
+  .tested-switch {
+    --switch-width: 36px;
+    --switch-height: 18px;
+    --circle-diameter: 14px;
+    font-size: 0.9em;
+  }
+
+  .comment-input {
+    width: 70px;
+    min-width: 40px;
+    max-width: 100px;
+    font-size: 0.95em;
+  }
+
+  #exportExcel.container-btn-file {
+    font-size: 0.95em;
+    padding: 0.4em 0.7em;
+    height: 2em;
+  }
+}
+
+// Make tables scrollable on small screens
+@media (max-width: 500px) {
+  #bin-table-wrapper {
+    overflow-x: auto;
+  }
+  #bin-table {
+    min-width: 600px;
+  }
 }

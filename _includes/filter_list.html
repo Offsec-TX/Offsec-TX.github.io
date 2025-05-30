@@ -14,4 +14,12 @@
     <li><a href="{{ include.bin.url }}#{{ platforms_id }}">{{ platforms.label }}</a></li>
     {% endif %}
     {% endfor %}
+
+    {% for service_pair in site.data.services %}
+    {% assign service_id = service_pair[0] %}
+    {% assign service = service_pair[1] %}
+    {% if include.bin.services contains service_id %}
+    <li><a href="{{ include.bin.url }}#{{ service_id }}">{{ service.label }}</a></li>
+    {% endif %}
+    {% endfor %}
 </ul>

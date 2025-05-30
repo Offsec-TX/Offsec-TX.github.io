@@ -33,6 +33,8 @@ if (exportBtn) {
   exportBtn.addEventListener('click', () => {
     const table = document.getElementById('testcases');
     const rows = Array.from(table.querySelectorAll('tbody tr'));
+    // Get project name from input
+    const projectName = (document.getElementById('projectName')?.value.trim() || 'TestCases') + '.xlsx';
     // Added Vulnerable/Not-Vulnerable column
     const data = [["Serial Number", "Test Case", "Tested/Not Tested", "Applicable/Not-Applicable", "Vulnerable/Not-Vulnerable", "Comments"]];
     rows.forEach(row => {
@@ -57,7 +59,7 @@ if (exportBtn) {
     const ws = XLSX.utils.aoa_to_sheet(data);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "TestCases");
-    XLSX.writeFile(wb, "blackbox_testcases.xlsx");
+    XLSX.writeFile(wb, projectName);
   });
 }
 
