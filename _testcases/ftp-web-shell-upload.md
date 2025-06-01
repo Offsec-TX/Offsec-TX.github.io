@@ -1,5 +1,5 @@
 ---
-testcase: Try uploading web shells to web directories (if web root is accessible)
+testcase: Attempt to Upload Web Shells to FTP Web Directory
 platforms: 
   - Network
 methodology: 

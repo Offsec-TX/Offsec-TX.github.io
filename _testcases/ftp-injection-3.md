@@ -1,5 +1,5 @@
 ---
-testcase: Try command chaining in FTP commands (e.g., ; or && injection)
+testcase: Attempt FTP Command Injection via Chaining (e.g., ; or &&)
 platforms: 
   - Network
 methodology: 

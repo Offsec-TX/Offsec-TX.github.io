@@ -1,5 +1,5 @@
 ---
-testcase: Brute-force FTP credentials (e.g., using Hydra/Medusa)
+testcase: Brute-Force FTP Credentials Using Hydra or Medusa
 platforms: 
   - Network
 methodology: 

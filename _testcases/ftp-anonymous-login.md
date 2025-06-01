@@ -1,5 +1,5 @@
 ---
-testcase: Test anonymous login
+testcase: Test FTP Anonymous Login Access
 platforms: 
   - Network
 methodology: 

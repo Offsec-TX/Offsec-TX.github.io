@@ -10,10 +10,9 @@ def parse_yaml(path):
         return yaml.load_all(text, Loader=yaml.SafeLoader)
 
 def build_schema():
-    service_names = next(parse_yaml('_data/services.yml')).keys()
-    item_names = next(parse_yaml('_data/items.yml')).keys()
-    OS_names = next(parse_yaml('_data/OS.yml')).keys()
-    attack_names = next(parse_yaml('_data/attack_types.yml')).keys()
+    service_names = list(next(parse_yaml('_data/services.yml')).keys())
+    platforms_names = list(next(parse_yaml('_data/platforms.yml')).keys())
+    methodology_names = list(next(parse_yaml('_data/methodology.yml')).keys())
     return {
         "definitions": {
             'examples': {
@@ -24,49 +23,43 @@ def build_schema():
                         'description': {'type': 'string'},
                         'code': {'type': 'string'},
                     },
+                    'required': ['description', 'code'],
                     'additionalProperties': False
                 },
-                'minimum': 1
+                'minItems': 1
             }
         },
         'type': 'object',
         'properties': {
             'description': {'type': 'string'},
             'command': {'type': 'string'},
-            'items': {
-                'type': 'array',
-                "patternProperties": {
-                    '^({})$'.format('|'.join(item_names)): {'$ref': '#/definitions/examples'}
-                },
-                'additionalProperties': False
-            },
             'services': {
                 'type': 'array',
-                "patternProperties": {
-                    '^({})$'.format('|'.join(service_names)): {'$ref': '#/definitions/examples'}
-                },
-                'additionalProperties': False
+                'items': {'type': 'string', 'enum': service_names},
+                'minItems': 1,
+                'uniqueItems': True
             },
-            'OS': {
+            'methodology': {
                 'type': 'array',
-                "patternProperties": {
-                    '^({})$'.format('|'.join(OS_names)): {'$ref': '#/definitions/examples'}
-                },
-                'additionalProperties': False
+                'items': {'type': 'string', 'enum': methodology_names},
+                'minItems': 1,
+                'uniqueItems': True
             },
-            'attack_types': {
+            'platforms': {
                 'type': 'array',
-                "patternProperties": {
-                    '^({})$'.format('|'.join(attack_names)): {'$ref': '#/definitions/examples'}
-                },
-                'additionalProperties': False
+                'items': {'type': 'string', 'enum': platforms_names},
+                'minItems': 1,
+                'uniqueItems': True
             },
+            'examples': {'$ref': '#/definitions/examples'},
             'references': {
                 'type': 'array',
-                'additionalProperties': False
+                'items': {'type': 'string'},
+                'minItems': 0,
+                'uniqueItems': True
             }
         },
-        'required': ['items', 'command', 'OS', 'references'],
+        'required': ['services', 'platforms', 'methodology', 'references'],
         'additionalProperties': False
     }
 
@@ -85,4 +78,4 @@ def validate_directory(root):
             sys.exit(1)
 
 if __name__ == '__main__':
-   validate_directory("_wadcoms/") 
+   validate_directory("_testcases/")

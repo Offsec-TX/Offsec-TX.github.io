@@ -1,5 +1,5 @@
 ---
-testcase: Check for permission to download sensitive files (/etc/passwd, .htpasswd, etc.)
+testcase: Attempt to Download Sensitive Files via FTP
 platforms: 
   - Network
 methodology: 

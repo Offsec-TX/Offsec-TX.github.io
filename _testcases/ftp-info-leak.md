@@ -1,5 +1,5 @@
 ---
-testcase: Look for user info leakage in welcome messages
+testcase: Look for User Information Leakage in FTP Welcome Message
 platforms: 
   - Network
 methodology: 

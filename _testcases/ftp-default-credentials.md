@@ -1,5 +1,5 @@
 ---
-testcase: Test default credentials
+testcase: Test for Default FTP Credentials
 platforms: 
   - Network
 methodology: 

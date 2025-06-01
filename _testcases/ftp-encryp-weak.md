@@ -1,5 +1,5 @@
 ---
-testcase: Check for use of weak or outdated encryption (if using FTPS)
+testcase: Assess FTP for Weak or Outdated Encryption
 platforms: 
   - Network
 methodology: 

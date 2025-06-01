@@ -1,5 +1,5 @@
 ---
-testcase: List contents of restricted directories
+testcase: List Contents of Restricted FTP Directories
 platforms: 
   - Network
 methodology: 

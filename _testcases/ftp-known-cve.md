@@ -1,5 +1,5 @@
 ---
-testcase: Test for FTP known CVE's
+testcase: Scan FTP Service for Known Vulnerabilities (CVEs)
 platforms: 
   - Network
 methodology: 

@@ -1,5 +1,5 @@
 ---
-testcase: Test for directory traversal (../../etc/passwd)
+testcase: Check FTP for Directory Traversal Vulnerability
 platforms: 
   - Network
 methodology: 

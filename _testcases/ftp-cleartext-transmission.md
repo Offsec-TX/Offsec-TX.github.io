@@ -1,5 +1,5 @@
 ---
-testcase: Test if login credentials are transmitted in cleartext (packet sniffing)
+testcase: Inspect FTP Credentials for Cleartext Transmission
 platforms: 
   - Network
 methodology: 

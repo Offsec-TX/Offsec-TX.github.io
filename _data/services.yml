@@ -7,3 +7,7 @@ SSH:
   label: SSH
   description: You've found the SSH service open and need to know what you can do with it.
 
+TELNET:
+  label: TELNET
+  description: You've found the TELNET service open and need to know what you can do with it.
+

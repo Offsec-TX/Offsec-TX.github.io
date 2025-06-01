@@ -1,5 +1,5 @@
 ---
-testcase: Check for permission to upload files
+testcase: Test FTP for File Upload Permissions
 platforms: 
   - Network
 methodology: 

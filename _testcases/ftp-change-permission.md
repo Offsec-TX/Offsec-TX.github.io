@@ -1,5 +1,5 @@
 ---
-testcase: Attempt changing file/directory permissions (via SITE CHMOD)
+testcase: Attempt FTP Permission Change via SITE CHMOD
 platforms: 
   - Network
 methodology: 

@@ -1,5 +1,5 @@
 ---
-testcase: Send malformed or unexpected FTP commands to test for crash/faults
+testcase: Send Malformed FTP Commands to Test for Crashes
 platforms: 
   - Network
 methodology: 

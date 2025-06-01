@@ -1,5 +1,5 @@
 ---
-testcase: Scan the target for the service FTP for banner grabbing
+testcase: Perform FTP Banner Grabbing
 platforms: 
   - Network
 methodology: 

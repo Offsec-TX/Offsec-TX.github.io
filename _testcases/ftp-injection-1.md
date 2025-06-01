@@ -1,5 +1,5 @@
 ---
-testcase: Test support for SITE, HELP, and other non-standard commands
+testcase: Test FTP Support for Non-Standard Commands (SITE, HELP, etc.)
 platforms: 
   - Network
 methodology: 

@@ -1,5 +1,5 @@
 ---
-testcase: Test if FTP supports FTPS (Explicit/Implicit TLS)
+testcase: Verify FTP Support for FTPS (Explicit/Implicit TLS)
 platforms: 
   - Network
 methodology: 

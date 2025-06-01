@@ -1,5 +1,5 @@
 ---
-testcase: Try creating new directories
+testcase: Attempt to Create Directories via FTP
 platforms: 
   - Network
 methodology: 

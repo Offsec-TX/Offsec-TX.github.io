@@ -1,5 +1,5 @@
 ---
-testcase: Test if root directory is wrongly accessible
+testcase: Verify If FTP Root Directory Is Accessible
 platforms: 
   - Network
 methodology: 

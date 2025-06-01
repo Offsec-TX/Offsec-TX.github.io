@@ -1,5 +1,5 @@
 ---
-testcase: Scan for support of secure alternatives (e.g., SFTP on another port)
+testcase: Scan for Secure FTP Alternatives (e.g., SFTP on Another Port)
 platforms: 
   - Network
 methodology: 

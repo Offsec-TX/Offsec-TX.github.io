@@ -1,5 +1,5 @@
 ---
-testcase: Check for passive/active mode behavior and data leaks
+testcase: Analyze FTP Passive and Active Mode Behavior
 platforms: 
   - Network
 methodology: 

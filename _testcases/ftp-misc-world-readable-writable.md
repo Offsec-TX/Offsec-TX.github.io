@@ -1,5 +1,5 @@
 ---
-testcase: Check for world-readable/writable folders
+testcase: Identify World-Readable or Writable FTP Directories
 platforms: 
   - Network
 methodology: 

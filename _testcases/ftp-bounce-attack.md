@@ -1,5 +1,5 @@
 ---
-testcase: Test for FTP bounce attack
+testcase: Check for FTP Bounce Attack Vulnerability
 platforms: 
   - Network
 methodology: 

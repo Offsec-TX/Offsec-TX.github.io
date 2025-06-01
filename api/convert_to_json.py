@@ -26,7 +26,7 @@ def convert_files_to_json(folder_path, output_json_path):
         json.dump(all_json_data, output_json_file, indent=2)
 
 if __name__ == "__main__":
-    folder_path = './../_wadcoms'
+    folder_path = './../_testcases'
     output_json_path = './redcoms.json'
 
     convert_files_to_json(folder_path, output_json_path)

@@ -1,5 +1,5 @@
 ---
-testcase: See if FTP is exposed to the internet without access control
+testcase: Check if FTP is Publicly Accessible Without Restrictions
 platforms: 
   - Network
 methodology: 
