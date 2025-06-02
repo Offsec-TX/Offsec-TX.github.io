@@ -11,3 +11,64 @@ TELNET:
   label: TELNET
   description: You've found the TELNET service open and need to know what you can do with it.
 
+SMTP:
+  label: SMTP
+  description: You've found the SMTP service open and need to know what you can do with it.
+
+DNS:
+  label: DNS
+  description: You've found the DNS service open and need to know what you can do with it.
+
+FINGER:
+  label: FINGER
+  description: You've found the FINGER service open and need to know what you can do with it.
+
+WEB:
+  label: WEB
+  description: You've found the WEB service open and need to know what you can do with it.
+
+KERBEROS:
+  label: KERBEROS
+  description: You've found the KERBEROS service open and need to know what you can do with it.
+
+POP:
+  label: POP
+  description: You've found the POP service open and need to know what you can do with it.
+
+PORTMAPPER:
+  label: PORTMAPPER
+  description: You've found the PORTMAPPER service open and need to know what you can do with it.
+
+IDENT:
+  label: IDENT
+  description: You've found the IDENT service open and need to know what you can do with it.
+
+NTP:
+  label: NTP
+  description: You've found the NTP service open and need to know what you can do with it.
+
+MSRPC:
+  label: MSRPC
+  description: You've found the MSRPC service open and need to know what you can do with it.
+
+NETBIOS:
+  label: NETBIOS
+  description: You've found the NETBIOS service open and need to know what you can do with it.
+
+SMB:
+  label: SMB
+  description: You've found the SMB service open and need to know what you can do with it.
+
+IMAP:
+  label: IMAP
+  description: You've found the IMAP service open and need to know what you can do with it.
+
+SNMP:
+  label: SNMP
+  description: You've found the SNMP service open and need to know what you can do with it.
+
+IRC:
+  label: IRC
+  description: You've found the IRC service open and need to know what you can do with it.
+
+

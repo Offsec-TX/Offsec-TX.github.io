@@ -38,6 +38,17 @@
       </li>
       {% endfor %}
    </ul>
+   <ul id="bin-search-filters" class="filter-list">
+      <h3>OS:</h3>
+      {% for OS_pair in site.data.OS %}
+      {% assign OS_id = OS_pair[0] %}
+      {% assign OS = OS_pair[1] %}
+      <li>
+         <input type="checkbox" id="{{ OS.label }}" name="OS_name" onclick='handleChange(this, "{{ OS.label }}");'>
+         <label id="{{ OS.label }}_label" for="{{ OS.label }}" data-title="{{ OS.description | replace: '\n', ' ' }}">{{ OS.label }}</label>
+      </li>
+      {% endfor %}
+   </ul>
 </div>
 <div style="margin-top: -20px;">
    <input id="bin-search" type="text" placeholder="Search among {{ site.testcases | size }} test cases: <test cases> +<filter> ..."/>
@@ -102,7 +113,8 @@
             <tr class="test-row"
                data-platforms="{{ test.platforms | join: ',' }}"
                data-methods="{{ test.methodology | join: ',' }}"
-               data-services="{{ test.services | join: ',' }}">
+               data-services="{{ test.services | join: ',' }}"
+               data-os="{{ test.OS | join: ',' }}">
                <td style="text-align: center;">{{ forloop.index }}</td>
                <td style="min-width: 240px;">{{ test.testcase }}</td>
                <td style="text-align: center;">{{ test.owasp-catgeory }}</td>
@@ -428,17 +440,20 @@ function filterTestcases() {
     const checkedMethods = Array.from(document.querySelectorAll('input[name="methodology_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
     const checkedPlatforms = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
     const checkedServices = Array.from(document.querySelectorAll('input[name="service_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
+    const checkedOS = Array.from(document.querySelectorAll('input[name="OS_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
 
     testRows.forEach(row => {
         const rowMethods = (row.getAttribute('data-methods') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
         const rowPlatforms = (row.getAttribute('data-platforms') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
         const rowServices = (row.getAttribute('data-services') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+        const rowOS = (row.getAttribute('data-os') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
 
         const showMethod = checkedMethods.length === 0 || checkedMethods.some(m => rowMethods.includes(m));
         const showPlatform = checkedPlatforms.length === 0 || checkedPlatforms.some(p => rowPlatforms.includes(p));
         const showService = checkedServices.length === 0 || checkedServices.some(s => rowServices.includes(s));
+        const showOS = checkedOS.length === 0 || checkedOS.some(o => rowOS.includes(o));
 
-        row.style.display = (showMethod && showPlatform && showService) ? '' : 'none';
+        row.style.display = (showMethod && showPlatform && showService && showOS) ? '' : 'none';
     });
 
     renumberVisibleRows();
@@ -447,10 +462,16 @@ function filterTestcases() {
 // Attach filterTestcases to filter checkboxes
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('bin-search-wrapper').addEventListener('change', function (e) {
-        if (e.target.matches('input[type="checkbox"][name="methodology_name"], input[type="checkbox"][name="platform_name"], input[type="checkbox"][name="service_name"]')) {
+        if (e.target.matches('input[type="checkbox"][name="methodology_name"], input[type="checkbox"][name="platform_name"], input[type="checkbox"][name="service_name"], input[type="checkbox"][name="OS_name"]')) {
             filterTestcases();
         }
     });
     filterTestcases();
+});
+</script>
+<script>
+window.addEventListener('beforeunload', function (e) {
+    // Custom message is ignored by most browsers, but setting returnValue triggers the dialog
+    e.preventDefault();
 });
 </script>

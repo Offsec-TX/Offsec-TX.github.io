@@ -1,0 +1,20 @@
+---
+Linux:
+  label: Linux
+  description: Testcases can be run on Linux.
+
+Windows:
+  label: Windows
+  description: Testcases can be run on Windows.
+
+Mac:
+  label: Mac
+  description: Testcases can be run on Mac.
+
+Android:
+  label: Android
+  description: Testcases can be run on Android.
+
+iOS:
+  label: iOS
+  description: Testcases can be run on iOS.

@@ -14,3 +14,11 @@ Mobile:
 Network:
   label: Network
   description: Test cases specifically designed for network infrastructure security.
+
+AD:
+  label: AD
+  description: Test cases specifically designed for Active Directory (OnPrem) security.
+
+Cloud:
+  label: Cloud
+  description: Test cases specifically designed for Cloud security.
