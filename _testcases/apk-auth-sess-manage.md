@@ -3,7 +3,7 @@ testcase: Evaluate the APK’s token storage, session timeout mechanisms, and re
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

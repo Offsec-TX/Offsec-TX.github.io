@@ -3,7 +3,7 @@ testcase: Intercept the APK’s network traffic using tools like Burp Suite to t
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

@@ -3,7 +3,7 @@ testcase: Analyze the APK’s native libraries (.so files) and third-party depen
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

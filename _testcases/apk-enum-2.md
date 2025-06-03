@@ -3,7 +3,7 @@ testcase: Analyze the APK’s AndroidManifest.xml for components, permissions, a
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

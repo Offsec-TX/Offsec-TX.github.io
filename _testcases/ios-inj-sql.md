@@ -3,7 +3,7 @@ testcase: Ensure that any database interactions within the iOS properly sanitize
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

@@ -3,7 +3,7 @@ testcase: Ensure that any database interactions within the APK properly sanitize
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

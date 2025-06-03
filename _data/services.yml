@@ -82,3 +82,7 @@ MSSQL:
 ORACLE-TNS:
   label: ORACLE-TNS
   description: You've found the ORACLE-TNS service open and need to know what you can do with it.
+
+IPMI:
+  label: IPMI
+  description: You've found the IPMI service open and need to know what you can do with it.

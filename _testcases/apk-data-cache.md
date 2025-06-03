@@ -3,7 +3,7 @@ testcase: Check if the APK retains sensitive information in cache or memory unin
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

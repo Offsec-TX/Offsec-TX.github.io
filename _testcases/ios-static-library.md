@@ -3,7 +3,7 @@ testcase: Identify third-party libraries used in the iOS app and evaluate them f
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

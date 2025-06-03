@@ -3,7 +3,7 @@ testcase: Decompile the APK using tools like JADX or Apktool to review its sourc
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

@@ -3,7 +3,7 @@ testcase: Verify how the APK securely handles sensitive data in SharedPreference
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

@@ -3,7 +3,7 @@ testcase: Attempt to repackage or re-sign the iOS app to assess whether integrit
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

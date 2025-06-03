@@ -3,7 +3,7 @@ testcase: Intercept the iOS app’s network traffic using tools like Burp Suite 
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

@@ -3,7 +3,7 @@ testcase: Collect metadata from the iOS app, such as bundle identifier, version,
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

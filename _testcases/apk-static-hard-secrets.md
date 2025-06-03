@@ -3,7 +3,7 @@ testcase: Search the APK’s codebase for embedded API keys, credentials, or enc
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

@@ -3,7 +3,7 @@ testcase: Perform man-in-the-middle attacks on the APK to detect insecure commun
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

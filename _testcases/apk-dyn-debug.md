@@ -3,7 +3,7 @@ testcase: Attach debuggers (e.g., Android Studio debugger, Frida) to the APK to 
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

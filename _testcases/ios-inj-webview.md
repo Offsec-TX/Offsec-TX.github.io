@@ -3,7 +3,7 @@ testcase: Verify that WebView components in the iOS do not permit arbitrary scri
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

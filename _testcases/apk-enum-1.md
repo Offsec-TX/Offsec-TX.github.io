@@ -3,7 +3,7 @@ testcase: Extract package name, version info, permissions, and certificate detai
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

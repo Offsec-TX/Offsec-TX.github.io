@@ -3,7 +3,7 @@ testcase: Confirm that the iOS app enforces custom certificate validation to pre
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

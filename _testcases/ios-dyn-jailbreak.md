@@ -3,7 +3,7 @@ testcase: Assess the iOS app’s jailbreak detection mechanisms and test potenti
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

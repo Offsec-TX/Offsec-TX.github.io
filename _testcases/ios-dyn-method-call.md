@@ -3,7 +3,7 @@ testcase: Use runtime analysis tools on the iOS app to log function invocations 
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

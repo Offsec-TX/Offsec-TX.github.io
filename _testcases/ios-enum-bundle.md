@@ -3,7 +3,7 @@ testcase: Analyze the iOS app bundle to locate configuration files, embedded cer
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

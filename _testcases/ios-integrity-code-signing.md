@@ -3,7 +3,7 @@ testcase: Validate that the iOS app is properly code-signed and implements runti
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

@@ -5,7 +5,7 @@ platforms:
 methodology: 
   - BlackBox
 owasp-catgeory:
-  - A05
+  - 
 services:
   - DNS
 references:

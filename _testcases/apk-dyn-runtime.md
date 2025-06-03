@@ -3,7 +3,7 @@ testcase: Use instrumentation frameworks on the APK to observe API calls and dat
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

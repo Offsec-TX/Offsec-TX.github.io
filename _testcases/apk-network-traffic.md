@@ -3,7 +3,7 @@ testcase: Capture and analyze the APK’s network traffic using proxies like Bur
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

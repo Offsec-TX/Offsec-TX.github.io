@@ -3,7 +3,7 @@ testcase: Attach a debugger (e.g., Frida or Cycript) to the iOS app to monitor r
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

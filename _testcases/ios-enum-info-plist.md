@@ -3,7 +3,7 @@ testcase: Examine the Info.plist file in the iOS app for sensitive keys, URL sch
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

@@ -3,7 +3,7 @@ testcase: Use tools like Hopper, class-dump, or otool to decompile the iOS app b
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

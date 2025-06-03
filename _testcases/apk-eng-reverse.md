@@ -3,7 +3,7 @@ testcase: Attempt to repackage and re-sign the APK to evaluate its integrity ver
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

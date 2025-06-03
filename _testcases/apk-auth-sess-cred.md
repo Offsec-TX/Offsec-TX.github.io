@@ -3,7 +3,7 @@ testcase: Test the APK for secure credential handling and proper use of multi-fa
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

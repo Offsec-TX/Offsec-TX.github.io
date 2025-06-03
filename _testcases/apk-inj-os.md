@@ -3,7 +3,7 @@ testcase: Check if the APK constructs system commands using unsanitized input th
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

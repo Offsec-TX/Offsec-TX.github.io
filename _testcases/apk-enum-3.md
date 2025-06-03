@@ -3,7 +3,7 @@ testcase: Identify hardcoded URLs, IPs, API endpoints, and callback URLs in the 
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - Android
 references:

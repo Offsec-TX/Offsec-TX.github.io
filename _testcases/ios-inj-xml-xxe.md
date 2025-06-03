@@ -3,7 +3,7 @@ testcase: Test the iOS XML parsing routines for XXE vulnerabilities when handlin
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:

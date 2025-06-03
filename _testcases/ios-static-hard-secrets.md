@@ -3,7 +3,7 @@ testcase: Search the iOS app’s codebase and resource files for hardcoded crede
 platforms: 
   - Mobile
 owasp-catgeory:
-  - A05
+  - 
 OS:
   - iOS
 references:
