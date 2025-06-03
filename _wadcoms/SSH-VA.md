@@ -23,5 +23,5 @@ OS:
 attack_types:
   - Enumeration
 references:
-  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ftp/index.html
+  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ssh.html
 ---

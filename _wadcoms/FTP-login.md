@@ -7,15 +7,16 @@ description: |
       Target IP: 10.10.10.1
 
 command: |
-  nmap -Pn -p 22 -sV 10.10.10.1
+  ftp 10.129.196.65
 
 code: |
-  nc -vn 10.10.10.1 22
+  lftp -u ceil,qwer1234 10.129.196.65
 
 items:
-  - No_Creds
+  - Username
+  - Password
 services:
-  - SSH
+  - FTP
 OS:
   - Linux
   - Windows
@@ -23,5 +24,5 @@ OS:
 attack_types:
   - Enumeration
 references:
-  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ssh.html
+  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-ftp/index.html
 ---

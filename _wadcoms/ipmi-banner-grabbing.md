@@ -1,7 +1,7 @@
 ---
 description: |
-  Perform Oracle banner grabbing to identify the Oracle TNS service and its version running on a target system. 
-  The provided commands use tools like Nmap and Netcat to connect to the Oracle TNS port (1521), retrieve the service banner, and gather valuable information for enumeration and vulnerability assessment.
+  Perform IPMI banner grabbing to identify the IPMI service version running on a target system. 
+  The provided commands use tools like Nmap and Metasploit to connect to the IPMI port (623), retrieve the service banner, and gather valuable information for enumeration and vulnerability assessment.
   
   Command Reference:
   

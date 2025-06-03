@@ -86,3 +86,7 @@ ORACLE-TNS:
 IPMI:
   label: IPMI
   description: You've found the IPMI service open and need to know what you can do with it.
+
+RDP:
+  label: RDP
+  description: You've found the RDP service open and need to know what you can do with it.
