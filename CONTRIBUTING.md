@@ -1,79 +1,65 @@
-# Contributing Guide
+## Structure
 
-Thank you for your interest in contributing to this project! This repository is a collection of test cases for offensive security, focusing on Web, API, Mobile, Network, and Active Directory. The project is organized to make it easy to add test cases and supporting data.
+Each WAD Command is defined in a file in the [`_wadcoms/`] folder named as `<tool name>.md`, such file consists only of a [YAML] front matter which describes the command and its attributes.
 
-## Project Structure
-
-- **_testcases/**:  
-  Contain individual test case files (`<testcase name>.md`). Each file uses a YAML front matter to describe the test case, its usage, and metadata.
-
-- **_data/**:  
-  Contains supporting YAML files:
-  - `black_platforms.yml`: List of platforms for black-box test cases
-  - `grey_platforms.yml`: List of platforms for grey-box test cases
-  - `white_platforms.yml`: List of platforms for white-box test cases
-
-- **assets/css/**:  
-  Contains SCSS files for site styling (`style.scss`, `styleDark.scss`).
-
-- **Other files**:  
-  Standard project files like `README.md`, `CONTRIBUTING.md`, etc.
-
-## Adding a New Test Case
-
-Each test case is defined in a Markdown file in the [`_blackbox/`], [`_greybox/`], or [`_whitebox/`] folder, named `<testcase name>.md`. The file consists only of a YAML front matter block describing the test case and its attributes.
-
-**Example Syntax:**
+The full syntax is the following:
 
 ```
 ---
-sno: 1
-testcase: Scan the target for open TCP and UDP ports using nmap.
-platforms:
-  - Network
-  - Web
-  - API
-  - Mobile
+description: |
+  Description of what the command does.
+
+  Command Reference:
+
+  	Target IP: 10.10.10.1
+
+  	Domain: test.local
+
+  	Username: john
+
+  	Password: password123
+
+command: |
+  put command here
+items:
+  - ITEM
+  - ITEM
+  ...
+services:
+  - SERVICE
+  ...
+OS:
+  - OS
+  ...
+attack_types:
+  - ATTACK TYPE
 references:
-  - https://nmap.org/download.html
+  - LINK
+  - LINK
+  ...
 ---
 ```
 
-- `platforms`: Values from the relevant platforms YAML file (e.g., [`_data/black_platforms.yml`])
-- `references`: At least one link to a relevant tool or resource
+Where `ITEM` is one of the values described in the [`_data/items.yml`] file, `SERVICE` is one of the values described in the [`_data/services.yml`] file, `OS` is one of the values described in the [`_data/OS.yml`] file, `ATTACK_TYPE` is one of the values described in the [`_data/attack_types.yml`] file, and `LINK` is a link to download the related tool for that command as well as links to any other relevant information about what the command is doing.
 
-## Adding/Updating Data
+Feel free to use any file in the [`_wadcoms/`] folder as an example.
 
-You may propose new platforms, services, OS, or attack types by editing the corresponding YAML files in `_data/`. These changes are subject to review by project maintainers.
+## Pull request process
 
-## Pull Request Process
+I accept commands that run on either Linux or Windows, just as long as they target Windows machines (this is a Windows/AD cheat sheet after all).
 
-1. **Test Your Test Case:**  
-   Ensure your test case is accurate, relevant, and clearly described.
+Before sending a pull request of a new command, ensure the following:
 
-2. **Use Standard YAML Front Matter:**  
-   Provide clear and concise YAML front matter as shown in the example above.
+1. Verify the EXACT command works against at least one version of Windows.
+2. Any parts of the command that need context should go in the 'Command References', such as username, password, target IP, domain, etc. For consistency, if your command uses a username, password, domain, and/or target IP, use `john`, `password123`, `test.local` and `10.10.10.1` respectively.
+3. Include the proper filters related to your command. This currently means including any and all remote services required to be running on the Windows machine in order for the command to work, the Operating System the command can be run from, and the type of attack. For example, Impacket's smbclient.py requires the SMB service to be running on the remote Windows machine, so SMB would be one of the services included. And since it can by run from any OS, Linux and Windows would be the OS that's included. Finally, the attack type is Exploitation because you are getting a remote shell.
+4. Add a minimum, a link to download the related tool MUST be provided and added under `references`.
 
-3. **Specify Platforms:**  
-   List all applicable platforms for your test case using values from the relevant platforms YAML file.
-
-4. **Provide References:**  
-   Include at least one link to a relevant tool or resource under `references`.
-
-5. **Data Additions:**  
-   If you add new platforms and test cases ensure they are relevant, well-documented, and added to the appropriate YAML files in `_data/`.
-
-6. **Style and Formatting:**  
-   Follow the existing YAML and Markdown formatting for consistency and readability.
-
-## Additional Notes
-
-- Pull requests are welcome for both new test cases and updates to supporting data.
-- All contributions are reviewed for accuracy, relevance, and formatting.
-- For any questions, refer to the [YAML documentation](http://yaml.org/) or open an issue.
+Pull requests adding new items in [`_data/items.yml`], services in [`_data/services.yml`], OS in [`_data/OS.yml`], or attack types in [`_data/attack_types.yml`] are allowed and subjected to project maintainers vetting.
 
 [YAML]: http://yaml.org/
-[`_testcases/`]: ./_testcases/
-[`_data/platforms.yml`]: ./_data/platforms.yml
-[`_data/methodology.yml`]: ./_data/methodology.yml
-
+[`_wadcoms/`]: https://github.com/NVAToolkit/NVAToolkit.github.io/tree/master/_wadcoms
+[`_data/services.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/services.yml
+[`_data/items.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/items.yml
+[`_data/OS.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/OS.yml
+[`_data/attack_types.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/attack_types.yml

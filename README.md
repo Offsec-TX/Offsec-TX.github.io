@@ -1,55 +1,74 @@
-# Offsec-TX
+# Offsec-TXICC
 
-This project is a Jekyll-based website that serves as a collection of penetration testing test cases categorized by different approaches: black box, grey box, and white box. The test cases are further divided into four types: network, web, API, and mobile assessments.
+This project is a Jekyll-based website that hosts a collection of penetration testing test cases categorized by different approaches: black box, grey box, and white box. The test cases are further divided into types: network, web, API, and mobile assessments.
 
 ## Project Structure
 
-- **_testcases/**:  
-  Contain individual test case files (`<testcase name>.md`). Each file uses a YAML front matter to describe the test case, its usage, and metadata.
-- **_data/**:  
-  Contains supporting YAML files:
-  - `platforms.yml`: List of platforms for black-box test cases
-  - `methodology.yml`: List of methodologies
-- **assets/css/**:  
-  Contains SCSS files for site styling (`style.scss`, `styleDark.scss`).
-- **_layouts/common.html**: Default layout for the site, including header, footer, and main content area.
-- **assets/js/excel.js**: JavaScript functionality to export test case completion status to an Excel sheet.
-- **Gemfile**: Specifies Ruby gems required for the Jekyll site.
-- **index.md**: Homepage of the site, providing an overview of the test cases.
-- **README.md**: Documentation for the project.
+```
+Offsec-TX.github.io/
+├── _data/
+│   ├── methodology.yml      # List of testing methodologies
+│   ├── platforms.yml        # List of platforms for test cases
+│   ├── services.yml         # (Optional) List of services for test cases
+│   ├── OS.yml               # (Optional) List of Operating Systems
+│   ├── items.yml            # (Optional) Additional test case metadata
+│   └── attack_types.yml     # (Optional) List of attack types or techniques
+├── _includes/
+│   ├── bin_testcases.html   # HTML partial for test case table & export functionality
+│   └── ...                  # Additional partials and components
+├── _layouts/
+│   └── common.html          # Default layout for header, footer, and main content area
+├── _testcases/
+│   └── <testcase>.md        # Individual test case files with YAML front matter
+├── assets/
+│   ├── css/
+│   │   ├── style.scss       # Main SCSS file for site styling
+│   │   └── styleDark.scss   # Alternative dark theme styling
+│   └── js/
+│       └── excel.js         # JavaScript to export test case statuses to Excel
+├── Gemfile                  # Ruby gems required for the Jekyll site
+├── index.md                 # Homepage overview
+└── README.md                # Project documentation
+```
 
 ## Setup Instructions
 
 1. **Clone the Repository**: 
    ```bash
    git clone https://github.com/Offsec-TX/Offsec-TX.github.io.git
-   cd Offsec-TX
+   cd Offsec-TX.github.io
    ```
 
-2. **Install Dependencies**: 
-   Make sure you have Ruby and Bundler installed. Then run:
+2. **Install Dependencies**:  
+   Ensure you have Ruby and Bundler installed, then run:
    ```bash
    bundle install
    ```
 
-3. **Run the Jekyll Server**: 
+3. **Run the Jekyll Server**:  
    Start the Jekyll server to view the site locally:
    ```bash
    bundle exec jekyll serve
    ```
 
-4. **Access the Site**: 
-   Open your web browser and go to `http://localhost:4000` to view the site.
+4. **Access the Site**:  
+   Open your web browser and navigate to `http://localhost:4000` to view the site.
 
 ## Contributing Guide
 
-Thank you for your interest in contributing to this project! This repository is a collection of test cases for offensive security, focusing on Web, API, Mobile, Network, and Active Directory. The project is organized to make it easy to add test cases and supporting data.
+We welcome contributions! Whether you're adding new test cases, improving existing ones, or enhancing documentation, please refer to our [Contributing Guidelines](/contribute/) for details.
 
 ## Features
 
-- **Test Case Tracking**: Each test case includes a checkbox to track its completion status.
-- **Export Functionality**: Once all test cases are marked, you can export the status to an Excel sheet summarizing each test case as Tested, Not Tested, or Not Applicable.
+- **Test Case Tracking**:  
+  Each test case includes checkboxes to record its status as Tested, Not Tested, or Not Applicable.
+
+- **Export Functionality**:  
+  Easily export the test case statuses to an Excel sheet for a consolidated overview.
+
+- **Dynamic Filtering**:  
+  Filter test cases by methodologies, services, platforms, and operating systems for quick navigation.
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for additional details.

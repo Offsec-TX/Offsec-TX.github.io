@@ -5,26 +5,46 @@ title: Contribute
 
 ## Structure
 
-Each test case is defined in a Markdown file in the [`_testcases/`] folder, named `<testcase name>.md`. The file consists only of a YAML front matter block describing the test case and its attributes.
+Each Red Team command/code is defined in a file in the [`_wadcoms/`] folder named as `<tool name>.md`, such file consists only of a [YAML] front matter which describes the command and its attributes.
 
 The full syntax is the following:
 
 ```
 ---
-sno: 1
-testcase: Scan the target for open TCP and UDP ports using nmap.
-platforms:
-  - Network
-  - Web
-  - API
-  - Mobile
+description: |
+  Description what the command does and is usefull for.
+
+  Command Reference:
+
+  	Domain: arttoolkit.hacker.com
+
+  	Port: 9001
+
+  	IP address: 10.10.21.14
+    
+command: |
+  put command here
+
+code: |
+  extra code can be placed here. This part is optional and can be removed if not nessasary. 
+
+items:
+  - Shell
+services:
+  - SERVICE
+OS:
+  - OS
+attack_types:
+  - ATTACK_TYPE
 references:
-  - https://nmap.org/download.html
+  - LINK
+  - LINK
 ---
 ```
 
-`platforms`: Values from the relevant platforms YAML file (e.g., [`_data/platforms.yml`])
-`references`: At least one link to a relevant tool or resource
+Where `ITEM` is one of the values described in the [`_data/items.yml`] file, `SERVICE` is one of the values described in the [`_data/services.yml`] file, `OS` is one of the values described in the [`_data/OS.yml`] file, `ATTACK_TYPE` is one of the values described in the [`_data/attack_types.yml`] file, and `LINK` is a link to download the related tool for that command as well as links to any other relevant information about what the command is doing. 
+
+Feel free to use any file in the [`_wadcoms/`] folder as an example.
 
 ## Pull request process
 
@@ -32,27 +52,16 @@ I accept commands that run on either Linux or Windows, just as long as they are 
 
 Before sending a pull request of a new command, ensure the following:
 
-1. **Test Your Test Case:**  
-   Ensure your test case is accurate, relevant, and clearly described.
+1. Verify the EXACT command works against at least one version of Windows.
+2. Any parts of the command that need context should go in the 'Command References', such as username, password, target IP, domain, etc. For consistency, if your command uses a username, password, domain, and/or target IP, use `john`, `password123`, `test.local` and `10.10.10.1` respectively.
+3. Include the proper filters related to your command. This currently means including any and all remote services required to be running on the target machine in order for the command to work, the Operating System the command can be run from, and the type of attack. For example, Impacket's smbclient.py requires the SMB service to be running on the remote Windows machine, so SMB would be one of the services included. And since it can by run from any OS, Linux and Windows would be the OS that's included. Finally, the attack type is Exploitation because you are getting a remote shell.
+4. Add a minimum, a link to download the related tool MUST be provided and added under `references`.
 
-2. **Use Standard YAML Front Matter:**  
-   Provide clear and concise YAML front matter as shown in the example above.
-
-3. **Specify Platforms:**  
-   List all applicable platforms for your test case using values from the relevant platforms YAML file.
-
-4. **Provide References:**  
-   Include at least one link to a relevant tool or resource under `references`.
-
-5. **Data Additions:**  
-   If you add new platforms and test cases ensure they are relevant, well-documented, and added to the appropriate YAML files in `_data/`.
-
-6. **Style and Formatting:**  
-   Follow the existing YAML and Markdown formatting for consistency and readability.
-
+Pull requests adding new items in [`_data/items.yml`], services in [`_data/services.yml`], OS in [`_data/OS.yml`], or attack types in [`_data/attack_types.yml`] are allowed and subjected to project maintainers vetting.
 
 [YAML]: http://yaml.org/
-[`__testcases/`]: https://github.com/Offsec-TX/Offsec-TX.github.io/tree/master/_testcases/
-[`_data/platforms.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/black_platforms.yml
-[`_data/methodology.yml`]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/master/_data/methodology.yml
-
+[`_wadcoms/`]: https://github.com/NVAToolkit/NVAToolkit.github.io/tree/master/_wadcoms
+[`_data/services.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/services.yml
+[`_data/items.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/items.yml
+[`_data/OS.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/OS.yml
+[`_data/attack_types.yml`]: https://github.com/NVAToolkit/NVAToolkit.github.io/blob/master/_data/attack_types.yml
