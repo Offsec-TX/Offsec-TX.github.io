@@ -11,4 +11,6 @@ bundle:
 
 lint:
 	yamllint _testcases/*.md
-	scripts/validate-schema.py
+	scripts/validate-schema-testcases.py
+	yamllint _wadcoms/*.md
+	scripts/validate-schema-wadcoms.py

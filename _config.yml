@@ -1,15 +1,21 @@
-title: Offsec-TX
-exclude: ['/Gemfile', '/Makefile', '/README.md']
+title: Offsec-TX|CC
+exclude: ['/scripts', '/Gemfile', '/Makefile', '/README.md']
 
 permalink: pretty
 
 collections:
   testcases:
     output: true
+  wadcoms:
+    output: true
 
 
 defaults:
   - scope:
       path: '_testcases'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms'
     values:
       layout: bin

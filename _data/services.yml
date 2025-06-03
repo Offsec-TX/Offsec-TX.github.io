@@ -71,4 +71,14 @@ IRC:
   label: IRC
   description: You've found the IRC service open and need to know what you can do with it.
 
+MYSQL:
+  label: MYSQL
+  description: You've found the MYSQL service open and need to know what you can do with it.
 
+MSSQL:
+  label: MSSQL
+  description: You've found the MSSQL service open and need to know what you can do with it.
+
+ORACLE-TNS:
+  label: ORACLE-TNS
+  description: You've found the ORACLE-TNS service open and need to know what you can do with it.

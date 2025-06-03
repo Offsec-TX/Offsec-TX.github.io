@@ -1,24 +1,27 @@
 ---
 layout: page
-title: Offsec-TX
+title: Offsec-TX|CC
 ---
 
-![logo](../assets/img/logo.png){:.logo}
+![logo](/assets/img/logo.png){:.logo}
 
-**Offsec-TX** is an interactive toolkit designed for penetration testers and security professionals to systematically organize, track, and document their test cases across every stage of an engagement. Whether you’re testing networks, web applications, APIs, mobile apps, or Active Directory environments, Offsec-TX helps you stay methodical and efficient.
+**Offsec-TXICC** is an interactive toolkit designed specifically for penetration testers and security professionals to efficiently manage, track, and document their test cases at every stage of an engagement. Whether you’re testing networks, web applications, APIs, mobile apps, or Active Directory environments, Offsec-TXICC keeps your testing process organized and methodical while also providing a dedicated page for quickly accessing essential security testing commands.
 
 - **Track Your Assessment:**  
-  Leverage methodology-driven checklists to monitor your progress and mark off completed tests across different testing approaches:
-  - **Black Box:** No internal knowledge—external perspective.
-  - **Grey Box:** Partial knowledge—mixed perspective.
-  - **White Box:** Full knowledge—internal perspective.
+  Leverage detailed, methodology-driven checklists to monitor your progress and mark off completed tests across different approaches:
+  - **Black Box:** External perspective with no internal insight.
+  - **Grey Box:** Mixed perspective with some internal insight.
+  - **White Box:** Comprehensive internal perspective.
 
 - **Export and Report:**  
-  Effortlessly export your progress and findings for streamlined reporting and documentation.
+  Easily export your testing progress and findings for efficient reporting and documentation.
 
-Offsec-TX was created by [Gnanaraj Mauviel aka 0xm3m](https://www.linkedin.com/in/gnanaraj-mauviel/) and is inspired by [GTFOBins][GTFOBins], [LOLBAS][LOLBAS], and the [WADComs][WADComs] site template.
+In addition, the tool provides a dedicated page where you can quickly copy and use commands for security testing.
+[View Commands](/commands/)
 
-This is a [collaborative project][collaborative]—contributions of new testcases are highly encouraged! Please [contribute][contribute] to help make Offsec-TX even better.
+Offsec-TXICC was created by [Gnanaraj Mauviel](https://www.linkedin.com/in/gnanaraj-mauviel/) and is inspired by [GTFOBins][GTFOBins], [LOLBAS][LOLBAS], and the [WADComs][WADComs] site template.
+
+This is a [collaborative project][collaborative]—contributions of new testcases are highly encouraged! Please [contribute][contribute] to help make Offsec-TXICC even better.
 
 [GTFOBins]: https://gtfobins.github.io/
 [LOLBAS]: https://lolbas-project.github.io/
@@ -27,3 +30,4 @@ This is a [collaborative project][collaborative]—contributions of new testcase
 [contribute]: /contribute/
 
 {% include bin_testcases.html %}
+

@@ -16,4 +16,16 @@
     <dt class="filter-name">{{ methodology.label }}</dt>
     <dd>{{ methodology.description | markdownify }}</dd>
     {% endfor %}
+
+    {% for attack_pair in site.data.attack_types %}
+    {% assign attack = attack_pair[1] %}
+    <dt class="filter-name">{{ attack.label }}</dt>
+    <dd>{{ attack.description | markdownify }}</dd>
+    {% endfor %}
+
+    {% for os_pair in site.data.OS %}
+    {% assign os = os_pair[1] %}
+    <dt class="filter-name">{{ os.label }}</dt>
+    <dd>{{ os.description | markdownify }}</dd>
+    {% endfor %}
 </dl>
