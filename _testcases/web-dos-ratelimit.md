@@ -1,6 +1,7 @@
 ---
 testcase: Test the Web (HTTP/HTTPS) service for rate-limiting and DoS prevention mechanisms using rapid or malformed HTTP requests
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

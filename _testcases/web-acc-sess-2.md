@@ -1,6 +1,7 @@
 ---
 testcase: Attempt to access restricted resources by manipulating URL parameters and HTTP methods
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

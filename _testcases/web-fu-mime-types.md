@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality by changing the mime types.
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by altering MIME types during the upload.
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

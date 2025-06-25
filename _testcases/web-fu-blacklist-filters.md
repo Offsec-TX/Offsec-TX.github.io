@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality for blacklist filters (By fuzzing extensions)
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by bypassing blacklist filters using various file extensions (fuzzing)
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

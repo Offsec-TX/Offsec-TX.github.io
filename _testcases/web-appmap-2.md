@@ -1,6 +1,7 @@
 ---
 testcase: Use automated tools and manual inspection to detect application flow and endpoints
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

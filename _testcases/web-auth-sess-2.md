@@ -1,6 +1,7 @@
 ---
 testcase: Inspect session cookies, token management, and session expiration on the Web (HTTP/HTTPS) service
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

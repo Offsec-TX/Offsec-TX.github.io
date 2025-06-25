@@ -1,10 +1,11 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for verbose error messages that may disclose sensitive information
+testcase: Test the Web (HTTP/HTTPS) service for HTTP verb tampering
 platforms: 
   - Web
   - Network
 methodology: 
   - BlackBox
+  - GreyBox
 owasp-catgeory:
   - 
 services:

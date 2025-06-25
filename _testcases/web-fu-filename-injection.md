@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality by injecting in the filename (Eg: file$(whoami).jpg  etc) Command injection or SQLi or XSS
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by injecting malicious payloads in filenames (e.g., command injection, SQLi, XSS)
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

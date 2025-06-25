@@ -15,7 +15,6 @@ command: |
         echo "shell.jpg$char$ext" >> wordlist.txt
         echo "shell.jpg$ext$char" >> wordlist.txt
     done
-done
 
 items:
   - 

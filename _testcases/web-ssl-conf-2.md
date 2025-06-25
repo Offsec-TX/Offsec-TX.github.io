@@ -1,6 +1,7 @@
 ---
 testcase: Use tools to assess the security of the Web (HTTP/HTTPS) service encryption
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

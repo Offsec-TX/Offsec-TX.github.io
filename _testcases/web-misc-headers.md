@@ -1,6 +1,7 @@
 ---
 testcase: Verify if security headers like CSP, X-Frame-Options, and X-XSS-Protection are properly implemented
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

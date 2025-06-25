@@ -1,6 +1,7 @@
 ---
 testcase: Validate input fields, URL parameters, and HTTP headers for vulnerabilities
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

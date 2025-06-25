@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality (based on the technology used eg: php, asp, ruby.. etc)
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities based on backend technologies (e.g., PHP, ASP, Ruby, etc.)
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

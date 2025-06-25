@@ -1,6 +1,7 @@
 ---
 testcase: Map the application structure of the Web (HTTP/HTTPS) service to identify entry points, parameters, and functionality
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

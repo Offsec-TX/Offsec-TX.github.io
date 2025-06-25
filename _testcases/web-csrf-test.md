@@ -1,6 +1,7 @@
 ---
 testcase: Assess if the Web (HTTP/HTTPS) service implements proper CSRF tokens and necessary validations on state-changing requests
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

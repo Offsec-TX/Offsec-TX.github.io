@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality whether client side validation handled properly
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by checking if client-side validations can be bypassed
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

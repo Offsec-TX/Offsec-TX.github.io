@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality inject payloads like XSS or XXE
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by injecting XSS or XXE payloads in uploaded files
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

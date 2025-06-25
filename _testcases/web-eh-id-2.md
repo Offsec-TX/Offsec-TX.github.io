@@ -1,6 +1,7 @@
 ---
 testcase: Trigger errors on the Web (HTTP/HTTPS) service to analyze error responses for debugging information
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

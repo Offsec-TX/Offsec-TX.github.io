@@ -1,10 +1,11 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for verbose error messages that may disclose sensitive information
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by using null byte injection (e.g., exploit.php%00.jpg)
 platforms: 
   - Web
   - Network
 methodology: 
   - BlackBox
+  - GreyBox
 owasp-catgeory:
   - 
 services:

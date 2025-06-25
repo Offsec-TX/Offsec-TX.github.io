@@ -1,6 +1,7 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for vulnerabilities in file upload functionality for whitelist filters (By double extensions (shell.jpg.php), reverse double extensions (shell.php%00.jpg))
+testcase: Test the Web (HTTP/HTTPS) service for file upload vulnerabilities by bypassing whitelist filters using double extensions (e.g., shell.jpg.php) or reverse extensions (e.g., shell.php.jpg)
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox

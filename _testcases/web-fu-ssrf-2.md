@@ -1,6 +1,7 @@
 ---
-testcase: Evaluate endpoints for potential Server-Side Request Forgery on the Web (HTTP/HTTPS) service
+testcase: Evaluate the Web (HTTP/HTTPS) service endpoints for potential SSRF triggered via file upload functionality
 platforms: 
+  - Web
   - Network
 methodology: 
   - BlackBox
