@@ -1,5 +1,5 @@
 ---
-testcase: Trigger errors on the Web (HTTP/HTTPS) service to analyze error responses for debugging information
+testcase: Check the Web (HTTP/HTTPS) service’s authentication brute-force protection effectiveness
 platforms: 
   - Web
   - Network

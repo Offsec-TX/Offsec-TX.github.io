@@ -1,5 +1,5 @@
 ---
-testcase: Test the Web (HTTP/HTTPS) service for verbose error messages that may disclose sensitive information
+testcase: Validate that the Web (HTTP/HTTPS) service does not reveal different authentication responses based on username validity
 platforms: 
   - Web
   - Network
