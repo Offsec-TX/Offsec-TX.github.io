@@ -22,3 +22,23 @@ AD:
 Cloud:
   label: Cloud
   description: Test cases specifically designed for Cloud security.
+
+Linux:
+  label: Linux
+  description: Configuration review testcases can be run on Linux.
+
+Windows:
+  label: Windows
+  description: Configuration review testcases can be run on Windows.
+
+Azure:
+  label: Azure
+  description: Configuration review testcases can be run on Azure.
+
+GCP:
+  label: GCP
+  description: Configuration review testcases can be run on GCP.
+
+AWS:
+  label: AWS
+  description: Configuration review testcases can be run on AWS.
