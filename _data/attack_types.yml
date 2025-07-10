@@ -31,3 +31,7 @@ Bypassing:
   label: Bypassing
   description: Command/code that supports bypassing antivirus or AMSI.
 
+Configuration_Review:
+  label: Configuration_Review
+  description: Configuration Review commands.
+
