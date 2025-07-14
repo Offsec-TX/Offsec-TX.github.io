@@ -1,5 +1,5 @@
 ---
-testcase: Perform inital enumeration manully 
+testcase: Check for the SeDebugPrivilege are set and check if we are able to dump LSASS
 platforms: 
   - AD
   - Windows
