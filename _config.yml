@@ -20,7 +20,11 @@ defaults:
     values:
       layout: bin
   - scope:
-      path: '_testcases/mobile'
+      path: '_testcases/mobile/apk'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/mobile/ios'
     values:
       layout: bin
   - scope:
@@ -32,15 +36,23 @@ defaults:
     values:
       layout: bin
   - scope:
-      path: '_testcases/cloud'
+      path: '_testcases/cloud/gcp'
     values:
       layout: bin
   - scope:
-      path: '_testcases/linux'
+      path: '_testcases/cloud/aws'
     values:
       layout: bin
   - scope:
-      path: '_testcases/windows'
+      path: '_testcases/cloud/azure'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/os/linux'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/os/windows'
     values:
       layout: bin
   - scope:
