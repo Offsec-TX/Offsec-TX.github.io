@@ -12,7 +12,47 @@ collections:
 
 defaults:
   - scope:
-      path: '_testcases'
+      path: '_testcases/web'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/api'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/mobile'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/network'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/ad'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/cloud'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/linux'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/windows'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/azure'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/gcp'
+    values:
+      layout: bin
+  - scope:
+      path: '_testcases/aws'
     values:
       layout: bin
   - scope:
