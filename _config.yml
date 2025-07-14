@@ -44,18 +44,6 @@ defaults:
     values:
       layout: bin
   - scope:
-      path: '_testcases/azure'
-    values:
-      layout: bin
-  - scope:
-      path: '_testcases/gcp'
-    values:
-      layout: bin
-  - scope:
-      path: '_testcases/aws'
-    values:
-      layout: bin
-  - scope:
       path: '_wadcoms'
     values:
       layout: bin
