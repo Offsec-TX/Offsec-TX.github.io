@@ -59,3 +59,47 @@ defaults:
       path: '_wadcoms'
     values:
       layout: bin
+  - scope:
+      path: '_wadcoms/web'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/api'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/mobile/apk'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/mobile/ios'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/network'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/ad'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/cloud/gcp'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/cloud/aws'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/cloud/azure'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/os/linux'
+    values:
+      layout: bin
+  - scope:
+      path: '_wadcoms/os/windows'
+    values:
+      layout: bin
