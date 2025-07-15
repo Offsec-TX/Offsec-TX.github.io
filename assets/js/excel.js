@@ -48,42 +48,17 @@ if (exportBtn) {
     // Create worksheet and workbook
     const worksheet = XLSX.utils.json_to_sheet(exportData);
 
-    // Style TestCase and HowToTest columns: wrap text and left align
-    const testCaseCol = XLSX.utils.decode_col("B"); // 2nd column
-    const howToTestCol = XLSX.utils.decode_col("G"); // 7th column
-    const range = XLSX.utils.decode_range(worksheet['!ref']);
-    for (let rowNum = range.s.r + 1; rowNum <= range.e.r; ++rowNum) { // skip header row
-        [testCaseCol, howToTestCol].forEach(col => {
-            const cellAddress = { c: col, r: rowNum };
-            const cellRef = XLSX.utils.encode_cell(cellAddress);
-            if (worksheet[cellRef]) {
-                worksheet[cellRef].s = {
-                    alignment: { wrapText: true, horizontal: "left", vertical: "top" }
-                };
-            }
-        });
+    // Ensure projectName is defined as a string
+    let projectName = "Testcases";
+    if (window.projectName) {
+      if (typeof window.projectName === "string") {
+        projectName = window.projectName.trim() || "Testcases";
+      } else if (window.projectName instanceof HTMLInputElement) {
+        projectName = window.projectName.value.trim() || "Testcases";
+      } else if (window.projectName.textContent) {
+        projectName = window.projectName.textContent.trim() || "Testcases";
+      }
     }
-
-    // Auto-adjust column width based on max content length
-    function getMaxColWidth(colIdx) {
-        let maxLen = 10; // minimum width
-        for (let rowNum = range.s.r; rowNum <= range.e.r; ++rowNum) {
-            const cellRef = XLSX.utils.encode_cell({ c: colIdx, r: rowNum });
-            const cell = worksheet[cellRef];
-            if (cell && cell.v) {
-                const len = String(cell.v).length;
-                if (len > maxLen) maxLen = len;
-            }
-        }
-        // Approximate width: 1 char ~ 1.2 units
-        return Math.ceil(maxLen * 1.2);
-    }
-    worksheet['!cols'] = worksheet['!cols'] || [];
-    worksheet['!cols'][testCaseCol] = { width: getMaxColWidth(testCaseCol) };
-    worksheet['!cols'][howToTestCol] = { width: getMaxColWidth(howToTestCol) };
-
-    // Ensure projectName is defined
-    const projectName = window.projectName || "Testcases";
 
     const workbook = XLSX.utils.book_new();
     workbook.SheetNames.push("Testcases");
