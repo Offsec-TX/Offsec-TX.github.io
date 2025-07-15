@@ -31,25 +31,27 @@ window.addEventListener('DOMContentLoaded', () => {
 // Make sure XLSX is loaded in your HTML for this to work
 if (exportBtn) {
   exportBtn.addEventListener('click', () => {
-    const rows = Array.from(document.querySelectorAll('#testcases .test-row'));
-    const exportData = rows.filter(row => row.style.display !== 'none').map(row => {
-        return {
-            SNo: row.querySelector('td').textContent.trim(),
-            TestCase: row.children[1].textContent.trim(),
-            OWASPCategory: row.children[2].textContent.trim(),
-            T_NT: row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
-            A_NA: row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
-            V_NV: row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
-            Comments: row.children[6].querySelector('input').value.trim(),
-            HowToTest: row.getAttribute('data-howtotest') || ''
-        };
-    });
-    const ws = XLSX.utils.json_to_sheet(exportData);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "TestCases");
-    // Get project name from input
-    const projectName = (document.getElementById('projectName')?.value.trim() || 'TestCases') + '.xlsx';
-    XLSX.writeFile(wb, projectName);
+    const rows = Array.from(document.querySelectorAll('#testcases .test-row'))
+        .filter(row => row.style.display !== 'none');
+    const exportData = rows.map(row => ({
+        SNo: row.querySelector('td').textContent.trim(),
+        TestCase: row.children[1].textContent.trim(),
+        OWASP_Category: row.children[2].textContent.trim(),
+        T_NT: row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
+        A_NA: row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
+        V_NV: row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
+        Comments: row.children[6].querySelector('input').value.trim(),
+        HowToTest: row.getAttribute('data-howtotest') || ''
+    }));
+
+    // Create worksheet and workbook
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Testcases");
+
+    // Download
+    const projectName = document.getElementById('projectName').value || 'Testcases';
+    XLSX.writeFile(workbook, projectName + ".xlsx");
   });
 }
 
