@@ -32,39 +32,34 @@ window.addEventListener('DOMContentLoaded', () => {
 if (exportBtn) {
   exportBtn.addEventListener('click', () => {
     const rows = Array.from(document.querySelectorAll('#testcases .test-row'))
-        .filter(row => row.style.display !== 'none');
+      .filter(row => row.style.display !== 'none');
     const exportData = rows.map(row => ({
-        SNo: row.querySelector('td').textContent.trim(),
-        TestCase: row.children[1].textContent.trim(),
-        OWASP_Category: row.children[2].textContent.trim(),
-        "Tested/Not-Tested": row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
-        "Applicable/Not-Applicable": row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
-        "Vulnerable/Not-Vulnerable": row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
-        HowToTest: row.getAttribute('data-howtotest') || '',
-        References: row.getAttribute('data-references') || '',
-        Comments: row.children[6].querySelector('input').value.trim()
+      SNo: row.querySelector('td').textContent.trim(),
+      TestCase: row.children[1].textContent.trim(),
+      OWASP_Category: row.children[2].textContent.trim(),
+      "Tested/Not-Tested": row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
+      "Applicable/Not-Applicable": row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
+      "Vulnerable/Not-Vulnerable": row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
+      HowToTest: row.getAttribute('data-howtotest') || '',
+      References: row.getAttribute('data-references') || '',
+      Comments: row.children[6].querySelector('input').value.trim()
     }));
 
-    // Create worksheet and workbook
-    const worksheet = XLSX.utils.json_to_sheet(exportData);
-
-    // Ensure projectName is defined as a string
+    // Get project name from input element if exists
     let projectName = "Testcases";
-    if (window.projectName) {
-      if (typeof window.projectName === "string") {
-        projectName = window.projectName.trim() || "Testcases";
-      } else if (window.projectName instanceof HTMLInputElement) {
-        projectName = window.projectName.value.trim() || "Testcases";
-      } else if (window.projectName.textContent) {
-        projectName = window.projectName.textContent.trim() || "Testcases";
-      }
+    const projectNameInput = document.getElementById('projectName');
+    if (projectNameInput && projectNameInput.value.trim()) {
+      projectName = projectNameInput.value.trim();
+    } else if (typeof window.projectName === "string" && window.projectName.trim()) {
+      projectName = window.projectName.trim();
     }
 
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
     const workbook = XLSX.utils.book_new();
-    workbook.SheetNames.push("Testcases");
-    workbook.Sheets["Testcases"] = worksheet;
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Testcases");
 
-    XLSX.writeFile(workbook, projectName + ".xlsx", { cellStyles: true });
+    // No cellStyles for default alignment
+    XLSX.writeFile(workbook, projectName + ".xlsx");
   });
 }
 
