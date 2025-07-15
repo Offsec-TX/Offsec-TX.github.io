@@ -31,34 +31,24 @@ window.addEventListener('DOMContentLoaded', () => {
 // Make sure XLSX is loaded in your HTML for this to work
 if (exportBtn) {
   exportBtn.addEventListener('click', () => {
-    const table = document.getElementById('testcases');
-    const rows = Array.from(table.querySelectorAll('tbody tr'));
-    // Get project name from input
-    const projectName = (document.getElementById('projectName')?.value.trim() || 'TestCases') + '.xlsx';
-    // Added Vulnerable/Not-Vulnerable column
-    const data = [["Serial Number", "Test Case", "Tested/Not Tested", "Applicable/Not-Applicable", "Vulnerable/Not-Vulnerable", "Comments"]];
-    rows.forEach(row => {
-      if (row.style.display === 'none') return;
-      const serial = row.cells[0]?.innerText || '';
-      const testcase = row.cells[1]?.innerText || '';
-      const testedToggle = row.querySelector('.tested-toggle');
-      const tested = testedToggle && testedToggle.checked ? "Tested" : "Not-Tested";
-      const applicableToggle = row.querySelector('.applicable-toggle');
-      const applicable = applicableToggle
-        ? (applicableToggle.checked ? "Applicable" : "Not-Applicable")
-        : "";
-      // Get vulnerable toggle value
-      const vulnerableToggle = row.querySelector('.vulnerable-toggle');
-      const vulnerable = vulnerableToggle
-        ? (vulnerableToggle.checked ? "Vulnerable" : "Not-Vulnerable")
-        : "";
-      const commentInput = row.querySelector('.comment-input');
-      const comment = commentInput ? commentInput.value : '';
-      data.push([serial, testcase, tested, applicable, vulnerable, comment]);
+    const rows = Array.from(document.querySelectorAll('#testcases .test-row'));
+    const exportData = rows.filter(row => row.style.display !== 'none').map(row => {
+        return {
+            SNo: row.querySelector('td').textContent.trim(),
+            TestCase: row.children[1].textContent.trim(),
+            OWASPCategory: row.children[2].textContent.trim(),
+            T_NT: row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
+            A_NA: row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
+            V_NV: row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
+            Comments: row.children[6].querySelector('input').value.trim(),
+            HowToTest: row.getAttribute('data-howtotest') || ''
+        };
     });
-    const ws = XLSX.utils.aoa_to_sheet(data);
+    const ws = XLSX.utils.json_to_sheet(exportData);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "TestCases");
+    // Get project name from input
+    const projectName = (document.getElementById('projectName')?.value.trim() || 'TestCases') + '.xlsx';
     XLSX.writeFile(wb, projectName);
   });
 }
