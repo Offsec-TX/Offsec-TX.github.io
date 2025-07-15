@@ -35,3 +35,4 @@ references:
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-rights-assignment
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/
   - https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-
+---

@@ -41,3 +41,4 @@ attack_types:
   - PrivEsc
 references:
   - https://academy.hackthebox.com/module/54/section/485
+---

@@ -71,3 +71,4 @@ references:
   - https://www.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/token-privileges
   - https://github.com/k4sth4/SeBackupPrivilege
   - https://github.com/giuliano108/SeBackupPrivilege 
+---

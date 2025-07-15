@@ -33,3 +33,4 @@ references:
   - https://www.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/token-privileges
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-rights-assignment
   - https://learn.microsoft.com/en-us/windows/security/threat-
+---

@@ -26,3 +26,4 @@ references:
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-applocker/applocker-overview
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-applocker/create-and-deploy-applocker-policies
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-defender-applocker/applocker-design-guide
+---
