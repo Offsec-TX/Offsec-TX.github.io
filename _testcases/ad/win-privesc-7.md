@@ -1,30 +1,35 @@
 ---
-testcase: Check the current user is belong the group 'Event Log Readers' and use wevtutil or Get-WinEvent to find the credentials
-platforms: 
+testcase: Check current user group 'Event Log Readers' and extract sensitive info from logs
+platforms:
   - AD
   - Windows
-methodology: 
+methodology:
   - BlackBox
   - GreyBox
 references:
-  - https://academy.hackthebox.com/module/67/section/642
+  - https://notes.dollarboysushil.com/windows-privilege-escalation/group-privileges/event-log-readers
+  - https://learn.microsoft.com/en-us/answers/questions/2197624/granting-non-admin-user-read-only-access-to-window
 attack_types:
   - PrivEsc
 how-to-test: |
-  - Identify the current user by running: `whoami`
-  - Check if the user is a member of the 'Event Log Readers' group:
-    - Run: `whoami /groups | findstr "Event Log Readers"`
-    - Alternatively, use: `net user <username>` and look for group membership
-  - If the user is part of the group, proceed to query event logs using elevated access:
-    - Use `wevtutil` to list and read event logs:
-      - Example: `wevtutil qe Security /c:10 /f:text`
-    - Or use PowerShell `Get-WinEvent` to search specific log entries:
-      - Example: `Get-WinEvent -LogName Security -MaxEvents 50`
-  - Look for sensitive information such as:
-    - Cleartext credentials in logs (rare, but possible due to misconfigurations or verbose logging)
-    - Service account names and actions
-    - Login/logout events (Event ID 4624, 4634, 4648)
-    - Privilege use or assignment (Event ID 4672, 4673, 4674)
-  - Document findings, including any credentials or interesting user activity from the logs
-  - If credentials are found, attempt to validate them (e.g., via `runas`, `PsExec`, or RDP)
+  **Enumeration:**
+  1. Verify the current user belongs to 'Event Log Readers':
+     - Run in PowerShell:
+       - `net localgroup "Event Log Readers"`
+       - Or: `whoami /groups | findstr "Event Log Readers"`
+  2. Confirm your username appears in the output.
+
+  **Exploitation:**
+  3. Retrieve event logs using built-in tools:
+     - Example: `wevtutil qe Security /f:text /c:50`
+     - Or: `Get-WinEvent -LogName Security -MaxEvents 50`
+  4. Search logs for sensitive events such as:
+     - Successful logons (Event ID 4624)
+     - Account management actions (Event IDs 4720–4732)
+  5. Analyze logs for patterns or misconfigurations, like failed logons or lateral movement, to identify weak points.
+  6. Use any gathered information (usernames, hints on password policies) to support further escalation or credential guessing.
+
+Key Notes:
+  - Members of the Event Log Readers group can access all event logs.
+  - Direct credential extraction is rare; focus on extracting useful operational insights.
 ---

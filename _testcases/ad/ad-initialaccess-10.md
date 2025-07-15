@@ -1,12 +1,12 @@
 ---
-testcase: If NAC and MAC spoofing protections are active, test for VLAN hopping vulnerabilities to move laterally across restricted segments in the Onprem AD environment
+testcase: Conduct Open Source Intelligence (OSINT) gathering to discover leaked credentials, email addresses, exposed passwords, or related sensitive data tied to the organization
 platforms: 
   - AD
 methodology: 
   - BlackBox
   - GreyBox
-owasp-catgeory:
-  - 
 references:
-  - 
+  - https://www.recordedfuture.com/threat-intelligence-101/tools-and-technologies/osint-tools
+how-to-test: |
+  1. Use the free or paid OSINT tools to look for the details.
 ---
