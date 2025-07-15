@@ -115,7 +115,8 @@
                data-methods="{{ test.methodology | join: ',' }}"
                data-services="{{ test.services | join: ',' }}"
                data-os="{{ test.OS | join: ',' }}"
-               data-howtotest="{{ test.how-to-test | escape }}">
+               data-howtotest="{{ test.how-to-test | escape }}"
+               data-references="{{ test.references | join: ', ' | escape }}">
                <td style="text-align: center;">{{ forloop.index }}</td>
                <td style="min-width: 240px;">{{ test.testcase }}</td>
                <td style="text-align: center;">{{ test.owasp-catgeory }}</td>

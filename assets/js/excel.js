@@ -40,18 +40,54 @@ if (exportBtn) {
         T_NT: row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
         A_NA: row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
         V_NV: row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
-        Comments: row.children[6].querySelector('input').value.trim(),
-        HowToTest: row.getAttribute('data-howtotest') || ''
+        HowToTest: row.getAttribute('data-howtotest') || '',
+        References: row.getAttribute('data-references') || '',
+        Comments: row.children[6].querySelector('input').value.trim()
     }));
 
     // Create worksheet and workbook
     const worksheet = XLSX.utils.json_to_sheet(exportData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "Testcases");
 
-    // Download
-    const projectName = document.getElementById('projectName').value || 'Testcases';
-    XLSX.writeFile(workbook, projectName + ".xlsx");
+    // Style TestCase and HowToTest columns: wrap text and left align
+    const testCaseCol = XLSX.utils.decode_col("B"); // 2nd column
+    const howToTestCol = XLSX.utils.decode_col("G"); // 7th column
+    const range = XLSX.utils.decode_range(worksheet['!ref']);
+    for (let rowNum = range.s.r + 1; rowNum <= range.e.r; ++rowNum) { // skip header row
+        [testCaseCol, howToTestCol].forEach(col => {
+            const cellAddress = { c: col, r: rowNum };
+            const cellRef = XLSX.utils.encode_cell(cellAddress);
+            if (worksheet[cellRef]) {
+                worksheet[cellRef].s = {
+                    alignment: { wrapText: true, horizontal: "left", vertical: "top" }
+                };
+            }
+        });
+    }
+
+    // Auto-adjust column width based on max content length
+    function getMaxColWidth(colIdx) {
+        let maxLen = 10; // minimum width
+        for (let rowNum = range.s.r; rowNum <= range.e.r; ++rowNum) {
+            const cellRef = XLSX.utils.encode_cell({ c: colIdx, r: rowNum });
+            const cell = worksheet[cellRef];
+            if (cell && cell.v) {
+                const len = String(cell.v).length;
+                if (len > maxLen) maxLen = len;
+            }
+        }
+        // Approximate width: 1 char ~ 1.2 units
+        return Math.ceil(maxLen * 1.2);
+    }
+    worksheet['!cols'] = worksheet['!cols'] || [];
+    worksheet['!cols'][testCaseCol] = { width: getMaxColWidth(testCaseCol) };
+    worksheet['!cols'][howToTestCol] = { width: getMaxColWidth(howToTestCol) };
+
+    // ...existing code to create workbook and export...
+    const workbook = XLSX.utils.book_new();
+    workbook.SheetNames.push("Testcases");
+    workbook.Sheets["Testcases"] = worksheet;
+
+    XLSX.writeFile(workbook, projectName + ".xlsx", { cellStyles: true });
   });
 }
 
