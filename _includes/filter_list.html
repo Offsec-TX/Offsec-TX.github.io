@@ -46,4 +46,12 @@
     <li><a href="{{ include.bin.url }}#{{ OS_id }}">{{ OS.label }}</a></li>
     {% endif %}
     {% endfor %}
+
+    {% for vulnerabilities_pair in site.data.vulnerabilities %}
+    {% assign vulnerabilities_id = vulnerabilities_pair[0] %}
+    {% assign vulnerabilities = vulnerabilities_pair[1] %}
+    {% if include.bin.vulnerabilities contains vulnerabilities_id %}
+    <li><a href="{{ include.bin.url }}#{{ vulnerabilities_id }}">{{ vulnerabilities.label }}</a></li>
+    {% endif %}
+    {% endfor %}
 </ul>

@@ -28,4 +28,10 @@
     <dt class="filter-name">{{ os.label }}</dt>
     <dd>{{ os.description | markdownify }}</dd>
     {% endfor %}
+
+    {% for vulnerabilities_pair in site.data.vulnerabilities %}
+    {% assign vulnerabilities = vulnerabilities_pair[1] %}
+    <dt class="filter-name">{{ vulnerabilities.label }}</dt>
+    <dd>{{ vulnerabilities.description | markdownify }}</dd>
+    {% endfor %}
 </dl>

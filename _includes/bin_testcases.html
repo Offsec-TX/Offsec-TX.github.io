@@ -51,12 +51,12 @@
    </ul>
    <ul id="bin-search-filters" class="filter-list">
       <h3>Vulnerabilities:</h3>
-      {% for vuln_pair in site.data.vulnerabilities %}
-      {% assign vuln_id = vuln_pair[0] %}
-      {% assign vulnerabilities = vuln_pair[1] %}
+      {% for vulnerabilities_pair in site.data.vulnerabilities %}
+      {% assign vulnerabilities_id = vulnerabilities_pair[0] %}
+      {% assign vulnerabilities = vulnerabilities_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ vuln.label }}" name="vuln_name" onclick='handleChange(this, "{{ vuln.label }}");'>
-         <label id="{{ vuln.label }}_label" for="{{ vuln.label }}" data-title="{{ vuln.description | replace: '\n', ' ' }}">{{ vuln.label }}</label>
+         <input type="checkbox" id="{{ vulnerabilities.label }}" name="vulnerabilities_name" onclick='handleChange(this, "{{ vulnerabilities.label }}");'>
+         <label id="{{ vulnerabilities.label }}_label" for="{{ vulnerabilities.label }}" data-title="{{ vulnerabilities.description | replace: '\n', ' ' }}">{{ vulnerabilities.label }}</label>
       </li>
       {% endfor %}
    </ul>
