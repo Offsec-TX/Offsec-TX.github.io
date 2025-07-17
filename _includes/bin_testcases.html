@@ -112,7 +112,6 @@
             <tr>
                <th style="text-align: center;">S.No</th>
                <th style="text-align: center;">Test Case</th>
-               <th style="text-align: center;">OWASP-Category</th>
                <th style="text-align: center; width: 60px;">T/NT</th>
                <th style="text-align: center; width: 60px;">A/NA</th>
                <th style="text-align: center; width: 60px;">V/NV</th>
@@ -131,7 +130,6 @@
                data-references="{{ test.references | join: ', ' | escape }}">
                <td style="text-align: center;">{{ forloop.index }}</td>
                <td style="min-width: 240px;">{{ test.testcase }}</td>
-               <td style="text-align: center;">{{ test.owasp-catgeory }}</td>
                <td style="width: 60px;">
                   <label class="switch tested-switch" aria-label="Tested/Not-Tested">
                      <input type="checkbox" class="tested-toggle">
