@@ -462,7 +462,8 @@ function filterTestcases() {
     const checkedPlatforms = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
     const checkedServices = Array.from(document.querySelectorAll('input[name="service_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
     const checkedOS = Array.from(document.querySelectorAll('input[name="OS_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
-    const checkedVulns = Array.from(document.querySelectorAll('input[name="vuln_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
+    // FIX: Use vulnerabilities_name instead of vuln_name
+    const checkedVulns = Array.from(document.querySelectorAll('input[name="vulnerabilities_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
 
     testRows.forEach(row => {
         const rowMethods = (row.getAttribute('data-methods') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
