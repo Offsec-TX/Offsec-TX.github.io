@@ -60,6 +60,14 @@
       </li>
       {% endfor %}
    </ul>
+   <ul id="bin-search-filters" class="filter-list">
+	<h3>Attack Type:</h3>
+	{% for attack_pair in site.data.attack_types %}
+	{% assign attack_id = attack_pair[0] %}
+	{% assign attack = attack_pair[1] %}
+	<li><input type="checkbox" id="{{ attack.label }}" name="attack_name" onclick='handleChange(this, "{{ attack.label }}");'><label id="{{ attack.label }}_label" for="{{ attack.label }}" data-title="{{ attack.description | replace: '\n', ' ' }}">{{ attack.label }}</label></li>
+	{% endfor %}
+    </ul>
 </div>
 <div style="margin-top: -20px;">
    <input id="bin-search" type="text" placeholder="Search among {{ site.testcases | size }} test cases: <test cases> +<filter> ..."/>
@@ -463,9 +471,48 @@ document.addEventListener('DOMContentLoaded', function () {
     filterTestcases();
 });
 </script>
+<!-- Remove the global beforeunload listener and add unsaved changes tracking -->
+
 <script>
-window.addEventListener('beforeunload', function (e) {
-    // Custom message is ignored by most browsers, but setting returnValue triggers the dialog
+// Track unsaved changes
+let unsavedChanges = false;
+
+// Helper to add/remove beforeunload listener
+function setBeforeUnload(enable) {
+    if (enable) {
+        window.addEventListener('beforeunload', beforeUnloadHandler);
+    } else {
+        window.removeEventListener('beforeunload', beforeUnloadHandler);
+    }
+}
+
+function beforeUnloadHandler(e) {
     e.preventDefault();
+    e.returnValue = '';
+}
+
+// Mark unsaved changes on toggle or comment input
+document.addEventListener('DOMContentLoaded', function () {
+    // Checkbox toggles
+    document.querySelectorAll('.tested-toggle, .applicable-toggle, .vulnerable-toggle').forEach(function (el) {
+        el.addEventListener('change', function () {
+            unsavedChanges = true;
+            setBeforeUnload(true);
+        });
+    });
+    // Comment inputs
+    document.querySelectorAll('.comment-input').forEach(function (el) {
+        el.addEventListener('input', function () {
+            unsavedChanges = true;
+            setBeforeUnload(true);
+        });
+    });
+    // If you have a save/export button, reset unsavedChanges after saving
+    document.getElementById('exportExcel').addEventListener('click', function () {
+        unsavedChanges = false;
+        setBeforeUnload(false);
+    });
 });
+
+// Optionally, if you want to reset unsavedChanges after a successful save, call setBeforeUnload(false)
 </script>
