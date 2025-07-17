@@ -1,5 +1,5 @@
 ---
-SQL injection:
+SQL_injection:
   label: SQL injection
   description: Testcases related to SQL Injection.
 
@@ -7,63 +7,63 @@ Authentication:
   label: Authentication
   description: Testcases related to authentication mechanisms and bypasses.
 
-Path traversal:
+Path_traversal:
   label: Path traversal
   description: Testcases related to directory traversal and file path manipulation.
 
-Command injection:
+Command_injection:
   label: Command injection
   description: Testcases related to command injection vulnerabilities.
 
-Business logic vulnerabilities:
+Business_logic_vulnerabilities:
   label: Business logic vulnerabilities
   description: Testcases targeting flaws in application logic and workflows.
 
-Information disclosure:
+Information_disclosure:
   label: Information disclosure
   description: Testcases for unintentional exposure of sensitive information.
 
-Access control:
+Access_control:
   label: Access control
   description: Testcases for privilege escalation and authorization flaws.
 
-File upload vulnerabilities:
+File_upload_vulnerabilities:
   label: File upload vulnerabilities
   description: Testcases for insecure file upload and file type validation.
 
-Race conditions:
+Race_conditions:
   label: Race conditions
   description: Testcases for concurrency issues and timing attacks.
 
-Server-side request forgery (SSRF):
+Server_side_request_forgery_SSRF:
   label: Server-side request forgery (SSRF)
   description: Testcases for SSRF vulnerabilities.
 
-XXE injection:
+XXE_injection:
   label: XXE injection
   description: Testcases for XML External Entity injection.
 
-NoSQL injection:
+NoSQL_injection:
   label: NoSQL injection
   description: Testcases for NoSQL database injection vulnerabilities.
 
-API testing:
+API_testing:
   label: API testing
   description: Testcases for API endpoints and security.
 
-Web cache deception:
+Web_cache_deception:
   label: Web cache deception
   description: Testcases for cache poisoning and cache-related attacks.
 
-Cross-site scripting (XSS):
+Cross_site_scripting_XSS:
   label: Cross-site scripting (XSS)
   description: Testcases for XSS vulnerabilities.
 
-Cross-site request forgery (CSRF):
+Cross_site_request_forgery_CSRF:
   label: Cross-site request forgery (CSRF)
   description: Testcases for CSRF vulnerabilities.
 
-Cross-origin resource sharing (CORS):
+Cross_origin_resource_sharing_CORS:
   label: Cross-origin resource sharing (CORS)
   description: Testcases for CORS misconfigurations.
 
@@ -71,7 +71,7 @@ Clickjacking:
   label: Clickjacking
   description: Testcases for UI redress and clickjacking attacks.
 
-DOM-based vulnerabilities:
+DOM_based_vulnerabilities:
   label: DOM-based vulnerabilities
   description: Testcases for client-side DOM manipulation vulnerabilities.
 
@@ -79,43 +79,43 @@ WebSockets:
   label: WebSockets
   description: Testcases for WebSocket security issues.
 
-Insecure deserialization:
+Insecure_deserialization:
   label: Insecure deserialization
   description: Testcases for insecure object deserialization.
 
-Web LLM attacks:
+Web_LLM_attacks:
   label: Web LLM attacks
   description: Testcases for attacks targeting web-integrated large language models.
 
-GraphQL API vulnerabilities:
+GraphQL_API_vulnerabilities:
   label: GraphQL API vulnerabilities
   description: Testcases for GraphQL-specific security issues.
 
-Server-side template injection:
+Server_side_template_injection:
   label: Server-side template injection
   description: Testcases for template injection vulnerabilities.
 
-Web cache poisoning:
+Web_cache_poisoning:
   label: Web cache poisoning
   description: Testcases for poisoning web caches.
 
-HTTP Host header attacks:
+HTTP_Host_header_attacks:
   label: HTTP Host header attacks
   description: Testcases for Host header manipulation vulnerabilities.
 
-HTTP request smuggling:
+HTTP_request_smuggling:
   label: HTTP request smuggling
   description: Testcases for request smuggling vulnerabilities.
 
-OAuth authentication:
+OAuth_authentication:
   label: OAuth authentication
   description: Testcases for OAuth implementation and security.
 
-JWT attacks:
+JWT_attacks:
   label: JWT attacks
   description: Testcases for JSON Web Token vulnerabilities.
 
-Prototype pollution:
+Prototype_pollution:
   label: Prototype pollution
   description: Testcases for prototype pollution vulnerabilities.
 
