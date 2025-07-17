@@ -9,7 +9,7 @@ methodology:
 owasp-catgeory:
   - 
 vulnerabilities:
-  - Command_injection
+  - Command injection
 services:
   - WEB
 references:

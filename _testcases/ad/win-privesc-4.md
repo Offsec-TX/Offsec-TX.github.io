@@ -9,8 +9,6 @@ methodology:
 references:
   - https://github.com/decoder-it/psgetsystem
   - https://notes.dollarboysushil.com/windows-privilege-escalation/user-privileges/sedebugprivilege
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Run `whoami /priv` in PowerShell or Command Prompt to verify SeDebugPrivilege.

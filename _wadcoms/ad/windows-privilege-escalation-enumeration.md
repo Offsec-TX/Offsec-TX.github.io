@@ -38,7 +38,7 @@ OS:
   - Windows
 attack_types:
   - Enumeration
-  - PrivEsc
+  - Privilege Escalation
 references:
   - https://academy.hackthebox.com/module/54/section/485
 ---

@@ -21,7 +21,7 @@ OS:
   - Windows
 attack_types:
   - Enumeration
-  - PrivEsc
+  - Privilege Escalation
 references:
   - https://www.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/token-privileges
   - https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/user-rights-assignment

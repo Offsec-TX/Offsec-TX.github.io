@@ -8,8 +8,6 @@ methodology:
   - GreyBox
 references:
   - https://notes.dollarboysushil.com/windows-privilege-escalation/user-privileges/sedebugprivilege
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Run `whoami /priv` to check for SeDebugPrivilege.

@@ -9,8 +9,6 @@ methodology:
 references:
   - https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges
   - https://senteon.co/blog/2021/09/commonly-abused-windows-token-privileges-sebackupprivilege/
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Run `whoami /priv` to confirm SeBackupPrivilege is enabled.

@@ -9,7 +9,7 @@ command: |
 OS:
   - Linux
 attack_types:
-  - Configuration_Review
+  - Configuration Review
 references:
   -
 ---

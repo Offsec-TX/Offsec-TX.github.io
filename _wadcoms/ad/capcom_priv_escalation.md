@@ -62,7 +62,7 @@ OS:
   - Windows
 attack_types:
   - Enumeration
-  - PrivEsc
+  - Privilege Escalation
 references:
   - http://www.nirsoft.net/utils/driverview.html
   - https://github.com/tandasat/ExploitCapcom

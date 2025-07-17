@@ -52,7 +52,7 @@ OS:
   - Windows
 attack_types:
   - Enumeration
-  - PrivEsc
+  - Privilege Escalation
 references:
   - https://www.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/token-privileges
   - https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/EnableAllTokenPrivs.ps1

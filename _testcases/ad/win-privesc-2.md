@@ -9,8 +9,6 @@ methodology:
 references:
   - https://forum.hackthebox.com/t/windows-privilege-escalation-seimpersonate-sql-dev-does-not-have-token-permission/269721
   - https://notes.dollarboysushil.com/windows-privilege-escalation/user-privileges/seimpersonateprivilege-and-seassignprimarytoken
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Run `whoami /priv` to check that SeImpersonate and SeAssignPrimaryToken are enabled.

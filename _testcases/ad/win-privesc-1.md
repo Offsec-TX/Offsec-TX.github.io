@@ -8,8 +8,6 @@ methodology:
   - GreyBox
 references:
   - https://learn.microsoft.com/en-us/windows/security/application-security/application-control/app-control-for-business/applocker/applocker-overview
-attack_types:
-  - PrivEsc
 how-to-test: |
   1. **Verify AppLocker Configuration:**
      - Run the PowerShell command to fetch the effective AppLocker policy:

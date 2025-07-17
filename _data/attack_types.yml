@@ -11,7 +11,7 @@ Persistence:
   label: Persistence
   description: Command focuses on persistence.
 
-PrivEsc:
+Privilege Escalation:
   label: Privilege Escalation
   description: Command focuses on privilege escalation.
 
@@ -31,7 +31,7 @@ Bypassing:
   label: Bypassing
   description: Command/code that supports bypassing antivirus or AMSI.
 
-Configuration_Review:
-  label: Configuration_Review
+Configuration Review:
+  label: Configuration Review
   description: Configuration Review commands.
 

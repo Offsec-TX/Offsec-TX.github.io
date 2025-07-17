@@ -8,8 +8,6 @@ methodology:
   - GreyBox
 references:
   - https://www.hackingarticles.in/windows-privilege-escalation-server-operator-group/
-attack_types:
-  - PrivEsc
 how-to-test: |
   1. Query the AppReadiness service:
      - `sc qc AppReadiness`

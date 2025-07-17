@@ -9,8 +9,6 @@ methodology:
 references:
   - https://senteon.co/blog/2021/11/commonly-abused-windows-token-privileges-setakeownershipprivilege/
   - https://github.com/dollarboysushil/oscp-cpts-notes/blob/main/windows-privilege-escalation/user-privileges/setakeownershipprivilege.md
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Run `whoami /priv` to check for SeTakeOwnershipPrivilege.

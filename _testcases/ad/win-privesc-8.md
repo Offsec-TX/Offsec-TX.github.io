@@ -9,8 +9,6 @@ methodology:
 references:
   - https://github.com/gdedrouas/Exchange-AD-Privesc/blob/master/DNSAdmins/DNSAdmins.md
   - https://www.tenable.com/indicators/ioa/I-DnsAdmins
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Confirm you are a member of the DnsAdmins group:

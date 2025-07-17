@@ -38,7 +38,7 @@ OS:
   - Windows
 attack_types:
   - Enumeration
-  - PrivEsc
+  - Privilege Escalation
 references:
   -
 ---

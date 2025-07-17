@@ -9,7 +9,7 @@ methodology:
 owasp-catgeory:
   - 
 vulnerabilities:
-  - Access_control
+  - Access control
 services:
   - WEB
 references:

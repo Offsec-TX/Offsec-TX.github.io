@@ -8,8 +8,6 @@ methodology:
   - GreyBox
 references:
   - https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/from-dnsadmins-to-system-to-domain-compromise
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Confirm membership in the DnsAdmins group:

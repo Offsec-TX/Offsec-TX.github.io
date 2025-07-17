@@ -8,8 +8,6 @@ methodology:
   - GreyBox
 references:
   - https://notes.dollarboysushil.com/windows-privilege-escalation/group-privileges/print-operators
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Compilation and Preparation:**
   1. Compile the Privilege Enabler:

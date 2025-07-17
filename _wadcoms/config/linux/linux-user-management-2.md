@@ -12,7 +12,7 @@ code: |
 OS:
   - Linux
 attack_types:
-  - Configuration_Review
+  - Configuration Review
 references:
   - https://www.cisecurity.org/benchmark/red_hat_linux
 ---

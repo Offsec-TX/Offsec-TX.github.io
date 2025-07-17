@@ -9,8 +9,6 @@ methodology:
 references:
   - https://notes.dollarboysushil.com/windows-privilege-escalation/group-privileges/event-log-readers
   - https://learn.microsoft.com/en-us/answers/questions/2197624/granting-non-admin-user-read-only-access-to-window
-attack_types:
-  - PrivEsc
 how-to-test: |
   **Enumeration:**
   1. Verify the current user belongs to 'Event Log Readers':
