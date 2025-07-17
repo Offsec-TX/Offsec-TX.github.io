@@ -49,6 +49,17 @@
       </li>
       {% endfor %}
    </ul>
+   <ul id="bin-search-filters" class="filter-list">
+      <h3>Vulnerabilities:</h3>
+      {% for vuln_pair in site.data.vulnerabilities %}
+      {% assign vuln_id = vuln_pair[0] %}
+      {% assign vulnerabilities = vuln_pair[1] %}
+      <li>
+         <input type="checkbox" id="{{ vuln.label }}" name="vuln_name" onclick='handleChange(this, "{{ vuln.label }}");'>
+         <label id="{{ vuln.label }}_label" for="{{ vuln.label }}" data-title="{{ vuln.description | replace: '\n', ' ' }}">{{ vuln.label }}</label>
+      </li>
+      {% endfor %}
+   </ul>
 </div>
 <div style="margin-top: -20px;">
    <input id="bin-search" type="text" placeholder="Search among {{ site.testcases | size }} test cases: <test cases> +<filter> ..."/>
@@ -115,6 +126,7 @@
                data-methods="{{ test.methodology | join: ',' }}"
                data-services="{{ test.services | join: ',' }}"
                data-os="{{ test.OS | join: ',' }}"
+               data-vulnerabilities="{{ test.vulnerabilities | join: ',' }}"
                data-howtotest="{{ test.how-to-test | escape }}"
                data-references="{{ test.references | join: ', ' | escape }}">
                <td style="text-align: center;">{{ forloop.index }}</td>
@@ -450,19 +462,22 @@ function filterTestcases() {
     const checkedPlatforms = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
     const checkedServices = Array.from(document.querySelectorAll('input[name="service_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
     const checkedOS = Array.from(document.querySelectorAll('input[name="OS_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
+    const checkedVulns = Array.from(document.querySelectorAll('input[name="vuln_name"]:checked')).map(cb => cb.id.trim().toLowerCase());
 
     testRows.forEach(row => {
         const rowMethods = (row.getAttribute('data-methods') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
         const rowPlatforms = (row.getAttribute('data-platforms') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
         const rowServices = (row.getAttribute('data-services') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
         const rowOS = (row.getAttribute('data-os') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
+        const rowVulns = (row.getAttribute('data-vulnerabilities') || '').toLowerCase().split(',').map(s => s.trim()).filter(Boolean);
 
         const showMethod = checkedMethods.length === 0 || checkedMethods.some(m => rowMethods.includes(m));
         const showPlatform = checkedPlatforms.length === 0 || checkedPlatforms.some(p => rowPlatforms.includes(p));
         const showService = checkedServices.length === 0 || checkedServices.some(s => rowServices.includes(s));
         const showOS = checkedOS.length === 0 || checkedOS.some(o => rowOS.includes(o));
+        const showVuln = checkedVulns.length === 0 || checkedVulns.some(v => rowVulns.includes(v));
 
-        row.style.display = (showMethod && showPlatform && showService && showOS) ? '' : 'none';
+        row.style.display = (showMethod && showPlatform && showService && showOS && showVuln) ? '' : 'none';
     });
 
     renumberVisibleRows();
