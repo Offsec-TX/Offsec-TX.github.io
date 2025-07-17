@@ -2,8 +2,7 @@
 testcase: Intercept the iOS app’s network traffic using tools like Burp Suite or Charles Proxy to test SSL/TLS pinning and certificate validation
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - iOS
 references:

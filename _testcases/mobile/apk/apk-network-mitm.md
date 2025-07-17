@@ -2,8 +2,7 @@
 testcase: Perform man-in-the-middle attacks on the APK to detect insecure communication channels
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - Android
 references:

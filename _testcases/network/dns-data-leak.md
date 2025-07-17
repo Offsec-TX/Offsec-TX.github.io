@@ -4,8 +4,7 @@ platforms:
   - Network
 methodology: 
   - BlackBox
-owasp-catgeory:
-  - 
+
 services:
   - DNS
 references:

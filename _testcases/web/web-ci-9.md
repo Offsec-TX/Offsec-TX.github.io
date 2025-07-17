@@ -6,8 +6,7 @@ platforms:
 methodology: 
   - BlackBox
   - GreyBox
-owasp-catgeory:
-  - 
+
 vulnerabilities:
   - Command injection
 services:

@@ -2,8 +2,7 @@
 testcase: Test the APK for secure credential handling and proper use of multi-factor authentication where applicable
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - Android
 references:

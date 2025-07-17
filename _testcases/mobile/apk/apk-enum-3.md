@@ -2,8 +2,7 @@
 testcase: Identify hardcoded URLs, IPs, API endpoints, and callback URLs in the APK
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - Android
 references:

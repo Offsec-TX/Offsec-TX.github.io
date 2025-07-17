@@ -60,14 +60,6 @@
       </li>
       {% endfor %}
    </ul>
-   <ul id="bin-search-filters" class="filter-list">
-	<h3>Attack Type:</h3>
-	{% for attack_pair in site.data.attack_types %}
-	{% assign attack_id = attack_pair[0] %}
-	{% assign attack = attack_pair[1] %}
-	<li><input type="checkbox" id="{{ attack.label }}" name="attack_name" onclick='handleChange(this, "{{ attack.label }}");'><label id="{{ attack.label }}_label" for="{{ attack.label }}" data-title="{{ attack.description | replace: '\n', ' ' }}">{{ attack.label }}</label></li>
-	{% endfor %}
-    </ul>
 </div>
 <div style="margin-top: -20px;">
    <input id="bin-search" type="text" placeholder="Search among {{ site.testcases | size }} test cases: <test cases> +<filter> ..."/>

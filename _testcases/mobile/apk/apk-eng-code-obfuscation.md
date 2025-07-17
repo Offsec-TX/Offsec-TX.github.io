@@ -2,8 +2,7 @@
 testcase: Assess the APK’s obfuscation techniques and resistance to reverse engineering
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - Android
 references:

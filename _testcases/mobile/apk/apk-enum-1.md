@@ -2,8 +2,7 @@
 testcase: Extract package name, version info, permissions, and certificate details from the APK
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - Android
 references:

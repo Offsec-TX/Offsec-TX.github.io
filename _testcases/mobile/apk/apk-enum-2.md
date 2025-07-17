@@ -2,8 +2,7 @@
 testcase: Analyze the APK’s AndroidManifest.xml for components, permissions, and intent filters
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - Android
 references:

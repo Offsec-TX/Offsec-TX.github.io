@@ -2,8 +2,7 @@
 testcase: Evaluate how the iOS app stores credentials and session tokens in the Keychain or other secure storage mechanisms
 platforms: 
   - Mobile
-owasp-catgeory:
-  - 
+
 OS:
   - iOS
 references:

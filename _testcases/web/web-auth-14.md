@@ -5,8 +5,7 @@ platforms:
   - Network
 methodology: 
   - BlackBox
-owasp-catgeory:
-  - 
+
 services:
   - WEB
 references:
