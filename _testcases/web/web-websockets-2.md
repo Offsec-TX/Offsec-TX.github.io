@@ -1,5 +1,5 @@
 ---
-testcase: WebSocket Connection and Protocol Security - Validate the strength and validity of SSL/TLS implementation: ensure no use of weak ciphers, expired or mismatched certificates. Web (HTTP/HTTPS) service
+testcase: WebSocket Connection and Protocol Security - Validate the strength and validity of SSL/TLS implementation; ensure no use of weak ciphers, expired or mismatched certificates. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network

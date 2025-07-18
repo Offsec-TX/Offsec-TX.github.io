@@ -1,5 +1,5 @@
 ---
-testcase: Cache Behavior and Headers - Verify that cache-control headers (Cache-Control: no-store, private) in the Web (HTTP/HTTPS) service are properly preventing user-specific or sensitive data from being cached
+testcase: Cache Behavior and Headers - Verify that cache-control headers (Cache-Control; no-store, private) in the Web (HTTP/HTTPS) service are properly preventing user-specific or sensitive data from being cached
 platforms: 
   - Web
   - Network

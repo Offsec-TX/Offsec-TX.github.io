@@ -6,8 +6,6 @@ platforms:
 methodology: 
   - BlackBox
   - GreyBox
-owasp-catgeory:
-ECHO is off.
 vulnerabilities:
   - Server side request forgery SSRF
 services:

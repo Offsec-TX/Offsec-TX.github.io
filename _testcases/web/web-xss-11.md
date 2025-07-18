@@ -1,5 +1,5 @@
 ---
-testcase: Content Security Policy (CSP) - Verify that CSP effectively blocks payload execution—try injecting <script>alert(2)</script>, inline event handlers, or javascript: URIs, and confirm browser denies script execution. Web (HTTP/HTTPS) service
+testcase: Content Security Policy (CSP) - Verify that CSP effectively blocks payload execution—try injecting script alert(2) script, inline event handlers, or javascript; URIs, and confirm browser denies script execution. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network

@@ -1,5 +1,5 @@
 ---
-testcase: DOM-based XSS - Verify that dynamic DOM updates using user input do not allow payloads such as <img src=x onerror=alert(1)> to trigger code execution. Web (HTTP/HTTPS) service
+testcase: DOM-based XSS - Verify that dynamic DOM updates using user input do not allow payloads such as img src=x onerror=alert(1) to trigger code execution. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network
