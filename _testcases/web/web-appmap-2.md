@@ -5,7 +5,9 @@ platforms:
   - Network
 methodology: 
   - BlackBox
-
+  - GreyBox
+vulnerabilities:
+  - Information disclosure
 services:
   - WEB
 references:
