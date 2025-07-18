@@ -8,7 +8,7 @@ methodology:
   - GreyBox
 
 vulnerabilities:
-  - Server side request forgery SSRF
+  - SSRF
 services:
   - WEB
 references:

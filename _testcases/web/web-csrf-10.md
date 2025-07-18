@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - Cross site request forgery CSRF
+  - CSRF
 services:
   - WEB
 references:

@@ -35,8 +35,8 @@ Race conditions:
   label: Race conditions
   description: Testcases for concurrency issues and timing attacks.
 
-Server side request forgery SSRF:
-  label: Server-side request forgery (SSRF)
+SSRF:
+  label: SSRF
   description: Testcases for SSRF vulnerabilities.
 
 XXE injection:
@@ -55,16 +55,16 @@ Web cache deception:
   label: Web cache deception
   description: Testcases for cache poisoning and cache-related attacks.
 
-Cross site scripting XSS:
-  label: Cross-site scripting (XSS)
+XSS:
+  label: XSS
   description: Testcases for XSS vulnerabilities.
 
-Cross site request forgery CSRF:
-  label: Cross-site request forgery (CSRF)
+CSRF:
+  label: CSRF
   description: Testcases for CSRF vulnerabilities.
 
-Cross origin resource sharing CORS:
-  label: Cross-origin resource sharing (CORS)
+CORS:
+  label: CORS
   description: Testcases for CORS misconfigurations.
 
 Clickjacking:
@@ -72,7 +72,7 @@ Clickjacking:
   description: Testcases for UI redress and clickjacking attacks.
 
 DOM based vulnerabilities:
-  label: DOM-based vulnerabilities
+  label: DOM based vulnerabilities
   description: Testcases for client-side DOM manipulation vulnerabilities.
 
 WebSockets:
@@ -91,8 +91,8 @@ GraphQL API vulnerabilities:
   label: GraphQL API vulnerabilities
   description: Testcases for GraphQL-specific security issues.
 
-Server side template injection:
-  label: Server-side template injection
+SSTI:
+  label: SSTI
   description: Testcases for template injection vulnerabilities.
 
 Web cache poisoning:

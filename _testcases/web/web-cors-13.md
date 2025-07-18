@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - Cross origin resource sharing CORS
+  - CORS
 services:
   - WEB
 references:
