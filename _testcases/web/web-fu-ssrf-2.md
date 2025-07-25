@@ -5,7 +5,8 @@ platforms:
   - Network
 methodology: 
   - BlackBox
-
+vulnerabilities:
+  - File upload vulnerabilities
 services:
   - WEB
 references:

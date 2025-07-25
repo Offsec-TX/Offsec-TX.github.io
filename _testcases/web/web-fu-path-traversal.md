@@ -6,7 +6,8 @@ platforms:
 methodology: 
   - BlackBox
   - GreyBox
-
+vulnerabilities:
+  - File upload vulnerabilities
 services:
   - WEB
 references:

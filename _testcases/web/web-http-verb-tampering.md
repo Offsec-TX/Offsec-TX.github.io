@@ -6,7 +6,8 @@ platforms:
 methodology: 
   - BlackBox
   - GreyBox
-
+vulnerabilities:
+  - Information disclosure
 services:
   - WEB
 references:

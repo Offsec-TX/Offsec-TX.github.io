@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - Cross site scripting XSS
+  - XSS
 services:
   - WEB
 references:
