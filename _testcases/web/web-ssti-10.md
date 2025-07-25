@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - Server side template injection
+  - SSTI
 services:
   - WEB
 references:
