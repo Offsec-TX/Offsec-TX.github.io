@@ -1,0 +1,15 @@
+---
+testcase: Exploit Query-Key Transformations - Verify cloaking via malformed delimiters (e.g., extra ? or ;) to embed payloads in keyed parameters while preserving the cache key. Web (HTTP/HTTPS) service
+platforms: 
+  - Web
+  - Network
+methodology: 
+  - BlackBox
+  - GreyBox
+vulnerabilities:
+  - Web cache poisoning
+services:
+  - WEB
+references:
+  - https://portswigger.net/web-security/web-cache-poisoning
+---
