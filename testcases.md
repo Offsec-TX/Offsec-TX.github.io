@@ -3,4 +3,5 @@ layout: page
 title: Offsec-TX|CC
 ---
 
-{% include bin_table.html %}
+{% include bin_testcases.html %}
+
