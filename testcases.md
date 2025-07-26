@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Offsec-TX|CC
+title: Offsec-TX
 ---
 
 {% include bin_testcases.html %}

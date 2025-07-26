@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Offsec-TX|CC
+title: Offsec-CC
 ---
 
 {% include bin_table.html %}
