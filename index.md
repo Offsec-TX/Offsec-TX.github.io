@@ -21,8 +21,8 @@ This is a [collaborative project][collaborative]—contributions are highly enco
 
 ## 🚀 Quick Access
 
-- [View Testcases](/testcases/) — Instantly view and manage security testcases.
-- [View Commands](/commands/) — Quickly copy and use essential security testing commands.
+- 🗂️ [View Testcases](/testcases/) — Instantly view and manage security testcases.
+- 💻 [View Commands](/commands/) — Quickly copy and use essential security testing commands.
 
 [GTFOBins]: https://gtfobins.github.io/
 [LOLBAS]: https://lolbas-project.github.io/
