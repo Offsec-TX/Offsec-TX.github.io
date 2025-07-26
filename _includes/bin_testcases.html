@@ -203,17 +203,18 @@
 </div>
 <script>
    function updateHash() {
-       const checkedInputs = document.querySelectorAll(
-           'input[name="methodology_name"]:checked, ' +
-           'input[name="service_name"]:checked, ' +
-           'input[name="platform_name"]:checked, ' +
-           'input[name="OS_name"]:checked, ' +
-           'input[name="vulnerabilities_name"]:checked'
-       );
-       let filters = Array.from(checkedInputs).map(input => input.id);
-       let hash = filters.length ? '+' + filters.join('+') : '';
-       location.hash = hash;
-       document.getElementById("bin-search").value = decodeURIComponent(hash.slice(1));
+    const checkedInputs = document.querySelectorAll(
+        'input[name="methodology_name"]:checked, ' +
+        'input[name="service_name"]:checked, ' +
+        'input[name="platform_name"]:checked, ' +
+        'input[name="OS_name"]:checked, ' +
+        'input[name="vulnerabilities_name"]:checked'
+    );
+    let filters = Array.from(checkedInputs).map(input => input.id);
+    let hash = filters.length ? '+' + filters.join('+') : '';
+    // Use history.replaceState to avoid scrolling
+    history.replaceState(null, '', window.location.pathname + window.location.search + (hash ? '#' + hash : ''));
+    document.getElementById("bin-search").value = decodeURIComponent(hash.slice(1));
    }
    
    function handleChange(checkbox, label) {
