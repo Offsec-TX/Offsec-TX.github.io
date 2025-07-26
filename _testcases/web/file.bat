@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 rem Set the prefix and extension
-set prefix=web-cache-poisoning-
+set prefix=web-prototype-pollution-
 set ext=.md
 
 rem Set the content to be written to each file
@@ -15,15 +15,15 @@ set content6=methodology:
 set content7=  - BlackBox
 set content8=  - GreyBox
 set content9=vulnerabilities:
-set content10=  - Web cache poisoning
+set content10=  - Prototype pollution
 set content11=services:
 set content12=  - WEB
 set content13=references:
-set content14=  - https://portswigger.net/web-security/web-cache-poisoning
+set content14=  - https://portswigger.net/web-security/prototype-pollution
 set content15=---
 
 rem Loop from 2 to 17
-for /L %%i in (1,1,20) do (
+for /L %%i in (1,1,25) do (
     set filename=%prefix%%%i%ext%
     echo Creating !filename!
     (
