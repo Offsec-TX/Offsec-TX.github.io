@@ -28,6 +28,6 @@ This is a [collaborative project][collaborative]—contributions are highly enco
 [LOLBAS]: https://lolbas-project.github.io/
 [WADComs]: https://wadcoms.github.io/
 [collaborative]: https://github.com/Offsec-TX/Offsec-TX.github.io/
-[contribute]:
+[contribute]: https://github.com/Offsec-TX/Offsec-TX.github.io/blob/main/contribute.md
 
 
