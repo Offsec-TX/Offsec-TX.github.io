@@ -34,64 +34,25 @@ if (exportBtn) {
     const rows = Array.from(document.querySelectorAll('#testcases .test-row'))
       .filter(row => row.style.display !== 'none');
     const exportData = rows.map(row => ({
-      SNo: row.querySelector('td').textContent.trim(),
-      TestCase: row.children[1].textContent.trim(),
-      OWASP_Category: row.children[2].textContent.trim(),
-      "Tested/Not-Tested": row.children[3].querySelector('input').checked ? 'Tested' : 'Not Tested',
-      "Applicable/Not-Applicable": row.children[4].querySelector('input').checked ? 'Applicable' : 'Not Applicable',
-      "Vulnerable/Not-Vulnerable": row.children[5].querySelector('input').checked ? 'Vulnerable' : 'Not Vulnerable',
+      SNo: row.children[0]?.textContent.trim() || '',
+      TestCase: row.children[1]?.textContent.trim() || '',
+      "Tested/Not-Tested": row.children[2]?.querySelector('input')?.checked ? 'Tested' : 'Not Tested',
+      "Applicable/Not-Applicable": row.children[3]?.querySelector('input')?.checked ? 'Applicable' : 'Not Applicable',
+      "Vulnerable/Not-Vulnerable": row.children[4]?.querySelector('input')?.checked ? 'Vulnerable' : 'Not Vulnerable',
+      Comments: row.children[5]?.querySelector('input')?.value.trim() || '',
       HowToTest: row.getAttribute('data-howtotest') || '',
-      References: row.getAttribute('data-references') || '',
-      Comments: row.children[6].querySelector('input').value.trim()
+      References: row.getAttribute('data-references') || ''
     }));
 
-    // Get project name from input element if exists
     let projectName = "Testcases";
     const projectNameInput = document.getElementById('projectName');
     if (projectNameInput && projectNameInput.value.trim()) {
       projectName = projectNameInput.value.trim();
-    } else if (typeof window.projectName === "string" && window.projectName.trim()) {
-      projectName = window.projectName.trim();
     }
 
     const worksheet = XLSX.utils.json_to_sheet(exportData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Testcases");
-
-    // No cellStyles for default alignment
     XLSX.writeFile(workbook, projectName + ".xlsx");
   });
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  const platformButtons = document.querySelectorAll(".platform-btn");
-  const testRows = document.querySelectorAll(".test-row");
-
-  platformButtons.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      // Remove 'active' from all buttons, then set for clicked
-      platformButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const selectedPlatform = btn.getAttribute("data-label").toLowerCase();
-
-      testRows.forEach((row) => {
-        const platforms = row.getAttribute("data-platforms");
-        if (!platforms) {
-          row.style.display = "none";
-          return;
-        }
-        // Normalize and check if selected platform is present
-        const platformList = platforms
-          .toLowerCase()
-          .replace(/[\[\]\s]/g, "")
-          .split(",");
-        if (platformList.includes(selectedPlatform)) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
-      });
-    });
-  });
-});

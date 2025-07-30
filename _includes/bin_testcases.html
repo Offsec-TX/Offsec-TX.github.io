@@ -481,10 +481,8 @@ document.addEventListener('DOMContentLoaded', function () {
     filterTestcases();
 });
 </script>
-<!-- Remove the global beforeunload listener and add unsaved changes tracking -->
-
 <script>
-// Track unsaved changes
+   // Track unsaved changes
 let unsavedChanges = false;
 
 // Helper to add/remove beforeunload listener
@@ -526,3 +524,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Optionally, if you want to reset unsavedChanges after a successful save, call setBeforeUnload(false)
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
