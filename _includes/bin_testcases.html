@@ -201,6 +201,69 @@
    <script src="../assets/js/excel.js"></script>
    <!-- END: Export & Testcases Table -->
 </div>
+<div id="pagination-controls" style="margin: 16px 0; text-align: center;"></div>
+<script>
+const PAGE_SIZE = 20;
+let currentPage = 1;
+
+function getVisibleRows() {
+    return Array.from(document.querySelectorAll('#testcases .test-row'))
+        .filter(row => row.style.display !== 'none');
+}
+
+function renderTablePage(page) {
+    const rows = getVisibleRows();
+    const totalPages = Math.ceil(rows.length / PAGE_SIZE) || 1;
+    currentPage = Math.max(1, Math.min(page, totalPages));
+
+    rows.forEach((row, idx) => {
+        row.style.display = (idx >= (currentPage - 1) * PAGE_SIZE && idx < currentPage * PAGE_SIZE) ? '' : 'none';
+    });
+
+    // Renumber only visible rows on this page
+    rows.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE).forEach((row, idx) => {
+        const snoCell = row.querySelector('td');
+        if (snoCell) snoCell.textContent = ((currentPage - 1) * PAGE_SIZE) + idx + 1;
+    });
+
+    renderPaginationControls(totalPages);
+}
+
+function renderPaginationControls(totalPages) {
+    const container = document.getElementById('pagination-controls');
+    if (totalPages <= 1) {
+        container.innerHTML = '';
+        return;
+    }
+    let html = '';
+    html += `<button ${currentPage === 1 ? 'disabled' : ''} onclick="gotoPage(1)">&#171; First</button>`;
+    html += `<button ${currentPage === 1 ? 'disabled' : ''} onclick="gotoPage(${currentPage - 1})">&#8249; Prev</button>`;
+    html += ` Page ${currentPage} of ${totalPages} `;
+    html += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="gotoPage(${currentPage + 1})">Next &#8250;</button>`;
+    html += `<button ${currentPage === totalPages ? 'disabled' : ''} onclick="gotoPage(${totalPages})">Last &#187;</button>`;
+    container.innerHTML = html;
+}
+
+window.gotoPage = function(page) {
+    renderTablePage(page);
+};
+
+// Hook into your filter logic to re-paginate after filtering
+function paginateAfterFilter() {
+    renderTablePage(1);
+}
+
+// Patch your filterTestcases to call paginateAfterFilter at the end:
+const origFilterTestcases = window.filterTestcases;
+window.filterTestcases = function() {
+    origFilterTestcases();
+    paginateAfterFilter();
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    paginateAfterFilter();
+});
+</script>
 <script>
    function updateHash() {
     const checkedInputs = document.querySelectorAll(
