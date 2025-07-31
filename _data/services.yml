@@ -23,10 +23,6 @@ FINGER:
   label: FINGER
   description: You've found the FINGER service open and need to know what you can do with it.
 
-WEB:
-  label: WEB
-  description: You've found the WEB service open and need to know what you can do with it.
-
 KERBEROS:
   label: KERBEROS
   description: You've found the KERBEROS service open and need to know what you can do with it.
@@ -71,6 +67,38 @@ IRC:
   label: IRC
   description: You've found the IRC service open and need to know what you can do with it.
 
+LDAP:
+  label: LDAP
+  description: You've found the LDAP service open and need to know what you can do with it.
+
+IKE:
+  label: IKE
+  description: You've found the IKE service open and need to know what you can do with it.
+
+MODBUS:
+  label: MODBUS
+  description: You've found the MODBUS service open and need to know what you can do with it.
+
+REXEC:
+  label: REXEC
+  description: You've found the REXEC service open and need to know what you can do with it.
+
+RSYNC:
+  label: RSYNC
+  description: You've found the RSYNC service open and need to know what you can do with it.
+
+RTSP:
+  label: RTSP
+  description: You've found the RTSP service open and need to know what you can do with it.
+
+IPMI:
+  label: IPMI
+  description: You've found the IPMI service open and need to know what you can do with it.
+
+JAVA-RMI:
+  label: JAVA-RMI
+  description: You've found the JAVA-RMI service open and need to know what you can do with it.
+
 MYSQL:
   label: MYSQL
   description: You've found the MYSQL service open and need to know what you can do with it.
@@ -79,14 +107,18 @@ MSSQL:
   label: MSSQL
   description: You've found the MSSQL service open and need to know what you can do with it.
 
-ORACLE-TNS:
-  label: ORACLE-TNS
-  description: You've found the ORACLE-TNS service open and need to know what you can do with it.
+NFS:
+  label: NFS
+  description: You've found the NFS service open and need to know what you can do with it.
 
-IPMI:
-  label: IPMI
-  description: You've found the IPMI service open and need to know what you can do with it.
+POSTGRESQL:
+  label: POSTGRESQL
+  description: You've found the POSTGRESQL service open and need to know what you can do with it.
 
 RDP:
   label: RDP
   description: You've found the RDP service open and need to know what you can do with it.
+
+REDIS:
+  label: REDIS
+  description: You've found the REDIS service open and need to know what you can do with it.
