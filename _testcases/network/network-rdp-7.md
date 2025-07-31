@@ -1,5 +1,5 @@
 ---
-testcase: Session Stealing - Check if SYSTEM privileges allow taking over active RDP sessions with: tscon <ID> /dest:<SESSIONNAME> or using Mimikatz (ts::sessions, ts::remote /id:<id>)
+testcase: Session Stealing - Check if SYSTEM privileges allow taking over active RDP sessions with; tscon <ID> /dest:<SESSIONNAME> or using Mimikatz (ts::sessions, ts::remote /id:<id>)
 platforms: 
   - Network
 methodology: 

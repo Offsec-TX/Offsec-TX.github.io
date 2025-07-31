@@ -1,5 +1,5 @@
 ---
-testcase: Session Management & Token Handling - Validate correct handling of session tokens, JWTs, and API keys: check expiration, revocation, signature validation (no “none” algorithm), and replay prevention
+testcase: Session Management & Token Handling - Validate correct handling of session tokens, JWTs, and API keys; check expiration, revocation, signature validation (no “none” algorithm), and replay prevention
 platforms: 
   - API
 methodology: 

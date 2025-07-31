@@ -1,5 +1,5 @@
 ---
-testcase: Discover & Manipulate - Verify that only expected Hosts are accepted; sending a request with Host: evil.com should be rejected. Web (HTTP/HTTPS) service
+testcase: Discover & Manipulate - Verify that only expected Hosts are accepted; sending a request with Host; evil.com should be rejected. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network

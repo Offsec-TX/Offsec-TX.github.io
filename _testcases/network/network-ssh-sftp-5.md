@@ -1,5 +1,5 @@
 ---
-testcase: Automated Configuration Auditing - Verify only SSHv2 is enabled (SSH1: disabled in audit output)
+testcase: Automated Configuration Auditing - Verify only SSHv2 is enabled (SSH1; disabled in audit output)
 platforms: 
   - Network
 methodology: 

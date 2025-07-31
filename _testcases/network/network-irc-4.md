@@ -1,5 +1,5 @@
 ---
-testcase: Enumeration – Commands - Verify IRC commands support by issuing: VERSION, HELP, INFO, LINKS, HELPOP USERCMDS, HELPOP OPERCMDS, OPERATOR CAPA
+testcase: Enumeration – Commands - Verify IRC commands support by issuing; VERSION, HELP, INFO, LINKS, HELPOP USERCMDS, HELPOP OPERCMDS, OPERATOR CAPA
 platforms: 
   - Network
 methodology: 

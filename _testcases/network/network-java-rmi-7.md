@@ -1,5 +1,5 @@
 ---
-testcase: RMI Vulnerability & Exploit Scan – Check for known RMI vulnerabilities such as:
+testcase: RMI Vulnerability & Exploit Scan – Check for known RMI vulnerabilities such as
 platforms: 
   - Network
 methodology: 

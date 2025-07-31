@@ -1,5 +1,5 @@
 ---
-testcase: CL.TE and TE.CL Variants - Validate normal backend behavior for TE.CL by starting with Transfer-Encoding: chunked and then including a smaller Content-Length, observing if the backend waits for more data. Web (HTTP/HTTPS) service
+testcase: CL.TE and TE.CL Variants - Validate normal backend behavior for TE.CL by starting with Transfer-Encoding; chunked and then including a smaller Content-Length, observing if the backend waits for more data. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network

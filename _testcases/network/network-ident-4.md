@@ -1,5 +1,5 @@
 ---
-testcase: Nmap Automated Enumeration – Check user mappings for open TCP ports using Nmap’s default scripts (nmap -sC <target>), looking for |_auth-owners: <username> results
+testcase: Nmap Automated Enumeration – Check user mappings for open TCP ports using Nmap’s default scripts (nmap -sC <target>), looking for |_auth-owners; <username> results
 platforms: 
   - Network
 methodology: 

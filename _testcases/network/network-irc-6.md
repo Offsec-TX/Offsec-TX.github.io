@@ -1,5 +1,5 @@
 ---
-testcase: User Information Leakage - Validate if information on users is accessible via: WHOIS <USERNAME>, USERHOST <USERNAME>, USERIP <USERNAME>
+testcase: User Information Leakage - Validate if information on users is accessible via; WHOIS <USERNAME>, USERHOST <USERNAME>, USERIP <USERNAME>
 platforms: 
   - Network
 methodology: 

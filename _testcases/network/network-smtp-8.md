@@ -1,5 +1,5 @@
 ---
-testcase: Internal Hostname Leakage - Verify internal server names by sending MAIL FROM: me without domain and observing auto-completed address
+testcase: Internal Hostname Leakage - Verify internal server names by sending MAIL FROM; me without domain and observing auto-completed address
 platforms: 
   - Network
 methodology: 

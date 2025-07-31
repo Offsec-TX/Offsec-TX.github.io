@@ -1,5 +1,5 @@
 ---
-testcase: Detect Successful Pollution – Reflection – Verify using browser console: test for polluted property visibility via Object.prototype.foo. Web (HTTP/HTTPS) service
+testcase: Detect Successful Pollution – Reflection – Verify using browser console; test for polluted property visibility via Object.prototype.foo. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network

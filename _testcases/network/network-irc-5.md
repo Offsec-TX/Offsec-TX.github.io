@@ -1,5 +1,5 @@
 ---
-testcase: Enumeration – User and Channel Info - Check user and channel information with: ADMIN, USERS, TIME, STATS a (operator only), NAMES, LIST
+testcase: Enumeration – User and Channel Info - Check user and channel information with; ADMIN, USERS, TIME, STATS a (operator only), NAMES, LIST
 platforms: 
   - Network
 methodology: 

@@ -1,5 +1,5 @@
 ---
-testcase: User Enumeration - Check for presence of users by issuing finger commands like: finger @<Victim> (list users), finger admin@<Victim> (query specific user info), finger user@<Victim>
+testcase: User Enumeration - Check for presence of users by issuing finger commands like; finger @<Victim> (list users), finger admin@<Victim> (query specific user info), finger user@<Victim>
 platforms: 
   - Network
 methodology: 

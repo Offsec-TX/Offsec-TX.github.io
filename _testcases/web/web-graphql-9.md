@@ -1,5 +1,5 @@
 ---
-testcase: Insecure Direct Object References (IDOR) - Verify that access control logic properly restricts queries like product(id: X) for non-public items or other users’ data. Web (HTTP/HTTPS) service
+testcase: Insecure Direct Object References (IDOR) - Verify that access control logic properly restricts queries like product(id; X) for non-public items or other users’ data. Web (HTTP/HTTPS) service
 platforms: 
   - Web
   - Network
