@@ -11,7 +11,7 @@
       {% assign methodology_id = methodology_pair[0] %}
       {% assign methodology = methodology_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ methodology.label }}" name="methodology_name">
+         <input type="checkbox" id="{{ methodology.label }}" name="methodology_name" onclick='handleChange(this, "{{ methodology.label }}");'>
          <label id="{{ methodology.label }}_label" for="{{ methodology.label }}" data-title="{{ methodology.description | replace: '\n', ' ' }}">{{ methodology.label }}</label>
       </li>
       {% endfor %}
@@ -22,7 +22,7 @@
       {% assign service_id = service_pair[0] %}
       {% assign service = service_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ service.label }}" name="service_name">
+         <input type="checkbox" id="{{ service.label }}" name="service_name" onclick='handleChange(this, "{{ service.label }}");'>
          <label id="{{ service.label }}_label" for="{{ service.label }}" data-title="{{ service.description | replace: '\n', ' ' }}">{{ service.label }}</label>
       </li>
       {% endfor %}
@@ -33,7 +33,7 @@
       {% assign platform_id = platform_pair[0] %}
       {% assign platform = platform_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ platform.label }}" name="platform_name">
+         <input type="checkbox" id="{{ platform.label }}" name="platform_name" onclick='handleChange(this, "{{ platform.label }}");'>
          <label id="{{ platform.label }}_label" for="{{ platform.label }}" data-title="{{ platform.description | replace: '\n', ' ' }}">{{ platform.label }}</label>
       </li>
       {% endfor %}
@@ -44,7 +44,7 @@
       {% assign OS_id = OS_pair[0] %}
       {% assign OS = OS_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ OS.label }}" name="OS_name">
+         <input type="checkbox" id="{{ OS.label }}" name="OS_name" onclick='handleChange(this, "{{ OS.label }}");'>
          <label id="{{ OS.label }}_label" for="{{ OS.label }}" data-title="{{ OS.description | replace: '\n', ' ' }}">{{ OS.label }}</label>
       </li>
       {% endfor %}
@@ -55,7 +55,7 @@
       {% assign vulnerabilities_id = vulnerabilities_pair[0] %}
       {% assign vulnerabilities = vulnerabilities_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ vulnerabilities.label }}" name="vulnerabilities_name">
+         <input type="checkbox" id="{{ vulnerabilities.label }}" name="vulnerabilities_name" onclick='handleChange(this, "{{ vulnerabilities.label }}");'>
          <label id="{{ vulnerabilities.label }}_label" for="{{ vulnerabilities.label }}" data-title="{{ vulnerabilities.description | replace: '\n', ' ' }}">{{ vulnerabilities.label }}</label>
       </li>
       {% endfor %}
@@ -201,11 +201,215 @@
    <script src="../assets/js/excel.js"></script>
    <!-- END: Export & Testcases Table -->
 </div>
-<!-- Remove the old filter, handleChange, and updateHash scripts -->
-
-<!-- Keep only the new filterTestcases system -->
 <script>
-function renumberVisibleRows() {
+   function updateHash() {
+    const checkedInputs = document.querySelectorAll(
+        'input[name="methodology_name"]:checked, ' +
+        'input[name="service_name"]:checked, ' +
+        'input[name="platform_name"]:checked, ' +
+        'input[name="OS_name"]:checked, ' +
+        'input[name="vulnerabilities_name"]:checked'
+    );
+    let filters = Array.from(checkedInputs).map(input => input.id);
+    let hash = filters.length ? '+' + filters.join('+') : '';
+    // Use history.replaceState to avoid scrolling
+    history.replaceState(null, '', window.location.pathname + window.location.search + (hash ? '#' + hash : ''));
+    document.getElementById("bin-search").value = decodeURIComponent(hash.slice(1));
+   }
+   
+   function handleChange(checkbox, label) {
+       if (checkbox.checked) {
+           document.getElementById(label).className = 'match';
+           document.getElementById(label + "_label").innerText = label + "✓";
+       } else {
+           document.getElementById(label).className = "";
+           document.getElementById(label + "_label").innerText = label;
+       }
+       // Update the hash based on current filters
+       updateHash();
+       // Update filter table
+       applyFilter();
+   }
+</script>
+<script>
+   function filter(query) {
+       var queryArray = query.toLowerCase().trim().split(/ *\+/);
+       var binPattern = queryArray[0];
+       var functionPatterns = queryArray.splice(1);
+   
+       // filter rows
+       var noResults = true;
+   
+       var allItems = document.getElementsByName("methodology_name");
+       var allFilters = document.getElementsByName("service_name");
+       var allAttacks = document.getElementsByName("platform_name");
+       var allOS = document.getElementsByName("OS_name");
+       var allVulns = document.getElementsByName("vulnerabilities_name");
+       
+       var allItems_parsed = [];
+       var allFilters_parsed = [];
+       var allAttacks_parsed = []; 
+       var allOS_parsed = []; 
+       var allVulns_parsed = [];
+   
+       allFilters.forEach((f) => {
+           allFilters_parsed.push(f.id.toLowerCase());
+       });
+       var filter_chosen = functionPatterns.filter(element => allFilters_parsed.includes(element));
+       
+       allItems.forEach((i) => {
+           allItems_parsed.push(i.id.toLowerCase());
+       });
+       var item_chosen = functionPatterns.filter(element => allItems_parsed.includes(element));
+       
+       allAttacks.forEach((a) => {
+           allAttacks_parsed.push(a.id.toLowerCase());
+       });
+       var attack_chosen = functionPatterns.filter(element => allAttacks_parsed.includes(element));
+       
+       allOS.forEach((o) => {
+           allOS_parsed.push(o.id.toLowerCase());
+       });
+       var os_chosen = functionPatterns.filter(element => allOS_parsed.includes(element));
+       
+       allVulns.forEach((v) => {
+           allVulns_parsed.push(v.id.toLowerCase());
+       });
+       var vuln_chosen = functionPatterns.filter(element => allVulns_parsed.includes(element));
+   
+       document.querySelectorAll('#bin-table tbody tr').forEach(function (row) {
+           var show = true;
+   
+           var binName = row.children[0].firstElementChild.innerText.toLowerCase();
+           
+           var functionElems = Array.from(row.children[0].childNodes[2].children);
+       
+           if (show) {
+               functionElems.forEach((item) => {
+                   item.className = '';
+               });
+               functionElems.forEach((item) => {
+                   let siblings = [];
+                   if (item.parentNode) {
+                       let sibling = item.parentNode.firstChild;
+                       while (sibling) {
+                           if (sibling.nodeType == 1 && sibling !== item) {
+                               siblings.push(sibling);
+                           }
+                           sibling = sibling.nextSibling;
+                       }
+                       for (i = 0; i < siblings.length; i++ ) {
+                           var found = false;
+                           functionPatterns.forEach((pattern) => {
+                               if (!pattern) { return; }
+                               if (siblings[i].innerText.toLowerCase().startsWith(pattern.toLowerCase())) {
+                                   found = true;
+                               }
+                           });
+                           if (found) {
+                               siblings[i].className = 'match';
+                           }
+                       }
+                       functionPatterns.forEach((p) => {
+                           if (!p) { return; }
+                           if (item.innerText.toLowerCase().startsWith(p.toLowerCase())) {
+                               item.className = 'match';
+                           }
+                       });
+                   }
+               });
+           }
+           var filled = true;
+           var found_binName = false;
+           if (binName.indexOf(binPattern) !== -1 && binPattern.length !== 0) {
+               found_binName = true;
+           }
+   
+           functionElems.forEach((i) => {
+               {% for methodology_pair in site.data.methodology %}
+               {% assign methodology_id = methodology_pair[0] %}
+               {% assign methodology = methodology_pair[1] %}
+               if (i.innerText.toLowerCase() == "{{ methodology.label | downcase }}" && i.className !== "match") {
+                   filled = false;
+               }
+               {% endfor %}
+           });
+   
+           var found_filter = -1;
+           if (filter_chosen.length !== 0) {
+               found_filter = 0;
+               filter_chosen.forEach((f) => {
+                   functionElems.forEach((i) => {
+                       if (i.innerText.toLowerCase() == f) {
+                           found_filter = found_filter + 1;
+                       }
+                   });
+               });
+           }
+   
+           var found_attack = -1;
+           if (attack_chosen.length !== 0) {
+               found_attack = 0;
+               attack_chosen.forEach((a) => {
+                   functionElems.forEach((i) => {
+                       if (i.innerText.toLowerCase() == a) {
+                           found_attack = found_attack + 1;
+                       }
+                   });
+               });
+           }
+                       
+           var found_os = -1;
+           if (os_chosen.length !== 0) {
+               found_os = 0;
+               os_chosen.forEach((o) => {
+                   functionElems.forEach((i) => {
+                       if (i.innerText.toLowerCase() == o) {
+                           found_os = found_os + 1;
+                       }
+                   });
+               });
+           }
+   
+           var found_vuln = -1;
+           if (vuln_chosen.length !== 0) {
+               found_vuln = 0;
+               vuln_chosen.forEach((v) => {
+                   functionElems.forEach((i) => {
+                       if (i.innerText.toLowerCase() == v) {
+                           found_vuln = found_vuln + 1;
+                       }
+                   });
+               });
+           }
+   
+           if ((!filled && (found_attack < 1 && found_filter < 1 && found_os < 1 && found_vuln < 1 && !found_binName)) ||
+               (found_attack == 0 || found_filter == 0 || found_os == 0 || found_vuln == 0) ||
+               (!filled && item_chosen.length !== 0) ||
+               ((found_attack !== attack_chosen.length && found_attack !== -1) ||
+               (found_filter !== filter_chosen.length && found_filter !== -1) ||
+               (found_os !== os_chosen.length && found_os !== -1) ||
+               (found_vuln !== vuln_chosen.length && found_vuln !== -1)) ||
+               (binPattern.length !== 0 && !found_binName)) {
+               row.style.display = 'none';
+           } else {
+               row.style.display = '';
+               noResults = false;
+           }
+   
+           if (functionPatterns.length == 0 && binPattern.length == 0) {
+               row.style.display = '';
+               noResults = false;
+           }
+       });
+   
+       // update the search message visibility
+       // var searchMessage = document.getElementById('search-message');
+       // searchMessage.style.display = noResults ? 'table-cell' : 'none';
+   }
+</script>
+<script>
+   function renumberVisibleRows() {
     const visibleRows = Array.from(document.querySelectorAll('#testcases .test-row'))
         .filter(row => row.style.display !== 'none');
     visibleRows.forEach((row, idx) => {
