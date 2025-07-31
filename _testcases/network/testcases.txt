@@ -1,0 +1,35 @@
+Service Enumeration & Banner Grabbing – Check that port 6379 is open and running Redis using Nmap (nmap -p 6379 -sV <IP>) and banner grabbing (e.g., with Netcat or redis-cli).
+
+Automated Enumeration – Verify basic Redis info and configuration using tools like Nmap’s redis-info script or Metasploit (auxiliary/scanner/redis/redis_server).
+
+Manual Service Access – Check for direct access to Redis without authentication using redis-cli -h <IP> or nc <IP> 6379; test with the INFO command.
+
+Authentication Controls – Validate if Redis enforces password authentication (AUTH <password>) or user+password, and check for weak/no authentication settings.
+
+Brute-Force Authentication – Check for susceptibility to brute-force attacks against authentication (username/password) using hydra or custom scripts.
+
+Information Disclosure – Verify unauthorized access to configuration (CONFIG GET *), client list (CLIENT LIST), or real-time monitoring (MONITOR).
+
+Database Enumeration – Check number and status of used databases (INFO keyspace), enumerate keys in each database using KEYS *, and gather values with GET, LRANGE, or HGET.
+
+Key Type Handling – Validate the handling of different key types (string, list, set, hash), and attempt to access or dump their data accordingly.
+
+Database Dumping – Check if it’s possible to dump the entire Redis content using scripts (e.g., redis-dump, redis-utils) or enumerating all keys and values.
+
+File System Access & Configuration – Verify if you can modify Redis configuration with CONFIG SET dir <path> and CONFIG SET dbfilename <file> for further attacks.
+
+RCE Webshell/Arbitrary File Write – Check if it’s possible to plant a webshell to a web directory by writing a PHP file or malicious template using SET, SAVE, and directory modifications.
+
+RCE SSH Key Injection – Validate if you can write an attacker-controlled SSH public key into /home/redis/.ssh/authorized_keys (or another user’s home) and gain shell access.
+
+RCE Crontab Backdoor – Check if it’s possible to write a cronjob file with a reverse shell payload using configuration changes and SAVE.
+
+RCE Module Loading – Validate if arbitrary modules (e.g., compiled .so files) can be uploaded and loaded via MODULE LOAD, enabling command execution.
+
+RCE Rogue/Slave Server – Check if the target Redis can be forced as a slave to a controlled server with SLAVEOF to synchronize/execute attacker payloads.
+
+Lua Sandbox Bypass – Check for the possibility to escape the Lua sandbox in EVAL scripts for command execution.
+
+SSRF/Protocol Injection – Validate if Redis can be exploited via SSRF tricks (Gitlab, CRLF) to execute commands, especially in complex webapps using Redis as a backend.
+
+Master-Slave Abuse – Check if you can abuse master/slave replication features to synchronize and insert or execute attacker-controlled content.

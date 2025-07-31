@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 rem Set the prefix and extension
-set prefix=network-postgressql-
+set prefix=network-redis-
 set ext=.md
 
 rem Set the content to be written to each file
@@ -14,9 +14,9 @@ set content5=methodology:
 set content6=  - BlackBox
 set content7=  - GreyBox
 set content8=services:
-set content9=  - PostgreSQL
+set content9=  - Redis
 set content10=references:
-set content11=  - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-postgresql.html
+set content11=  - https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html
 set content12=---
 
 rem Read testcases from file
