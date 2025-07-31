@@ -66,6 +66,15 @@
 </div>
 <!-- Move the project name and export button OUTSIDE the table -->
 <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 18px; margin-bottom: 10px;">
+   <div style="margin-right: auto;">
+      <label for="pageSizeSelect" style="font-size: 14px; margin-right: 6px;">Rows per page:</label>
+      <select id="pageSizeSelect" style="padding: 4px 8px; border-radius: 4px;">
+         <option value="25">25</option>
+         <option value="50">50</option>
+         <option value="75">75</option>
+         <option value="100">100</option>
+      </select>
+   </div>
    <input id="projectName" type="text" placeholder="Project Name" aria-label="Project Name" style="margin-right: 10px; padding: 6px 8px; border-radius: 4px; border: 1px solid #ccc; min-width: 160px;">
    <button id="exportExcel" class="container-btn-file" type="button" aria-label="Export to Excel">
       <svg
@@ -203,33 +212,73 @@
 </div>
 <div id="pagination-controls" style="margin: 16px 0; text-align: center;"></div>
 <script>
-const PAGE_SIZE = 20;
+let PAGE_SIZE = 25;
 let currentPage = 1;
+let allTestcases = [];
+let filteredTestcases = [];
 
-function getVisibleRows() {
-    return Array.from(document.querySelectorAll('#testcases .test-row'))
-        .filter(row => row.style.display !== 'none');
+function getPageSize() {
+    const select = document.getElementById('pageSizeSelect');
+    return select ? parseInt(select.value, 10) : 25;
+}
+
+const normalize = str => (str || '').trim().replace(/\s+/g, ' ').toLowerCase();
+
+function collectTestcases() {
+    allTestcases = [];
+    document.querySelectorAll('#testcases .test-row').forEach(row => {
+        allTestcases.push(row.outerHTML);
+    });
+}
+
+function filterTestcases() {
+    const checkedMethods = Array.from(document.querySelectorAll('input[name="methodology_name"]:checked')).map(cb => normalize(cb.id));
+    const checkedPlatforms = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => normalize(cb.id));
+    const checkedServices = Array.from(document.querySelectorAll('input[name="service_name"]:checked')).map(cb => normalize(cb.id));
+    const checkedOS = Array.from(document.querySelectorAll('input[name="OS_name"]:checked')).map(cb => normalize(cb.id));
+    const checkedVulns = Array.from(document.querySelectorAll('input[name="vulnerabilities_name"]:checked')).map(cb => normalize(cb.id));
+
+    filteredTestcases = allTestcases.filter(rowHTML => {
+        const temp = document.createElement('tbody');
+        temp.innerHTML = rowHTML;
+        const row = temp.firstElementChild;
+
+        const rowMethods = (row.getAttribute('data-methods') || '').split(',').map(normalize).filter(Boolean);
+        const rowPlatforms = (row.getAttribute('data-platforms') || '').split(',').map(normalize).filter(Boolean);
+        const rowServices = (row.getAttribute('data-services') || '').split(',').map(normalize).filter(Boolean);
+        const rowOS = (row.getAttribute('data-os') || '').split(',').map(normalize).filter(Boolean);
+        const rowVulns = (row.getAttribute('data-vulnerabilities') || '').split(',').map(normalize).filter(Boolean);
+
+        const showMethod = checkedMethods.length === 0 || checkedMethods.some(m => rowMethods.includes(m));
+        const showPlatform = checkedPlatforms.length === 0 || checkedPlatforms.some(p => rowPlatforms.includes(p));
+        const showService = checkedServices.length === 0 || checkedServices.some(s => rowServices.includes(s));
+        const showOS = checkedOS.length === 0 || checkedOS.some(o => rowOS.includes(o));
+        const showVuln = checkedVulns.length === 0 || checkedVulns.some(v => rowVulns.includes(v));
+
+        return showMethod && showPlatform && showService && showOS && showVuln;
+    });
+
+    renderTablePage(1);
 }
 
 function renderTablePage(page) {
-    const rows = getVisibleRows();
-    const totalPages = Math.ceil(rows.length / PAGE_SIZE) || 1;
+    PAGE_SIZE = getPageSize();
+    const tbody = document.querySelector('#testcases tbody');
+    tbody.innerHTML = '';
+    const totalPages = Math.ceil(filteredTestcases.length / PAGE_SIZE) || 1;
     currentPage = Math.max(1, Math.min(page, totalPages));
-
-    rows.forEach((row, idx) => {
-        row.style.display = (idx >= (currentPage - 1) * PAGE_SIZE && idx < currentPage * PAGE_SIZE) ? '' : 'none';
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    filteredTestcases.slice(start, end).forEach((rowHTML, idx) => {
+        const temp = document.createElement('tbody');
+        temp.innerHTML = rowHTML;
+        temp.querySelector('td').textContent = start + idx + 1;
+        tbody.appendChild(temp.firstElementChild);
     });
-
-    // Renumber only visible rows on this page
-    rows.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE).forEach((row, idx) => {
-        const snoCell = row.querySelector('td');
-        if (snoCell) snoCell.textContent = ((currentPage - 1) * PAGE_SIZE) + idx + 1;
-    });
-
-    renderPaginationControls(totalPages);
+    updatePaginationControls(totalPages);
 }
 
-function renderPaginationControls(totalPages) {
+function updatePaginationControls(totalPages) {
     const container = document.getElementById('pagination-controls');
     if (totalPages <= 1) {
         container.innerHTML = '';
@@ -248,20 +297,20 @@ window.gotoPage = function(page) {
     renderTablePage(page);
 };
 
-// Hook into your filter logic to re-paginate after filtering
-function paginateAfterFilter() {
-    renderTablePage(1);
-}
-
-// Patch your filterTestcases to call paginateAfterFilter at the end:
-const origFilterTestcases = window.filterTestcases;
-window.filterTestcases = function() {
-    origFilterTestcases();
-    paginateAfterFilter();
-};
-
 document.addEventListener('DOMContentLoaded', function () {
-    paginateAfterFilter();
+    collectTestcases();
+    filteredTestcases = [...allTestcases];
+    renderTablePage(1);
+
+    document.getElementById('bin-search-wrapper').addEventListener('change', function (e) {
+        if (e.target.matches('input[type="checkbox"][name="methodology_name"], input[type="checkbox"][name="platform_name"], input[type="checkbox"][name="service_name"], input[type="checkbox"][name="OS_name"], input[type="checkbox"][name="vulnerabilities_name"]')) {
+            filterTestcases();
+        }
+    });
+
+    document.getElementById('pageSizeSelect').addEventListener('change', function () {
+        renderTablePage(1);
+    });
 });
 </script>
 <script>
@@ -293,256 +342,6 @@ document.addEventListener('DOMContentLoaded', function () {
        // Update filter table
        filterTestcases();
    }
-</script>
-<script>
-   function filter(query) {
-       var queryArray = query.toLowerCase().trim().split(/ *\+/);
-       var binPattern = queryArray[0];
-       var functionPatterns = queryArray.splice(1);
-   
-       // filter rows
-       var noResults = true;
-   
-       var allItems = document.getElementsByName("methodology_name");
-       var allFilters = document.getElementsByName("service_name");
-       var allAttacks = document.getElementsByName("platform_name");
-       var allOS = document.getElementsByName("OS_name");
-       var allVulns = document.getElementsByName("vulnerabilities_name");
-       
-       var allItems_parsed = [];
-       var allFilters_parsed = [];
-       var allAttacks_parsed = []; 
-       var allOS_parsed = []; 
-       var allVulns_parsed = [];
-   
-       allFilters.forEach((f) => {
-           allFilters_parsed.push(f.id.toLowerCase());
-       });
-       var filter_chosen = functionPatterns.filter(element => allFilters_parsed.includes(element));
-       
-       allItems.forEach((i) => {
-           allItems_parsed.push(i.id.toLowerCase());
-       });
-       var item_chosen = functionPatterns.filter(element => allItems_parsed.includes(element));
-       
-       allAttacks.forEach((a) => {
-           allAttacks_parsed.push(a.id.toLowerCase());
-       });
-       var attack_chosen = functionPatterns.filter(element => allAttacks_parsed.includes(element));
-       
-       allOS.forEach((o) => {
-           allOS_parsed.push(o.id.toLowerCase());
-       });
-       var os_chosen = functionPatterns.filter(element => allOS_parsed.includes(element));
-       
-       allVulns.forEach((v) => {
-           allVulns_parsed.push(v.id.toLowerCase());
-       });
-       var vuln_chosen = functionPatterns.filter(element => allVulns_parsed.includes(element));
-   
-       document.querySelectorAll('#bin-table tbody tr').forEach(function (row) {
-           var show = true;
-   
-           var binName = row.children[0].firstElementChild.innerText.toLowerCase();
-           
-           var functionElems = Array.from(row.children[0].childNodes[2].children);
-       
-           if (show) {
-               functionElems.forEach((item) => {
-                   item.className = '';
-               });
-               functionElems.forEach((item) => {
-                   let siblings = [];
-                   if (item.parentNode) {
-                       let sibling = item.parentNode.firstChild;
-                       while (sibling) {
-                           if (sibling.nodeType == 1 && sibling !== item) {
-                               siblings.push(sibling);
-                           }
-                           sibling = sibling.nextSibling;
-                       }
-                       for (i = 0; i < siblings.length; i++ ) {
-                           var found = false;
-                           functionPatterns.forEach((pattern) => {
-                               if (!pattern) { return; }
-                               if (siblings[i].innerText.toLowerCase().startsWith(pattern.toLowerCase())) {
-                                   found = true;
-                               }
-                           });
-                           if (found) {
-                               siblings[i].className = 'match';
-                           }
-                       }
-                       functionPatterns.forEach((p) => {
-                           if (!p) { return; }
-                           if (item.innerText.toLowerCase().startsWith(p.toLowerCase())) {
-                               item.className = 'match';
-                           }
-                       });
-                   }
-               });
-           }
-           var filled = true;
-           var found_binName = false;
-           if (binName.indexOf(binPattern) !== -1 && binPattern.length !== 0) {
-               found_binName = true;
-           }
-   
-           functionElems.forEach((i) => {
-               {% for methodology_pair in site.data.methodology %}
-               {% assign methodology_id = methodology_pair[0] %}
-               {% assign methodology = methodology_pair[1] %}
-               if (i.innerText.toLowerCase() == "{{ methodology.label | downcase }}" && i.className !== "match") {
-                   filled = false;
-               }
-               {% endfor %}
-           });
-   
-           var found_filter = -1;
-           if (filter_chosen.length !== 0) {
-               found_filter = 0;
-               filter_chosen.forEach((f) => {
-                   functionElems.forEach((i) => {
-                       if (i.innerText.toLowerCase() == f) {
-                           found_filter = found_filter + 1;
-                       }
-                   });
-               });
-           }
-   
-           var found_attack = -1;
-           if (attack_chosen.length !== 0) {
-               found_attack = 0;
-               attack_chosen.forEach((a) => {
-                   functionElems.forEach((i) => {
-                       if (i.innerText.toLowerCase() == a) {
-                           found_attack = found_attack + 1;
-                       }
-                   });
-               });
-           }
-                       
-           var found_os = -1;
-           if (os_chosen.length !== 0) {
-               found_os = 0;
-               os_chosen.forEach((o) => {
-                   functionElems.forEach((i) => {
-                       if (i.innerText.toLowerCase() == o) {
-                           found_os = found_os + 1;
-                       }
-                   });
-               });
-           }
-   
-           var found_vuln = -1;
-           if (vuln_chosen.length !== 0) {
-               found_vuln = 0;
-               vuln_chosen.forEach((v) => {
-                   functionElems.forEach((i) => {
-                       if (i.innerText.toLowerCase() == v) {
-                           found_vuln = found_vuln + 1;
-                       }
-                   });
-               });
-           }
-   
-           if ((!filled && (found_attack < 1 && found_filter < 1 && found_os < 1 && found_vuln < 1 && !found_binName)) ||
-               (found_attack == 0 || found_filter == 0 || found_os == 0 || found_vuln == 0) ||
-               (!filled && item_chosen.length !== 0) ||
-               ((found_attack !== attack_chosen.length && found_attack !== -1) ||
-               (found_filter !== filter_chosen.length && found_filter !== -1) ||
-               (found_os !== os_chosen.length && found_os !== -1) ||
-               (found_vuln !== vuln_chosen.length && found_vuln !== -1)) ||
-               (binPattern.length !== 0 && !found_binName)) {
-               row.style.display = 'none';
-           } else {
-               row.style.display = '';
-               noResults = false;
-           }
-   
-           if (functionPatterns.length == 0 && binPattern.length == 0) {
-               row.style.display = '';
-               noResults = false;
-           }
-       });
-   
-       // update the search message visibility
-       // var searchMessage = document.getElementById('search-message');
-       // searchMessage.style.display = noResults ? 'table-cell' : 'none';
-   }
-</script>
-<script>
-   function renumberVisibleRows() {
-    const visibleRows = Array.from(document.querySelectorAll('#testcases .test-row'))
-        .filter(row => row.style.display !== 'none');
-    visibleRows.forEach((row, idx) => {
-        const snoCell = row.querySelector('td');
-        if (snoCell) snoCell.textContent = idx + 1;
-    });
-}
-
-function filterTestcases() {
-    const testRows = document.querySelectorAll('#testcases .test-row');
-    if (!testRows.length) return;
-
-    // Helper to normalize strings for comparison
-    const normalize = str => str.trim().replace(/\s+/g, ' ').toLowerCase();
-
-    const checkedMethods = Array.from(document.querySelectorAll('input[name="methodology_name"]:checked')).map(cb => normalize(cb.id));
-    const checkedPlatforms = Array.from(document.querySelectorAll('input[name="platform_name"]:checked')).map(cb => normalize(cb.id));
-    const checkedServices = Array.from(document.querySelectorAll('input[name="service_name"]:checked')).map(cb => normalize(cb.id));
-    const checkedOS = Array.from(document.querySelectorAll('input[name="OS_name"]:checked')).map(cb => normalize(cb.id));
-    const checkedVulns = Array.from(document.querySelectorAll('input[name="vulnerabilities_name"]:checked')).map(cb => normalize(cb.id));
-
-    testRows.forEach(row => {
-        const rowMethods = (row.getAttribute('data-methods') || '')
-            .split(',')
-            .map(normalize)
-            .filter(Boolean);
-
-        const rowPlatforms = (row.getAttribute('data-platforms') || '')
-            .split(',')
-            .map(normalize)
-            .filter(Boolean);
-
-        const rowServices = (row.getAttribute('data-services') || '')
-            .split(',')
-            .map(normalize)
-            .filter(Boolean);
-
-        const rowOS = (row.getAttribute('data-os') || '')
-            .split(',')
-            .map(normalize)
-            .filter(Boolean);
-
-        const rowVulns = (row.getAttribute('data-vulnerabilities') || '')
-            .split(',')
-            .map(normalize)
-            .filter(Boolean);
-
-        const showVuln = checkedVulns.length === 0 || checkedVulns.some(v =>
-            rowVulns.includes(v)
-        );
-        const showMethod = checkedMethods.length === 0 || checkedMethods.some(m => rowMethods.includes(m));
-        const showPlatform = checkedPlatforms.length === 0 || checkedPlatforms.some(p => rowPlatforms.includes(p));
-        const showService = checkedServices.length === 0 || checkedServices.some(s => rowServices.includes(s));
-        const showOS = checkedOS.length === 0 || checkedOS.some(o => rowOS.includes(o));
-
-        row.style.display = (showMethod && showPlatform && showService && showOS && showVuln) ? '' : 'none';
-    });
-
-    renumberVisibleRows();
-}
-
-// Attach filterTestcases to filter checkboxes
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('bin-search-wrapper').addEventListener('change', function (e) {
-        if (e.target.matches('input[type="checkbox"][name="methodology_name"], input[type="checkbox"][name="platform_name"], input[type="checkbox"][name="service_name"], input[type="checkbox"][name="OS_name"], input[type="checkbox"][name="vulnerabilities_name"]')) {
-            filterTestcases();
-        }
-    });
-    filterTestcases();
-});
 </script>
 <script>
    // Track unsaved changes
@@ -584,7 +383,5 @@ document.addEventListener('DOMContentLoaded', function () {
         setBeforeUnload(false);
     });
 });
-
-// Optionally, if you want to reset unsavedChanges after a successful save, call setBeforeUnload(false)
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
