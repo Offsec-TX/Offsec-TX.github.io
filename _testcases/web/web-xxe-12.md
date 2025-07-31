@@ -6,7 +6,7 @@ platforms:
 methodology: 
   - WhiteBox
 vulnerabilities:
-  - XXE injection
+  - XXE
 services:
   - WEB
 references:

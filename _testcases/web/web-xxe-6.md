@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - XXE injection
+  - XXE
 services:
   - WEB
 references:

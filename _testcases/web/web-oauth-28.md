@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - OAuth authentication
+  - OAuth
 services:
   - WEB
 references:

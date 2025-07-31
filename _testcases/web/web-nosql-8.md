@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - NoSQL injection
+  - NoSQLi
 services:
   - WEB
 references:

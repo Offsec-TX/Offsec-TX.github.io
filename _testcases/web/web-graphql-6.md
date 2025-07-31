@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - GraphQL API vulnerabilities
+  - GraphQL
 services:
   - WEB
 references:

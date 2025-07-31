@@ -1,6 +1,6 @@
 ---
 SQL injection:
-  label: SQL injection
+  label: SQLi
   description: Testcases related to SQL Injection.
 
 Authentication:
@@ -15,10 +15,6 @@ Command injection:
   label: Command injection
   description: Testcases related to command injection vulnerabilities.
 
-Business logic vulnerabilities:
-  label: Business logic vulnerabilities
-  description: Testcases targeting flaws in application logic and workflows.
-
 Information disclosure:
   label: Information disclosure
   description: Testcases for unintentional exposure of sensitive information.
@@ -28,7 +24,7 @@ Access control:
   description: Testcases for privilege escalation and authorization flaws.
 
 File upload vulnerabilities:
-  label: File upload vulnerabilities
+  label: File upload
   description: Testcases for insecure file upload and file type validation.
 
 Race conditions:
@@ -40,16 +36,12 @@ SSRF:
   description: Testcases for SSRF vulnerabilities.
 
 XXE injection:
-  label: XXE injection
+  label: XXE
   description: Testcases for XML External Entity injection.
 
 NoSQL injection:
-  label: NoSQL injection
+  label: NoSQLi
   description: Testcases for NoSQL database injection vulnerabilities.
-
-API testing:
-  label: API testing
-  description: Testcases for API endpoints and security.
 
 Web cache deception:
   label: Web cache deception
@@ -72,7 +64,7 @@ Clickjacking:
   description: Testcases for UI redress and clickjacking attacks.
 
 DOM based vulnerabilities:
-  label: DOM based vulnerabilities
+  label: DOM based
   description: Testcases for client-side DOM manipulation vulnerabilities.
 
 WebSockets:
@@ -83,12 +75,8 @@ Insecure deserialization:
   label: Insecure deserialization
   description: Testcases for insecure object deserialization.
 
-Web LLM attacks:
-  label: Web LLM attacks
-  description: Testcases for attacks targeting web-integrated large language models.
-
 GraphQL API vulnerabilities:
-  label: GraphQL API vulnerabilities
+  label: GraphQL
   description: Testcases for GraphQL-specific security issues.
 
 SSTI:
@@ -100,7 +88,7 @@ Web cache poisoning:
   description: Testcases for poisoning web caches.
 
 HTTP Host header attacks:
-  label: HTTP Host header attacks
+  label: HTTP Host header
   description: Testcases for Host header manipulation vulnerabilities.
 
 HTTP request smuggling:
@@ -108,11 +96,11 @@ HTTP request smuggling:
   description: Testcases for request smuggling vulnerabilities.
 
 OAuth authentication:
-  label: OAuth authentication
+  label: OAuth
   description: Testcases for OAuth implementation and security.
 
 JWT attacks:
-  label: JWT attacks
+  label: JWT
   description: Testcases for JSON Web Token vulnerabilities.
 
 Prototype pollution:

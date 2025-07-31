@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - JWT attacks
+  - JWT
 services:
   - WEB
 references:

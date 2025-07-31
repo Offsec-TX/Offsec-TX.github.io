@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - DOM based vulnerabilities
+  - DOM based
 services:
   - WEB
 references:

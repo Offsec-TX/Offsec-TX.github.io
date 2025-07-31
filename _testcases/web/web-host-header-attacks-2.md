@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - HTTP Host header attacks
+  - HTTP Host header
 services:
   - WEB
 references:

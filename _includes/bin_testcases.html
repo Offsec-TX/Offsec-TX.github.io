@@ -6,13 +6,13 @@
 </style>
 <div id="bin-search-wrapper">
    <ul id="bin-search-filters" class="filter-list">
-      <h3>Methodologies:</h3>
-      {% for methodology_pair in site.data.methodology %}
-      {% assign methodology_id = methodology_pair[0] %}
-      {% assign methodology = methodology_pair[1] %}
+      <h3>Vulnerabilities:</h3>
+      {% for vulnerabilities_pair in site.data.vulnerabilities %}
+      {% assign vulnerabilities_id = vulnerabilities_pair[0] %}
+      {% assign vulnerabilities = vulnerabilities_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ methodology.label }}" name="methodology_name" onclick='handleChange(this, "{{ methodology.label }}");'>
-         <label id="{{ methodology.label }}_label" for="{{ methodology.label }}" data-title="{{ methodology.description | replace: '\n', ' ' }}">{{ methodology.label }}</label>
+         <input type="checkbox" id="{{ vulnerabilities.label }}" name="vulnerabilities_name" onclick='handleChange(this, "{{ vulnerabilities.label }}");'>
+         <label id="{{ vulnerabilities.label }}_label" for="{{ vulnerabilities.label }}" data-title="{{ vulnerabilities.description | replace: '\n', ' ' }}">{{ vulnerabilities.label }}</label>
       </li>
       {% endfor %}
    </ul>
@@ -28,7 +28,7 @@
       {% endfor %}
    </ul>
    <ul id="bin-search-filters" class="filter-list">
-      <h3>Platforms & Configuration Review:</h3>
+      <h3>Platforms:</h3>
       {% for platform_pair in site.data.platforms %}
       {% assign platform_id = platform_pair[0] %}
       {% assign platform = platform_pair[1] %}
@@ -50,13 +50,13 @@
       {% endfor %}
    </ul>
    <ul id="bin-search-filters" class="filter-list">
-      <h3>Vulnerabilities:</h3>
-      {% for vulnerabilities_pair in site.data.vulnerabilities %}
-      {% assign vulnerabilities_id = vulnerabilities_pair[0] %}
-      {% assign vulnerabilities = vulnerabilities_pair[1] %}
+      <h3>Methodologies:</h3>
+      {% for methodology_pair in site.data.methodology %}
+      {% assign methodology_id = methodology_pair[0] %}
+      {% assign methodology = methodology_pair[1] %}
       <li>
-         <input type="checkbox" id="{{ vulnerabilities.label }}" name="vulnerabilities_name" onclick='handleChange(this, "{{ vulnerabilities.label }}");'>
-         <label id="{{ vulnerabilities.label }}_label" for="{{ vulnerabilities.label }}" data-title="{{ vulnerabilities.description | replace: '\n', ' ' }}">{{ vulnerabilities.label }}</label>
+         <input type="checkbox" id="{{ methodology.label }}" name="methodology_name" onclick='handleChange(this, "{{ methodology.label }}");'>
+         <label id="{{ methodology.label }}_label" for="{{ methodology.label }}" data-title="{{ methodology.description | replace: '\n', ' ' }}">{{ methodology.label }}</label>
       </li>
       {% endfor %}
    </ul>

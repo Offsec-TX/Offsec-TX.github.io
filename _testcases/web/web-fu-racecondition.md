@@ -7,7 +7,7 @@ methodology:
   - BlackBox
   - GreyBox
 vulnerabilities:
-  - File upload vulnerabilities
+  - File upload
 services:
   - WEB
 references:
