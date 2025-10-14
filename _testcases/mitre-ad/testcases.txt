@@ -1,0 +1,29 @@
+SUID Binary Exploitation for Root Shell
+GUID Bit Manipulation for Group Privilege Access
+CAP_SETUID/SETGID Capabilities Abuse
+UAC Bypass via eventvwr.exe Auto-Elevation
+UAC Bypass via Fodhelper.exe Registry Manipulation
+UAC Bypass via DLL Injection to Trusted Process
+Sudo Credential Cache Exploitation
+Sudoers File NOPASSWD Abuse
+Sudo Environment Variable Manipulation
+macOS AuthorizationExecuteWithPrivileges API Abuse
+macOS Installer Package Privilege Escalation
+AWS Role Assumption for Privilege Escalation
+Azure Just-in-Time Access Abuse
+GCP Service Account Impersonation
+macOS TCC Database Direct Manipulation
+TCC Bypass via FDA-Enabled Application Abuse
+TCC Environment Variable Manipulation
+Impersonate SYSTEM token from privileged process
+Steal service account token for lateral movement
+Spawn process with stolen token via CreateProcessWithTokenW
+Launch cmd.exe with Domain Admin token
+Craft and impersonate custom access token
+Create primary token with SYSTEM privileges
+Spoof parent process ID to evade detection
+Spawn malicious process appearing as child of explorer.exe
+Inject high-privilege SID into user's SIDHistory attribute
+Cross-domain privilege escalation via SID-History
+
+

@@ -2,22 +2,20 @@
 setlocal enabledelayedexpansion
 
 rem Set the prefix and extension
-set prefix=network-redis-
+set prefix=mitre-ad-privesc-
 set ext=.md
 
 rem Set the content to be written to each file
 set content=---
 set content2=testcase: 
 set content3=platforms: 
-set content4=  - Network
+set content4=  - AD
 set content5=methodology: 
 set content6=  - BlackBox
 set content7=  - GreyBox
-set content8=services:
-set content9=  - Redis
-set content10=references:
-set content11=  - https://book.hacktricks.wiki/en/network-services-pentesting/6379-pentesting-redis.html
-set content12=---
+set content8=references:
+set content9=  - 
+set content10=---
 
 rem Read testcases from file
 set testcasefile=testcases.txt
@@ -40,8 +38,6 @@ for /F "delims=" %%t in (%testcasefile%) do (
         echo !content8!
         echo !content9!
         echo !content10!
-        echo !content11!
-        echo !content12!
     ) > !filename!
     set /a count+=1
 )
